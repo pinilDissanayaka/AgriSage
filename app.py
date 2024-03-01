@@ -1,9 +1,13 @@
 from flask import Flask, url_for, redirect, request, render_template, session
+import os
+from dotenv import load_dotenv
 from utils.user import User
 
 app=Flask(__name__)
 user=User(app=app)
-app.secret_key='123456'
+
+load_dotenv('.env')
+app.secret_key=os.getenv('APP_SECRECT_KEY')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -15,17 +19,28 @@ def login(errorMassage=" "):
         status,loggedUser = user.logInUser(emailAddress=uName, password=password)
         
         if loggedUser is None:
-             return render_template('login.html', errorMassage=status)
+            session['status']=False
+            return render_template('login.html', errorMassage=status)
         else:
-            session['user']='user'
-            return redirect('base.html')
+            session['status']=True
+            session['user']=loggedUser['username']
+            return redirect(url_for('base'))
     else:
         return render_template('login.html', errorMassage=" ")
     
     
-@app.route('/base.html', methods=['GET', 'POST'])
+@app.route('/base', methods=['GET', 'POST'])
 def base():
+    if session['status'] is False:
+        return redirect(url_for('login'))
+    
     return render_template('base.html')
+
+
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    session.clear()
+    return redirect(url_for('login'))
         
 
         
@@ -34,4 +49,4 @@ def base():
 
 
 if __name__=="__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=8000)
