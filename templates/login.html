@@ -36,10 +36,8 @@
 </head>
 
 <body>
-
   <main>
     <div class="container">
-
       <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
         <div class="container">
           <div class="row justify-content-center">
@@ -50,10 +48,10 @@
                   <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo"></img>
                   <span class="d-none d-lg-block">AGRISAGE</span>
                 </a>
-              </div><!-- End Logo -->
+              </div>
+              <!-- End Logo -->
 
               <div class="card mb-3">
-
                 <div class="card-body">
 
                   <div class="pt-4 pb-2">
@@ -84,13 +82,16 @@
                         <label class="form-check-label" for="rememberMe">Remember me</label>
                       </div>
                     </div>
+
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">Login</button>
                     </div>
+
                     <div class="col-12">
                       <p class="small mb-0">Don't have account? <a href="pages-register.html">Create an account</a></p>
-                      <p class="small mb-0">{{errorMassage}}</p>
+                      <center><p class="small mb-0" style="color:red;">{{errorMassage}}</p></center>
                     </div>
+
                   </form>
 
                 </div>
@@ -103,9 +104,7 @@
             </div>
           </div>
         </div>
-
       </section>
-
     </div>
   </main><!-- End #main -->
 

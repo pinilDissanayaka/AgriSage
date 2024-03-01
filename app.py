@@ -12,15 +12,20 @@ def login(errorMassage=" "):
         uName=request.form['username']
         password=request.form['password']
         
-        errorMassage,loggedUser = user.logInUser(emailAddress=uName, password=password)
+        status,loggedUser = user.logInUser(emailAddress=uName, password=password)
         
         if loggedUser is None:
-             return render_template('login.html', errorMassage=errorMassage)
+             return render_template('login.html', errorMassage=status)
         else:
             session['user']='user'
-            return "gi"
+            return redirect('base.html')
     else:
         return render_template('login.html', errorMassage=" ")
+    
+    
+@app.route('/base.html', methods=['GET', 'POST'])
+def base():
+    return render_template('base.html')
         
 
         
