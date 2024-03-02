@@ -30,7 +30,10 @@ def login(errorMassage=" "):
     
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    return render_template('register.html')
+    if request.method == 'POST':
+        pass
+    else:
+        return render_template('register.html')
     
     
 @app.route('/dashboard', methods=['GET', 'POST'])
