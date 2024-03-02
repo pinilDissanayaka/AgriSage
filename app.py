@@ -24,17 +24,17 @@ def login(errorMassage=" "):
         else:
             session['status']=True
             session['user']=loggedUser['username']
-            return redirect(url_for('base'))
+            return redirect(url_for('dashboard'))
     else:
         return render_template('login.html', errorMassage=" ")
     
     
-@app.route('/base', methods=['GET', 'POST'])
-def base():
+@app.route('/dashboard', methods=['GET', 'POST'])
+def dashboard():
     if session['status'] is False:
         return redirect(url_for('login'))
-    
-    return render_template('base.html')
+    else:
+        return render_template('dashboard.html')
 
 
 @app.route('/logout', methods=['GET', 'POST'])
