@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 from utils.user import User
 
-app=Flask(__name__)
+app=Flask(__name__, static_folder="static", template_folder="templates")
 user=User(app=app)
 
 load_dotenv('.env')
