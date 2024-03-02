@@ -31,7 +31,7 @@ def login(errorMassage=" "):
     
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
-    if session['status'] is False:
+    if session['status'] is not True:
         return redirect(url_for('login'))
     else:
         return render_template('dashboard.html')
@@ -40,6 +40,7 @@ def dashboard():
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
     session.clear()
+    session['status']=False
     return redirect(url_for('login'))
         
 
