@@ -28,6 +28,10 @@ def login(errorMassage=" "):
     else:
         return render_template('login.html', errorMassage=" ")
     
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    return render_template('register.html')
+    
     
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
@@ -51,9 +55,5 @@ def pageNotFound(e):
         
 
         
-
-
-
-
 if __name__=="__main__":
     app.run(debug=True, port=8000)
