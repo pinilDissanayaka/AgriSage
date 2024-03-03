@@ -69,9 +69,9 @@
                         </div>
     
                         <div class="col-12">
-                          <label for="yourEmail" class="form-label">Your Email</label>
-                          <input type="email" name="email" class="form-control" id="yourEmail" required>
-                          <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                          <label for="yourMobile" class="form-label">Your Mobile number</label>
+                          <input type="text" name="phoneNumber" class="form-control" id="yourMobile" required>
+                          <div class="invalid-feedback">Please enter a valid Mobile number!</div>
                         </div>
     
                         <div class="col-12">
@@ -100,6 +100,7 @@
                           <button class="btn btn-primary w-100" type="submit">Create Account</button>
                         </div>
                         <div class="col-12">
+                          <center><p class="small mb-0" style="color:red;">{{errorMassage}}</p></center>
                           <p class="small mb-0">Already have an account? <a href="/login">Log in</a></p>
                         </div>
                       </form>

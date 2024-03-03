@@ -27,18 +27,18 @@ class User(object):
     
     
         
-    def addUser(self, username:str, emailAddress:str, phoneNumber:str, password:str):
+    def addUser(self, name:str, phoneNumber:str, userName:str, password:str):
         try:
             client, collection, connectionStatus=User.connectDB()
             
             if connectionStatus is True:
-                _, user=self.getUserByEmail(emailAddress)
+                _, user=self.getUserByUserName(userName)
         
                 
                 if user is None:
                     password=self._bycrypt.generate_password_hash(password).decode('utf-8')
                     
-                    collection.insert_one({"username" : username, "emailAddress" : emailAddress, "phoneNumber" : phoneNumber, "password" : password})
+                    collection.insert_one({"name" : name, "phoneNumber" : phoneNumber, "userName" : userName, "password" : password})
                     print("User successfully added")
                     status=True
                 else:
@@ -50,11 +50,11 @@ class User(object):
         return status
     
           
-    def getUserByEmail(self, emailAddress : str):
+    def getUserByUserName(self, userName : str):
         try:
             client, collection, connectionStatus=User.connectDB()
             if connectionStatus is True:
-                user=collection.find_one({"emailAddress" : emailAddress})
+                user=collection.find_one({"userName" : userName})
                 if user is None:
                     status='User not found'
                 else:
@@ -66,12 +66,12 @@ class User(object):
         return status, user
     
     
-    def logInUser(self, emailAddress:str, password:str):
+    def logInUser(self, userName:str, password:str):
         try:
             client, collection, connectionStatus=User.connectDB()
         
             if connectionStatus is True:
-                _, user=self.getUserByEmail(emailAddress)
+                _, user=self.getUserByUserName(userName)
             
                 if user is None:
                     status="User not found"
@@ -87,35 +87,32 @@ class User(object):
                         print("Incorrect password")
                         user=None
                         status="Incorrect password"
+            return status, user
         finally:
             client.close()
             
-        return status, user
+        
     
-    def updateUser(self, emailAddress, username=None, emailAddressEdited=None, phoneNumber=None, address=None, password=None):
+    def updateUser(self, userName, username=None, userNameEdited=None, phoneNumber=None, name=None, password=None):
         try:
             client, collection, connectionStatus=User.connectDB()
             
-            if connectionStatus is True:
-                if not username is None:
-                    collection.update_one({'emailAddress' : emailAddress}, {'$set' : {'username' : username}})
-                    status=True
-                    
-                if not emailAddressEdited is None:
-                    collection.update_one({'emailAddress' : emailAddress}, {'$set' : {'emailAddress' : emailAddressEdited}})
+            if connectionStatus is True:     
+                if not userNameEdited is None:
+                    collection.update_one({'username' : userName}, {'$set' : {'username' : userNameEdited}})
                     status=True
             
                 if not phoneNumber is None:
-                    collection.update_one({'emailAddress' : emailAddress}, {'$set' : {'phoneNumber' : phoneNumber}})
+                    collection.update_one({'username' : userName}, {'$set' : {'phoneNumber' : phoneNumber}})
                     status=True
         
-                if not address is None:
-                    collection.update_one({'emailAddress' : emailAddress}, {'$set' : {'address' : address}})   
+                if not name is None:
+                    collection.update_one({'username' : userName}, {'$set' : {'name' : name}})   
                     status=True
                     
                 if not password is None:
                     password=password=self._bycrypt.generate_password_hash(password).decode('utf-8')
-                    collection.update_one({'emailAddress' : emailAddress}, {'$set' : {'password' : password}})
+                    collection.update_one({'username' : userName}, {'$set' : {'password' : password}})
                     status=True
                              
             else:
@@ -128,12 +125,12 @@ class User(object):
             
     
 
-    def deleteUser(self, emailAddress):
+    def deleteUser(self, userName: str):
         try:
             client, collection, connectionStatus=User.connectDB()
             
             if connectionStatus is True:
-                collection.delete_one({"emailAddress" : emailAddress})
+                collection.delete_one({"userName" : userName})
                 status=True
             else:
                 status=False

@@ -19,14 +19,14 @@ def login():
                 uName=request.form['username']
                 password=request.form['password']
                 
-                status,loggedUser = user.logInUser(emailAddress=uName, password=password)
+                status,loggedUser = user.logInUser(userName=uName, password=password)
                 
                 if loggedUser is None:
                     session['status']=False
                     return render_template('login.html', errorMassage=status)
                 else:
                     session['status']=True
-                    session['user']=loggedUser['username']
+                    session['username']=loggedUser['userName']
                     return redirect(url_for('dashboard'))
             else:
                 return render_template('login.html', errorMassage=" ")
@@ -34,23 +34,38 @@ def login():
             return redirect(url_for('dashboard'))
     except:
         session['status']=False
+        return redirect(url_for('login'))
+        
+
         
         
     
 @app.route('/register', methods=['GET', 'POST'])
-def register():
+def register(errorMassage=" "):
     try:
         if session['status'] is False:
             if request.method=='POST':
-                pass
+                name=request.form['name']
+                phoneNumber=request.form['phoneNumber']
+                uName=request.form['username']
+                password=request.form['password']
+                
+                status=user.addUser(name=name, phoneNumber=phoneNumber, userName=uName, password=password)
+                if status:
+                    session['status']=status
+                    session['username']=uName
+                    return redirect(url_for('dashboard'))
+                else:
+                    errorMassage="Registration Failed"
+                    return render_template('register.html', errorMassage=errorMassage)
             else:
-                return render_template('register.html', errorMassage=" ")
+                return render_template('register.html', errorMassage=errorMassage)
         else:
             return redirect(url_for('dashboard'))
     except:
         session['status']=False
-        
-        
+        return redirect(url_for('register'))
+                
     
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
