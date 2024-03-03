@@ -39,11 +39,18 @@ def login():
     
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    if request.method == 'POST':
-        pass
-    else:
-        return render_template('register.html')
-    
+    try:
+        if session['status'] is False:
+            if request.method=='POST':
+                pass
+            else:
+                return render_template('register.html', errorMassage=" ")
+        else:
+            return redirect(url_for('dashboard'))
+    except:
+        session['status']=False
+        
+        
     
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
