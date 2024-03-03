@@ -13,24 +13,28 @@ app.secret_key=os.getenv('APP_SECRECT_KEY')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if session['status'] is False:
-        if request.method=='POST':
-            uName=request.form['username']
-            password=request.form['password']
-            
-            status,loggedUser = user.logInUser(emailAddress=uName, password=password)
-            
-            if loggedUser is None:
-                session['status']=False
-                return render_template('login.html', errorMassage=status)
+    try:
+        if session['status'] is False:
+            if request.method=='POST':
+                uName=request.form['username']
+                password=request.form['password']
+                
+                status,loggedUser = user.logInUser(emailAddress=uName, password=password)
+                
+                if loggedUser is None:
+                    session['status']=False
+                    return render_template('login.html', errorMassage=status)
+                else:
+                    session['status']=True
+                    session['user']=loggedUser['username']
+                    return redirect(url_for('dashboard'))
             else:
-                session['status']=True
-                session['user']=loggedUser['username']
-                return redirect(url_for('dashboard'))
+                return render_template('login.html', errorMassage=" ")
         else:
-            return render_template('login.html', errorMassage=" ")
-    else:
-        return redirect(url_for('dashboard'))
+            return redirect(url_for('dashboard'))
+    except:
+        session['status']=False
+        
         
     
 @app.route('/register', methods=['GET', 'POST'])
