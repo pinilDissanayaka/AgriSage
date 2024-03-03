@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 from utils.user import User
 
+
 app=Flask(__name__, static_folder="static", template_folder="templates")
 user=User(app=app)
 
@@ -11,7 +12,7 @@ app.secret_key=os.getenv('APP_SECRECT_KEY')
 
 
 @app.route('/login', methods=['GET', 'POST'])
-def login(errorMassage=" "):
+def login():
     if session['status'] is False:
         if request.method=='POST':
             uName=request.form['username']
