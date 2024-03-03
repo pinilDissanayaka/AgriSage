@@ -93,28 +93,22 @@ class User(object):
             
         
     
-    def updateUser(self, userName, username=None, userNameEdited=None, phoneNumber=None, name=None, password=None):
+    def updateUser(self, userName, name=None, userNameEdited=None, phoneNumber=None):
         try:
             client, collection, connectionStatus=User.connectDB()
             
-            if connectionStatus is True:     
+            if connectionStatus is True: 
+                if not name is None:
+                    collection.update_one({'username' : userName}, {'$set' : {'name' : name}})   
+                    status=True 
+                        
                 if not userNameEdited is None:
                     collection.update_one({'username' : userName}, {'$set' : {'username' : userNameEdited}})
                     status=True
             
                 if not phoneNumber is None:
                     collection.update_one({'username' : userName}, {'$set' : {'phoneNumber' : phoneNumber}})
-                    status=True
-        
-                if not name is None:
-                    collection.update_one({'username' : userName}, {'$set' : {'name' : name}})   
-                    status=True
-                    
-                if not password is None:
-                    password=password=self._bycrypt.generate_password_hash(password).decode('utf-8')
-                    collection.update_one({'username' : userName}, {'$set' : {'password' : password}})
-                    status=True
-                             
+                    status=True           
             else:
                 status=False
                
@@ -122,6 +116,18 @@ class User(object):
             client.close()
             
         return status
+    
+    def changePassword(self, userName:str, oldPassword:str, newPassword:str):
+        try:
+            client, collection, connectionStatus=User.connectDB()
+            _, user=self.getUserByUserName(userName=userName)
+            if user is None:
+                status="User not found"
+            else:
+                pass
+            
+        finally:
+            client.close()
             
     
 

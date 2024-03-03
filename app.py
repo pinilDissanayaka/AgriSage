@@ -85,6 +85,11 @@ def logout():
 @app.errorhandler(404)
 def pageNotFound(e):
     return render_template('pageNotFound.html'), 404
+
+
+@app.route('/profile', methods=['GET', 'POST'])
+def profile():
+    return render_template('profile.html')
     
         
 
