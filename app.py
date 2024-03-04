@@ -108,6 +108,31 @@ def profile():
     except:
         session['status']=False
         return redirect(url_for('login'))
+    
+@app.route('/profile', methods=['GET', 'POST'])
+def changePassword():
+    try:
+        if session['status'] is True:
+            if request.method == 'POST':
+                uName=session['username']
+                password=request.form['password']
+                newpassword=request.form['newpassword']
+                renewpassword=request.form['renewpassword']
+                
+                print(password)
+                
+                if newpassword == renewpassword:
+                    status=user.changePassword(userName=uName, oldPassword=password, newPassword=newpassword)
+                    return render_template('profile.html')
+                else:
+                    return render_template('profile.html') 
+            else:
+                return render_template('profile.html')
+        else:
+            return redirect(url_for('login'))
+    except:
+        session['status']=False
+        return redirect(url_for('login'))
 
             
 if __name__=="__main__":

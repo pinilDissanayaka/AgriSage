@@ -87,9 +87,9 @@ class User(object):
                         print("Incorrect password")
                         user=None
                         status="Incorrect password"
-            return status, user
         finally:
             client.close()
+        return status, user
             
         
     
@@ -116,10 +116,17 @@ class User(object):
             if user is None:
                 status="User not found"
             else:
-                pass
-            
+                isValid =self._bycrypt.check_password_hash(user['password'], oldPassword)
+                if isValid:
+                    collection.update_one({'userName' : userName}, {'$set' : {'password' : newPassword}})
+                    status='Password change successfully'
+                else:
+                    status='Can not change password'   
         finally:
             client.close()
+        
+        print(status)
+        return status
             
     
 
