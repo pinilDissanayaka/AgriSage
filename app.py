@@ -89,10 +89,26 @@ def pageNotFound(e):
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
-    return render_template('profile.html')
-    
-        
+    try:
+        if session['status'] is True:
+            if request.method == 'POST':
+                uName=session['username']
+                name=request.form['name']
+                userNameEdited=request.form['username']
+                country=request.form['country']
+                address=request.form['address']
+                phoneNumber=request.form['phoneNumber']
+                status=user.updateUser(userName=uName, name=name, userNameEdited=userNameEdited, country=country, address=address, phoneNumber=phoneNumber)
+                session['username']=userNameEdited
+                return render_template('profile.html') 
+            else:
+                return render_template('profile.html')
+        else:
+            return redirect(url_for('login'))
+    except:
+        session['status']=False
+        return redirect(url_for('login'))
 
-        
+            
 if __name__=="__main__":
     app.run(debug=True, port=8000)

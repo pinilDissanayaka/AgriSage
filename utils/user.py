@@ -93,22 +93,13 @@ class User(object):
             
         
     
-    def updateUser(self, userName, name=None, userNameEdited=None, phoneNumber=None):
+    def updateUser(self, userName : str, name : str, userNameEdited : str, country : str, address:str, phoneNumber:str):
         try:
             client, collection, connectionStatus=User.connectDB()
             
             if connectionStatus is True: 
-                if not name is None:
-                    collection.update_one({'username' : userName}, {'$set' : {'name' : name}})   
-                    status=True 
-                        
-                if not userNameEdited is None:
-                    collection.update_one({'username' : userName}, {'$set' : {'username' : userNameEdited}})
-                    status=True
-            
-                if not phoneNumber is None:
-                    collection.update_one({'username' : userName}, {'$set' : {'phoneNumber' : phoneNumber}})
-                    status=True           
+                    collection.update_one({'userName' : userName}, {'$set' : {'name' : name, 'phoneNumber': phoneNumber, 'country' : country, 'address': address, 'phoneNumber': phoneNumber, 'userName' : userNameEdited}})   
+                    status=True  
             else:
                 status=False
                
@@ -116,6 +107,7 @@ class User(object):
             client.close()
             
         return status
+    
     
     def changePassword(self, userName:str, oldPassword:str, newPassword:str):
         try:
