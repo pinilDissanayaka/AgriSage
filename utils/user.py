@@ -118,6 +118,7 @@ class User(object):
             else:
                 isValid =self._bycrypt.check_password_hash(user['password'], oldPassword)
                 if isValid:
+                    newPassword=self._bycrypt.generate_password_hash(newPassword).decode('utf-8')
                     collection.update_one({'userName' : userName}, {'$set' : {'password' : newPassword}})
                     status='Password change successfully'
                 else:

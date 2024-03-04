@@ -109,7 +109,7 @@ def profile():
         session['status']=False
         return redirect(url_for('login'))
     
-@app.route('/profile', methods=['GET', 'POST'])
+@app.route('/changePassword', methods=['GET', 'POST'])
 def changePassword():
     try:
         if session['status'] is True:
@@ -118,9 +118,7 @@ def changePassword():
                 password=request.form['password']
                 newpassword=request.form['newpassword']
                 renewpassword=request.form['renewpassword']
-                
-                print(password)
-                
+                                
                 if newpassword == renewpassword:
                     status=user.changePassword(userName=uName, oldPassword=password, newPassword=newpassword)
                     return render_template('profile.html')
