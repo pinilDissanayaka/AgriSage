@@ -88,7 +88,7 @@ def pageNotFound(e):
 
 
 @app.route('/profile', methods=['GET', 'POST'])
-def profile():
+def profile(status=""):
     try:
         if session['status'] is True:
             if request.method == 'POST':
@@ -100,17 +100,17 @@ def profile():
                 phoneNumber=request.form['phoneNumber']
                 status=user.updateUser(userName=uName, name=name, userNameEdited=userNameEdited, country=country, address=address, phoneNumber=phoneNumber)
                 session['username']=userNameEdited
-                return render_template('profile.html') 
+                return render_template('profile.html', status=status) 
             else:
-                return render_template('profile.html')
+                return render_template('profile.html', status=status)
         else:
             return redirect(url_for('login'))
     except:
         session['status']=False
         return redirect(url_for('login'))
     
-@app.route('/changePassword', methods=['GET', 'POST'])
-def changePassword():
+@app.route('/changePassword', methods=['POST'])
+def changePassword(status=" "):
     try:
         if session['status'] is True:
             if request.method == 'POST':
@@ -121,11 +121,12 @@ def changePassword():
                                 
                 if newpassword == renewpassword:
                     status=user.changePassword(userName=uName, oldPassword=password, newPassword=newpassword)
-                    return render_template('profile.html')
+                    return render_template('profile.html', status=status)
                 else:
-                    return render_template('profile.html') 
+                    status='newpassword != renewpassword'
+                    return render_template('profile.html', status=status) 
             else:
-                return render_template('profile.html')
+                return render_template('profile.html', status=status)
         else:
             return redirect(url_for('login'))
     except:

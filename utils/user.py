@@ -126,7 +126,6 @@ class User(object):
         finally:
             client.close()
         
-        print(status)
         return status
             
     
