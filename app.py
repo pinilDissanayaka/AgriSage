@@ -16,11 +16,10 @@ app.secret_key=os.getenv('APP_SECRECT_KEY')
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     try:
-        if session['loggedIn'] is False:
+        if not session['loggedIn']:
             if request.method=='POST':
                 uName=request.form['username']
                 password=request.form['password']
-                adminUserFlag=False
                 
                 status,loggedUser = user.logInUser(userName=uName, password=password)
                 
@@ -32,8 +31,10 @@ def login():
                     session['username']=loggedUser['userName']
                     
                     if loggedUser['adminUserFlag'] == "True":
+                        session['adminUserFlag'] = True
                         return redirect(url_for('adminDashboard'))
                     else:
+                        session['adminUserFlag'] = False
                         return redirect(url_for('dashboard'))
             else:
                 return render_template('login.html', errorMassage=" ")
@@ -47,7 +48,7 @@ def login():
 @app.route('/register', methods=['GET', 'POST'])
 def register(errorMassage=" "):
     try:
-        if session['loggedIn'] is False:
+        if not session['loggedIn']:
             if request.method=='POST':
                 name=request.form['name']
                 phoneNumber=request.form['phoneNumber']
@@ -73,22 +74,69 @@ def register(errorMassage=" "):
     
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
-    if session['loggedIn'] is False:
+    try:
+        if not session['loggedIn']:
+            return redirect(url_for('login'))
+        else:
+            if session['adminUserFlag']:
+                return redirect(url_for('adminDashboard'))
+            else:
+                return render_template('dashboard.html')
+    except:
+        session['loggedIn']=False
         return redirect(url_for('login'))
-    else:
-        return render_template('dashboard.html')
+    
     
 @app.route('/adminDashboard', methods=['GET', 'POST'])
 def adminDashboard():
-    if session['loggedIn'] is False:
+    try:
+        if not session['loggedIn']:
+            return redirect(url_for('login'))
+        else:
+            if session['adminUserFlag']:
+                userCount=admin.getDocumentCount(collectionName='Users', adminUserFlag='False')
+                adminCount=admin.getDocumentCount(collectionName='Users', adminUserFlag='True')
+                productCount=admin.getDocumentCount(collectionName='Products')
+                return render_template('adminDashboard.html', userCount=userCount, productCount=productCount, adminCount=adminCount)
+            elif not session['adminUserFlag']:
+                return redirect(url_for('dashboard'))
+            else:
+                return redirect(url_for('login'))
+    except:
+        session['loggedIn']=False
         return redirect(url_for('login'))
-    else:
-        return render_template('adminDashboard.html')
+            
+    
+@app.route('/addUser', methods=['GET', 'POST'])
+def addUser(errorMassage=""):
+    try:
+        if not session['loggedIn']:
+            return redirect(url_for('login'))
+        else:
+            if session['adminUserFlag']:
+                if request.method=='POST':
+                    name=request.form['name']
+                    phoneNumber=request.form['phoneNumber']
+                    uName=request.form['username']
+                    password=request.form['password']
+                    adminUserFlag=request.form['gridRadios']
+                    
+                    status=user.addUser(name=name, phoneNumber=phoneNumber,userName=uName, password=password,adminUserFlag=adminUserFlag)
+                    if status:
+                        errorMassage="User added successfully."
+                    else:
+                        errorMassage="Failed adding user."
+                return render_template('addUser.html', errorMassage=errorMassage)
+            else:
+                return redirect(url_for('login'))
+    except:
+       session['loggedIn']=False
+       return redirect(url_for('login'))
 
 
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
-    if session['loggedIn'] is True:
+    if session['loggedIn']:
         session.clear()
         session['loggedIn']=False
         return redirect(url_for('login'))
@@ -101,11 +149,10 @@ def pageNotFound(e):
     return render_template('pageNotFound.html'), 404
 
 
-
 @app.route('/profile', methods=['GET', 'POST'])
 def profile(status=" "):
     try:
-        if session['loggedIn'] is True:
+        if session['loggedIn']:
             if request.method == 'POST':
                 uName=session['username']
                 name=request.form['name']
@@ -128,7 +175,7 @@ def profile(status=" "):
 @app.route('/changePassword', methods=['POST'])
 def changePassword(status=" "):
     try:
-        if session['loggedIn'] is True:
+        if session['loggedIn']:
             if request.method == 'POST':
                 uName=session['username']
                 password=request.form['password']

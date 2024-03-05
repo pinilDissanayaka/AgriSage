@@ -216,7 +216,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <img src="{{ url_for('static', filename='img/admin.jpg') }}" alt="Admin" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{ session.username}}</span>
           </a>
           <!-- End Profile Iamge Icon -->
@@ -258,7 +258,16 @@
           <span>Admin Dashboard</span>
         </a>
       </li>
-      <!-- End Dashboard Nav -->
+      <!-- End Admin Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/addUser">
+          <i class="bi bi-person"></i>
+          <span>Add Admin</span>
+        </a>
+      </li>
+      <!-- End Add Admin Page Nav -->
+
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">

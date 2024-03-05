@@ -27,7 +27,7 @@ class User(object):
     
     
         
-    def addUser(self, name:str, phoneNumber:str, userName:str, password:str):
+    def addUser(self, name:str, phoneNumber:str, userName:str, password:str, adminUserFlag='False'):
         try:
             client, collection, connectionStatus=User.connectDB()
             
@@ -38,8 +38,8 @@ class User(object):
                 if user is None:
                     password=self._bycrypt.generate_password_hash(password).decode('utf-8')
                     
-                    collection.insert_one({"name" : name, "phoneNumber" : phoneNumber, "userName" : userName, "password" : password})
-                    print("User successfully added")
+                    collection.insert_one({"name" : name, "phoneNumber" : phoneNumber, "userName" : userName, "password" : password, 'adminUserFlag' : adminUserFlag})
+                    print("User successfully added.")
                     status=True
                 else:
                     print("Failed adding user.")

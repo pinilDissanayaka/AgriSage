@@ -12,61 +12,36 @@ class Admin(object):
         
         
     @classmethod
-    def connectDB(cls, databaseName = 'AgriSage', collectionName='Users'):
+    def connectDB(cls, databaseName = 'AgriSage'):
         try:
             client=MongoClient(os.getenv('MONGO_CLIENT'))
             db=client[databaseName]
-            collection=db[collectionName]
             connectionStatus=True
         except:
             print("Database connection failed!")
             connectionStatus=False
 
-        return client, collection, connectionStatus
+        return db, connectionStatus
+    
+    def getDocumentCount(self, collectionName :str, adminUserFlag = None):
+        db, connectionStatus=self.connectDB()
+        collection=db[collectionName]
+        
+        if connectionStatus:
+            if adminUserFlag is None:
+                count=collection.count_documents({})
+            else:
+                count=collection.count_documents({"adminUserFlag" : adminUserFlag})
+        else:
+            count=None
+        return count
+    
+    
+        
+        
     
 
-    
-          
-    def getAdminByUserName(self, userName : str):
-        try:
-            client, collection, connectionStatus=self.connectDB()
-            if connectionStatus is True:
-                user=collection.find_one({"userName" : userName})
-                if user is None:
-                    status='Admin not found'
-                else:
-                    status='Admin was found'
-                
-        finally:
-            client.close()
-            
-        return status, user
-    
-    
-    def logInAdmin(self, userName:str, password:str):
-        try:
-            client, collection, connectionStatus=self.connectDB()
-        
-            if connectionStatus is True:
-                _, user=self.getAdminByUserName(userName)
-            
-                if user is None:
-                    status="Admin not found"
-                    print("Adim not found")
-                else:
-                    isValid =self._bycrypt.check_password_hash(user['password'], password)
-                    
-                    if isValid:
-                        print("Admin Loging successfull")
-                        user=user
-                        status="Admin Loging successfull"
-                    else:
-                        print("Incorrect password")
-                        user=None
-                        status="Incorrect password"
-        finally:
-            client.close()
-        return status, user
+
             
         
     
