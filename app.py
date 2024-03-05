@@ -20,9 +20,9 @@ def login():
             if request.method=='POST':
                 uName=request.form['username']
                 password=request.form['password']
+                adminUserFlag=False
                 
                 status,loggedUser = user.logInUser(userName=uName, password=password)
-                #status1,loggedAdmin = admin.logInAdmin(userName=uName, password=password)
                 
                 if loggedUser is None:
                     session['loggedIn']=False
@@ -30,7 +30,11 @@ def login():
                 else:
                     session['loggedIn']=True
                     session['username']=loggedUser['userName']
-                    return redirect(url_for('dashboard'))
+                    
+                    if loggedUser['adminUserFlag'] == "True":
+                        return redirect(url_for('adminDashboard'))
+                    else:
+                        return redirect(url_for('dashboard'))
             else:
                 return render_template('login.html', errorMassage=" ")
         else:
@@ -73,6 +77,13 @@ def dashboard():
         return redirect(url_for('login'))
     else:
         return render_template('dashboard.html')
+    
+@app.route('/adminDashboard', methods=['GET', 'POST'])
+def adminDashboard():
+    if session['loggedIn'] is False:
+        return redirect(url_for('login'))
+    else:
+        return render_template('adminDashboard.html')
 
 
 @app.route('/logout', methods=['GET', 'POST'])
