@@ -132,6 +132,28 @@ def addUser(errorMassage=""):
     except:
        session['loggedIn']=False
        return redirect(url_for('login'))
+   
+@app.route('/addProduct', methods=['GET', 'POST'])
+def addProduct(errorMassage=""):
+    try:
+        if not session['loggedIn']:
+            return redirect(url_for('login'))
+        else:
+            if session['adminUserFlag']:
+                '''if request.method=='POST':
+                    name=request.form['name']
+                    phoneNumber=request.form['phoneNumber']
+                    uName=request.form['username']
+                    password=request.form['password']
+                    adminUserFlag=request.form['gridRadios']'''
+                    
+                return render_template('addProduct.html', errorMassage=errorMassage)
+            else:
+                return redirect(url_for('login'))
+    except:
+       session['loggedIn']=False
+       return redirect(url_for('login'))
+
 
 
 @app.route('/logout', methods=['GET', 'POST'])
