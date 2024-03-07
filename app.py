@@ -3,11 +3,12 @@ import os
 from dotenv import load_dotenv
 from utils.user import User
 from utils.admin import Admin
-
+from utils.weather import Weather
 
 app=Flask(__name__, static_folder="static", template_folder="templates")
 user=User(app=app)
 admin=Admin(app=app)
+weather=Weather()
 
 load_dotenv('.env')
 app.secret_key=os.getenv('APP_SECRECT_KEY')
