@@ -83,7 +83,8 @@ def dashboard():
             if session['adminUserFlag']:
                 return redirect(url_for('adminDashboard'))
             else:
-                return render_template('dashboard.html')
+                currentDate=datetime.now()
+                return render_template('dashboard.html', currentDate=currentDate)
     except:
         session['loggedIn']=False
         return redirect(url_for('login'))
@@ -134,6 +135,7 @@ def addUser(errorMassage=""):
     except:
        session['loggedIn']=False
        return redirect(url_for('login'))
+  
    
 @app.route('/addProduct', methods=['GET', 'POST'])
 def addProduct(errorMassage=""):
