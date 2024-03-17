@@ -5,11 +5,13 @@ from dotenv import load_dotenv
 from utils.user import User
 from utils.admin import Admin
 from utils.weather import Weather
+from utils.firbase import Firebase
 
 app=Flask(__name__, static_folder="static", template_folder="templates")
 user=User(app=app)
 admin=Admin(app=app)
 weather=Weather()
+firebase=Firebase()
 
 load_dotenv('.env')
 app.secret_key=os.getenv('APP_SECRECT_KEY')
@@ -84,7 +86,8 @@ def dashboard():
                 return redirect(url_for('adminDashboard'))
             else:
                 currentDate=datetime.now()
-                return render_template('dashboard.html', currentDate=currentDate)
+                temperature=firebase.getValue(key='Temp')
+                return render_template('dashboard.html', currentDate=currentDate, temperature=temperature)
     except:
         session['loggedIn']=False
         return redirect(url_for('login'))
