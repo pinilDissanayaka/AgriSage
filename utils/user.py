@@ -3,6 +3,7 @@ from flask_bcrypt import Bcrypt
 from dotenv import load_dotenv
 from pymongo import MongoClient
 import re
+import base64
 
 load_dotenv(".env")
 
@@ -108,13 +109,14 @@ class User(object):
             
         return status
     
-    def updateProfilePicture(self, userName : str, encodedProfilePicture):
+    def updateProfilePicture(self, userName : str, profilePicture):
         try:
             client, collection, connectionStatus=User.connectDB()
             
             if connectionStatus is True: 
-                    collection.update_one({'userName' : userName}, {'$set' : {'encodedProfilePicture' : encodedProfilePicture}})   
-                    status=True  
+                encodedProfilePicture=base64.b64encode(profilePicture.read()).decode('utf-8')
+                collection.update_one({'userName' : userName}, {'$set' : {'encodedProfilePicture' : encodedProfilePicture}})   
+                status=True  
             else:
                 status=False
                
@@ -122,6 +124,7 @@ class User(object):
             client.close()
             
         return status
+    
     
     
     def changePassword(self, userName:str, oldPassword:str, newPassword:str):

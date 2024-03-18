@@ -1,8 +1,9 @@
 from flask import Flask, url_for, redirect, request, render_template, session, send_file
+from io import BytesIO
 from datetime import datetime
 import os
-import pybase64, base64
 from dotenv import load_dotenv
+import base64
 from utils.user import User
 from utils.admin import Admin
 from utils.weather import Weather
@@ -34,10 +35,6 @@ def login():
                 else:
                     session['loggedIn']=True
                     session['username']=loggedUser['userName']
-                    '''session['name']=loggedUser['name']
-                    session['phoneNumber']=loggedUser['phoneNumber']
-                    session['address']=loggedUser['address']
-                    session['country']=loggedUser['country']'''
                     
                     
                     if loggedUser['adminUserFlag'] == "True":
@@ -204,7 +201,11 @@ def profile(status=" "):
             phoneNumber=loggedUser['phoneNumber'] 
             address=loggedUser['address']
             country=loggedUser['country']
-            return render_template('profile.html', status=status, _name=name, _country=country, _address=address, _phoneNumber=phoneNumber)
+            encodedProfilePicture=loggedUser['encodedProfilePicture']
+            
+            profilePicture=base64.b64decode(encodedProfilePicture)
+            
+            return render_template('profile.html', status=status, _name=name, _country=country, _address=address, _phoneNumber=phoneNumber, profilePicture=profilePicture)
         else:
             return redirect(url_for('login'))
     except:
@@ -266,7 +267,6 @@ def changeProfilePicture(status=" "):
             if request.method == 'POST':
                 if request.files['file']:
                     profilePicture=request.files['file']
-                    encodedProfilePicture=base64.b64encode(profilePicture.read()).decode('utf-8')
                 else:
                     profilePicture=None
                     
@@ -277,11 +277,10 @@ def changeProfilePicture(status=" "):
                 address=loggedUser['address']
                 country=loggedUser['country']
                 
-                status=user.updateProfilePicture(userName=uName, encodedProfilePicture=encodedProfilePicture)
+                status=user.updateProfilePicture(userName=uName, profilePicture=profilePicture)
                 
                 return render_template('profile.html', status=status, _name=name, _country=country, _address=address, _phoneNumber=phoneNumber) 
             else:
-                
                 _, loggedUser=user.getUserByUserName(userName=session['username'])
                 name=loggedUser['name']
                 phoneNumber=loggedUser['phoneNumber'] 
