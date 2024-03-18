@@ -32,7 +32,8 @@ def login():
                     return render_template('login.html', errorMassage=status)
                 else:
                     session['loggedIn']=True
-                    session['username']=loggedUser['userName']
+                    #session['username']=loggedUser['userName']
+                    session['userProfile']=[loggedUser['name'], loggedUser['phoneNumber'], loggedUser['userName'], loggedUser['address'], loggedUser['country']]
                     
                     if loggedUser['adminUserFlag'] == "True":
                         session['adminUserFlag'] = True

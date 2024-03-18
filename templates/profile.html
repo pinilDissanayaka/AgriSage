@@ -87,27 +87,27 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                  <div class="col-lg-9 col-md-8">{{ session.name }}</div>
+                  <div class="col-lg-9 col-md-8">{{ session.userProfile[0] }}</div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">User Name</div>
-                  <div class="col-lg-9 col-md-8">{{ session.username }}</div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Country</div>
-                  <div class="col-lg-9 col-md-8">{{ session.country }}</div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Address</div>
-                  <div class="col-lg-9 col-md-8">{{ session.address }}</div>
+                  <div class="col-lg-9 col-md-8">{{ session.userProfile[2] }}</div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Phone</div>
-                  <div class="col-lg-9 col-md-8">{{ session.phoneNumber }}</div>
+                  <div class="col-lg-9 col-md-8">{{ session.userProfile[1] }}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Address</div>
+                  <div class="col-lg-9 col-md-8">{{ session.userProfile[3] }}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Country</div>
+                  <div class="col-lg-9 col-md-8">{{ session.userProfile[4] }}</div>
                 </div>
               </div>
 
@@ -129,14 +129,14 @@
                   <div class="row mb-3">
                     <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="name" type="text" class="form-control" id="fullName" value= {{session.name}}>
+                      <input name="name" type="text" class="form-control" id="fullName" value= {{ session.userProfile[0] }}>
                     </div>
                   </div>
                   
                   <div class="row mb-3">
                     <label for="fullName" class="col-md-4 col-lg-3 col-form-label">User Name</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="username" type="text" class="form-control" id="yourUsername" value= {{session.username}}>
+                      <input name="username" type="text" class="form-control" id="yourUsername" value= {{ session.userProfile[2] }}>
                     </div>
                   </div>
                 
@@ -144,28 +144,29 @@
                   <div class="row mb-3">
                     <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="country" type="text" class="form-control" id="Country" value={{session.country}}>
+                      <input name="country" type="text" class="form-control" id="Country" value={{ session.userProfile[4] }}>
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="address" type="text" class="form-control" id="Address" value={{session.address}}>
+                      <input name="address" type="text" class="form-control" id="Address" value={{ session.userProfile[3] }}>
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone Number</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="phoneNumber" type="text" class="form-control" id="yourMobile" value={{session.phoneNumber}}>
+                      <input name="phoneNumber" type="text" class="form-control" id="yourMobile" value={{ session.userProfile[1] }}>
                     </div>
                   </div>
 
                   <div class="text-center">
                     <button type="submit" class="btn btn-primary">Save Changes</button>
                   </div>
-                </form><!-- End Profile Edit Form -->
+                </form>
+                <!-- End Profile Edit Form -->
 
               </div>
 
