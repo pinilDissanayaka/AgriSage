@@ -222,6 +222,7 @@ def changeProfile(status=" "):
                 status=user.updateUser(userName=uName, name=name, userNameEdited=userNameEdited, country=country, address=address, phoneNumber=phoneNumber)
                 
                 session['username']=userNameEdited
+                
                 _, loggedUser=user.getUserByUserName(userName=session['username'])
                 name=loggedUser['name']
                 phoneNumber=loggedUser['phoneNumber'] 
@@ -230,6 +231,7 @@ def changeProfile(status=" "):
                 
                 return render_template('profile.html', status=status, _name=name, _country=country, _address=address, _phoneNumber=phoneNumber) 
             else:
+                
                 _, loggedUser=user.getUserByUserName(userName=session['username'])
                 name=loggedUser['name']
                 phoneNumber=loggedUser['phoneNumber'] 
@@ -238,6 +240,7 @@ def changeProfile(status=" "):
                 
                 return render_template('profile.html', status=status, _name=name, _country=country, _address=address, _phoneNumber=phoneNumber) 
         else:
+            
             _, loggedUser=user.getUserByUserName(userName=session['username'])
             name=loggedUser['name']
             phoneNumber=loggedUser['phoneNumber'] 
