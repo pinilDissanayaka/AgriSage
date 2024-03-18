@@ -5,3 +5,4 @@ os
 pymongo
 flask_bcrypt
 datetime
+base64

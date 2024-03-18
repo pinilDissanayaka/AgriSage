@@ -93,12 +93,27 @@ class User(object):
             
         
     
-    def updateUser(self, userName : str, name : str, userNameEdited : str, country : str, address:str, phoneNumber:str):
+    def updateUser(self, userName : str, name : str, userNameEdited : str, country : str, address:str, phoneNumber:str, encodedProfilePicture):
         try:
             client, collection, connectionStatus=User.connectDB()
             
             if connectionStatus is True: 
-                    collection.update_one({'userName' : userName}, {'$set' : {'name' : name, 'phoneNumber': phoneNumber, 'country' : country, 'address': address, 'phoneNumber': phoneNumber, 'userName' : userNameEdited}})   
+                    collection.update_one({'userName' : userName}, {'$set' : {'name' : name, 'phoneNumber': phoneNumber, 'country' : country, 'address': address, 'phoneNumber': phoneNumber, 'userName' : userNameEdited, 'encodedProfilePicture' : encodedProfilePicture}})   
+                    status=True  
+            else:
+                status=False
+               
+        finally:
+            client.close()
+            
+        return status
+    
+    def updateProfilePicture(self, userName : str, encodedProfilePicture):
+        try:
+            client, collection, connectionStatus=User.connectDB()
+            
+            if connectionStatus is True: 
+                    collection.update_one({'userName' : userName}, {'$set' : {'encodedProfilePicture' : encodedProfilePicture}})   
                     status=True  
             else:
                 status=False
