@@ -32,8 +32,12 @@ def login():
                     return render_template('login.html', errorMassage=status)
                 else:
                     session['loggedIn']=True
-                    #session['username']=loggedUser['userName']
-                    session['userProfile']=[loggedUser['name'], loggedUser['phoneNumber'], loggedUser['userName'], loggedUser['address'], loggedUser['country']]
+                    session['username']=loggedUser['userName']
+                    '''session['name']=loggedUser['name']
+                    session['phoneNumber']=loggedUser['phoneNumber']
+                    session['address']=loggedUser['address']
+                    session['country']=loggedUser['country']'''
+                    
                     
                     if loggedUser['adminUserFlag'] == "True":
                         session['adminUserFlag'] = True
@@ -61,10 +65,14 @@ def register(errorMassage=" "):
                 password=request.form['password']
                 
                 status=user.addUser(name=name, phoneNumber=phoneNumber, userName=uName, password=password)
-                if status:
-                    session['loggedIn']=status
+                
+                if status: 
+                    session['loggedIn']=True
                     session['username']=uName
-                    return redirect(url_for('dashboard'))
+                    session['adminUserFlag']=False
+                    
+                    
+                    return redirect(url_for('dashboard')) 
                 else:
                     errorMassage="Registration Failed"
                     return render_template('register.html', errorMassage=errorMassage)
@@ -81,6 +89,7 @@ def register(errorMassage=" "):
 def dashboard():
     try:
         if not session['loggedIn']:
+
             return redirect(url_for('login'))
         else:
             if session['adminUserFlag']:
@@ -181,7 +190,7 @@ def pageNotFound(e):
 
 
 @app.route('/profile', methods=['GET', 'POST'])
-def profile(status=" "):
+def profile(status=" ", details=[]):
     try:
         if session['loggedIn']:
             if request.method == 'POST':
@@ -193,9 +202,16 @@ def profile(status=" "):
                 phoneNumber=request.form['phoneNumber']
                 status=user.updateUser(userName=uName, name=name, userNameEdited=userNameEdited, country=country, address=address, phoneNumber=phoneNumber)
                 session['username']=userNameEdited
-                return render_template('profile.html', status=status) 
+                
+                #_, loggedUser=user.getUserByUserName(userName=session['username'])
+                #details=[loggedUser['name'], loggedUser['phoneNumber'], loggedUser['userName'], loggedUser['address'], loggedUser['country']]
+                
+                return render_template('profile.html', status=status, details=details) 
             else:
-                return render_template('profile.html', status=status)
+                #_, loggedUser=user.getUserByUserName(userName=session['username'])
+                #details=[loggedUser['name'], loggedUser['phoneNumber'], loggedUser['userName'], loggedUser['address'], loggedUser['country']]
+                
+                return render_template('profile.html', status=status, details=details)
         else:
             return redirect(url_for('login'))
     except:
