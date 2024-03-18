@@ -85,9 +85,10 @@ def dashboard():
             if session['adminUserFlag']:
                 return redirect(url_for('adminDashboard'))
             else:
-                currentDate=datetime.now()
+                currentDate=datetime.now().date()
+                currentTime=datetime.now().time().strftime('%H:%M:%S')
                 temperature=firebase.getValue(key='Temp')
-                return render_template('dashboard.html', currentDate=currentDate, temperature=temperature)
+                return render_template('dashboard.html', currentDate=currentDate, currentTime=currentTime, temperature=temperature)
     except:
         session['loggedIn']=False
         return redirect(url_for('login'))
