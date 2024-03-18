@@ -190,7 +190,25 @@ def pageNotFound(e):
 
 
 @app.route('/profile', methods=['GET', 'POST'])
-def profile(status=" ", details=[]):
+def profile(status=" "):
+    try:
+        if session['loggedIn']:
+            _, loggedUser=user.getUserByUserName(userName=session['username'])
+            name=loggedUser['name']
+            phoneNumber=loggedUser['phoneNumber'] 
+            address=loggedUser['address']
+            country=loggedUser['country']
+            return render_template('profile.html', status=status, _name=name, _country=country, _address=address, _phoneNumber=phoneNumber)
+        else:
+            return redirect(url_for('login'))
+    except:
+        session['loggedIn']=False
+        return redirect(url_for('login'))
+    
+    
+    
+@app.route('/changeProfile', methods=['GET', 'POST'])
+def changeProfile(status=" "):
     try:
         if session['loggedIn']:
             if request.method == 'POST':
@@ -200,20 +218,33 @@ def profile(status=" ", details=[]):
                 country=request.form['country']
                 address=request.form['address']
                 phoneNumber=request.form['phoneNumber']
+                
                 status=user.updateUser(userName=uName, name=name, userNameEdited=userNameEdited, country=country, address=address, phoneNumber=phoneNumber)
+                
                 session['username']=userNameEdited
+                _, loggedUser=user.getUserByUserName(userName=session['username'])
+                name=loggedUser['name']
+                phoneNumber=loggedUser['phoneNumber'] 
+                address=loggedUser['address']
+                country=loggedUser['country']
                 
-                #_, loggedUser=user.getUserByUserName(userName=session['username'])
-                #details=[loggedUser['name'], loggedUser['phoneNumber'], loggedUser['userName'], loggedUser['address'], loggedUser['country']]
-                
-                return render_template('profile.html', status=status, details=details) 
+                return render_template('profile.html', status=status, _name=name, _country=country, _address=address, _phoneNumber=phoneNumber) 
             else:
-                #_, loggedUser=user.getUserByUserName(userName=session['username'])
-                #details=[loggedUser['name'], loggedUser['phoneNumber'], loggedUser['userName'], loggedUser['address'], loggedUser['country']]
+                _, loggedUser=user.getUserByUserName(userName=session['username'])
+                name=loggedUser['name']
+                phoneNumber=loggedUser['phoneNumber'] 
+                address=loggedUser['address']
+                country=loggedUser['country']
                 
-                return render_template('profile.html', status=status, details=details)
+                return render_template('profile.html', status=status, _name=name, _country=country, _address=address, _phoneNumber=phoneNumber) 
         else:
-            return redirect(url_for('login'))
+            _, loggedUser=user.getUserByUserName(userName=session['username'])
+            name=loggedUser['name']
+            phoneNumber=loggedUser['phoneNumber'] 
+            address=loggedUser['address']
+            country=loggedUser['country']
+            
+            return render_template('profile.html', status=status, _name=name, _country=country, _address=address, _phoneNumber=phoneNumber) 
     except:
         session['loggedIn']=False
         return redirect(url_for('login'))

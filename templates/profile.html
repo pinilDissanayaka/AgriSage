@@ -3,7 +3,7 @@
 {% block head %}
 <title>AGRISAGE / Profile</title>
 
-
+<!--
 <script>
  
   const passwordError = document.getElementById('password-error');
@@ -22,7 +22,7 @@
       passwordError.style.display = 'none'; 
     }
   });
-</script>
+</script> -->
 
 {%endblock%}
 
@@ -48,7 +48,7 @@
           <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
             <h2>{{ session.username }}</h2>
-            <center><p class="small mb-0" style="color:red;">{{status}}</p></center>
+            <center><p class="small mb-0" style="color:red;">{{ status }}</p></center>
           </div>
         </div>
       </div>
@@ -87,7 +87,7 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                  <div class="col-lg-9 col-md-8">{{ details }}</div>
+                  <div class="col-lg-9 col-md-8">{{ _name }}</div>
                 </div>
 
                 <div class="row">
@@ -97,24 +97,24 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Phone</div>
-                  <div class="col-lg-9 col-md-8">{{ details }}</div>
+                  <div class="col-lg-9 col-md-8">{{ _phoneNumber }}</div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Address</div>
-                  <div class="col-lg-9 col-md-8">{{ details }}</div>
+                  <div class="col-lg-9 col-md-8">{{ _address }}</div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Country</div>
-                  <div class="col-lg-9 col-md-8">{{ details }}</div>
+                  <div class="col-lg-9 col-md-8">{{ _country }}</div>
                 </div>
               </div>
 
               <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                 <!-- Profile Edit Form -->
-                <form action="{{ url_for("profile")}}" method="POST">
+                <form action="{{ url_for("changeProfile")}}" method="POST">
                   <div class="row mb-3">
                     <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                     <div class="col-md-8 col-lg-9">
@@ -129,14 +129,14 @@
                   <div class="row mb-3">
                     <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="name" type="text" class="form-control" id="fullName" value= {{ session.userProfile[0] }}>
+                      <input name="name" type="text" class="form-control" id="fullName" value= {{ _name }}>
                     </div>
                   </div>
                   
                   <div class="row mb-3">
                     <label for="fullName" class="col-md-4 col-lg-3 col-form-label">User Name</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="username" type="text" class="form-control" id="yourUsername" value= {{ session.userProfile[2] }}>
+                      <input name="username" type="text" class="form-control" id="yourUsername" value= {{ session.username }}>
                     </div>
                   </div>
                 
@@ -144,21 +144,21 @@
                   <div class="row mb-3">
                     <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="country" type="text" class="form-control" id="Country" value={{ session.userProfile[4] }}>
+                      <input name="country" type="text" class="form-control" id="Country" value={{ _country }}>
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="address" type="text" class="form-control" id="Address" value={{ session.userProfile[3] }}>
+                      <input name="address" type="text" class="form-control" id="Address" value={{ _address }}>
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone Number</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="phoneNumber" type="text" class="form-control" id="yourMobile" value={{ session.userProfile[1] }}>
+                      <input name="phoneNumber" type="text" class="form-control" id="yourMobile" value={{ _phoneNumber }}>
                     </div>
                   </div>
 
