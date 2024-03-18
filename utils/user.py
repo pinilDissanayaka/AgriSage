@@ -94,12 +94,12 @@ class User(object):
             
         
     
-    def updateUser(self, userName : str, name : str, userNameEdited : str, country : str, address:str, phoneNumber:str, encodedProfilePicture):
+    def updateUser(self, userName : str, name : str, userNameEdited : str, country : str, address:str, phoneNumber:str):
         try:
             client, collection, connectionStatus=User.connectDB()
             
             if connectionStatus is True: 
-                    collection.update_one({'userName' : userName}, {'$set' : {'name' : name, 'phoneNumber': phoneNumber, 'country' : country, 'address': address, 'phoneNumber': phoneNumber, 'userName' : userNameEdited, 'encodedProfilePicture' : encodedProfilePicture}})   
+                    collection.update_one({'userName' : userName}, {'$set' : {'name' : name, 'phoneNumber': phoneNumber, 'country' : country, 'address': address, 'phoneNumber': phoneNumber, 'userName' : userNameEdited}})   
                     status=True  
             else:
                 status=False
@@ -108,24 +108,8 @@ class User(object):
             client.close()
             
         return status
-    
-    def updateProfilePicture(self, userName : str, profilePicture):
-        try:
-            client, collection, connectionStatus=User.connectDB()
-            
-            if connectionStatus is True: 
-                encodedProfilePicture=base64.b64encode(profilePicture.read()).decode('utf-8')
-                collection.update_one({'userName' : userName}, {'$set' : {'encodedProfilePicture' : encodedProfilePicture}})   
-                status=True  
-            else:
-                status=False
-               
-        finally:
-            client.close()
-            
-        return status
-    
-    
+
+        
     
     def changePassword(self, userName:str, oldPassword:str, newPassword:str):
         try:

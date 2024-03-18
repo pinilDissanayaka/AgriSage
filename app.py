@@ -1,9 +1,8 @@
-from flask import Flask, url_for, redirect, request, render_template, session, send_file
+from flask import Flask, url_for, redirect, request, render_template, session
 from io import BytesIO
 from datetime import datetime
 import os
 from dotenv import load_dotenv
-import base64
 from utils.user import User
 from utils.admin import Admin
 from utils.weather import Weather
@@ -201,11 +200,9 @@ def profile(status=" "):
             phoneNumber=loggedUser['phoneNumber'] 
             address=loggedUser['address']
             country=loggedUser['country']
-            encodedProfilePicture=loggedUser['encodedProfilePicture']
             
-            profilePicture=base64.b64decode(encodedProfilePicture)
             
-            return render_template('profile.html', status=status, _name=name, _country=country, _address=address, _phoneNumber=phoneNumber, profilePicture=profilePicture)
+            return render_template('profile.html', status=status, _name=name, _country=country, _address=address, _phoneNumber=phoneNumber)
         else:
             return redirect(url_for('login'))
     except:
@@ -260,48 +257,7 @@ def changeProfile(status=" "):
         return redirect(url_for('login'))
     
     
-@app.route('/changeProfilePicture', methods=['GET', 'POST'])
-def changeProfilePicture(status=" "):
-    try:
-        if session['loggedIn']:
-            if request.method == 'POST':
-                if request.files['file']:
-                    profilePicture=request.files['file']
-                else:
-                    profilePicture=None
-                    
-                uName=session['username']
-                _, loggedUser=user.getUserByUserName(userName=uName)
-                name=loggedUser['name']
-                phoneNumber=loggedUser['phoneNumber'] 
-                address=loggedUser['address']
-                country=loggedUser['country']
-                
-                status=user.updateProfilePicture(userName=uName, profilePicture=profilePicture)
-                
-                return render_template('profile.html', status=status, _name=name, _country=country, _address=address, _phoneNumber=phoneNumber) 
-            else:
-                _, loggedUser=user.getUserByUserName(userName=session['username'])
-                name=loggedUser['name']
-                phoneNumber=loggedUser['phoneNumber'] 
-                address=loggedUser['address']
-                country=loggedUser['country']
-                
-                return render_template('profile.html', status=status, _name=name, _country=country, _address=address, _phoneNumber=phoneNumber) 
-        else:
-            
-            _, loggedUser=user.getUserByUserName(userName=session['username'])
-            name=loggedUser['name']
-            phoneNumber=loggedUser['phoneNumber'] 
-            address=loggedUser['address']
-            country=loggedUser['country']
-            
-            return render_template('profile.html', status=status, _name=name, _country=country, _address=address, _phoneNumber=phoneNumber) 
-    except:
-        session['loggedIn']=False
-        return redirect(url_for('login'))
  
-    
 @app.route('/changePassword', methods=['POST'])
 def changePassword(status=" "):
     try:
