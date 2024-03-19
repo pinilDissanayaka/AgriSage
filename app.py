@@ -283,6 +283,20 @@ def changePassword(status=" "):
     except:
         session['loggedIn']=False
         return redirect(url_for('login'))
+    
+    
+@app.route('/weatherForecast', methods =['GET', 'POST'])
+def weatherForecast():
+    #try:
+        if session['loggedIn']:
+            _, loggedUser=user.getUserByUserName(userName=session['username'])
+            weatherDataJson=weather.getWeatherData(location=loggedUser['address'])
+            if weatherDataJson:
+                return render_template('weatherForecast.html', weatherDataJson=weatherDataJson)
+        
+   # except:
+       # session['loggedIn']=False
+        #return redirect(url_for('login'))
 
             
 if __name__=="__main__":
