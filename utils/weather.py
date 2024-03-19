@@ -20,7 +20,6 @@ class Weather(object):
 
         return weatherDataJson
     
+
     
-if __name__=='__main__':
-    w=Weather()
-    print(w.getWeatherData('colombo'))
+
