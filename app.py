@@ -295,8 +295,10 @@ def weatherForecast():
         if session['loggedIn']:
             _, loggedUser=user.getUserByUserName(userName=session['username'])
             weatherDataJson=weather.getWeatherData(location=loggedUser['address'])
+            currentDate=datetime.now().date()
+            currentTime=datetime.now().time().strftime('%H:%M:%S')
             if weatherDataJson:
-                return render_template('weatherForecast.html', weatherDataJson=weatherDataJson)
+                return render_template('weatherForecast.html', weatherDataJson=weatherDataJson, currentDate=currentDate, currentTime=currentTime)
             else:
                 return redirect(url_for('badRequest'))
         else:

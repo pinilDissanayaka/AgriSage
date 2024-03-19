@@ -24,39 +24,57 @@
                 <div class="row">
                     <!-- Date Card -->
                     <div class="col-xxl-4 col-md-6">
-                    <div class="card info-card date-card">
-                        <div class="card-body">
-                        <h5 class="card-title">Date </h5>
-                        <div class="d-flex align-items-center">
-                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                            <i class="bi bi-calendar-date"></i>
-                            </div>
-                            <div class="ps-3">
-                            <h6>{{ currentDate }}</h6>
+                        <div class="card info-card date-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Date </h5>
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-calendar-date"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{ currentDate }}</h6>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        </div>
-                    </div>
                     </div>
                     <!-- End Date Card -->
 
                     <!-- Time Card -->
                     <div class="col-xxl-4 col-md-6">
-                    <div class="card info-card time-card">
-                        <div class="card-body">
-                        <h5 class="card-title">Time</h5>
-                        <div class="d-flex align-items-center">
-                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                            <i class="bi bi-clock"></i>
-                            </div>
-                            <div class="ps-3">
-                            <h6>{{ currentTime }}</h6>
+                        <div class="card info-card time-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Time</h5>
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-clock"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{ currentTime }}</h6>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        </div>
-                    </div>
                     </div>
                     <!-- End Time Card -->
+
+                    <!-- Location Card -->
+                    <div class="col-xxl-4 col-md-6">
+                        <div class="card info-card time-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Time</h5>
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-clock"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{ currentTime }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Location Card -->
                 </div>
 
                 <div class="row">
@@ -68,8 +86,8 @@
                                 <div class="accordion" id="accordionExample">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            Weather
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            Weather Description : {{ weatherDataJson['weather'][0]['description'] }}
                                         </button>
                                         </h2>
                                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -94,7 +112,7 @@
                                             <div class="accordion-body">
                                                 <h6><strong>Wind Speed : </strong> {{ weatherDataJson['wind']['speed'] }} meter/sec </h6>
                                                 <h6><strong>Wind Gust : </strong> {{ weatherDataJson['wind']['gust'] }} meter/sec </h6>
-                                                <h6><strong>Temperature : </strong> {{ weatherDataJson['main']['temp'] }} &#x2103; </h6>
+                                                <h6><strong>Visibility : </strong> {{ weatherDataJson['visibility'] }} meter </h6>
                                             </div>
                                         </div>
                                     </div>
