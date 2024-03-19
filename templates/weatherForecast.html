@@ -74,19 +74,27 @@
                                         </h2>
                                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
-                                                <strong>This is the first item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                <h6><strong>Temperature : </strong> {{ weatherDataJson['main']['temp'] }} &#x2103; </h6>
+                                                <h6><strong>Maximum Temperature : </strong> {{ weatherDataJson['main']['temp_max'] }} &#x2103; </h6>
+                                                <h6><strong>Minimum Temperature : </strong> {{ weatherDataJson['main']['temp_min'] }} &#x2103; </h6>
+                                                <h6><strong>Humidity : </strong> {{ weatherDataJson['main']['humidity'] }} % </h6>
+                                                <h6><strong>Pressure : </strong> {{ weatherDataJson['main']['pressure'] }} hPa </h6>
+                                                <h6><strong>Atmospheric pressure on the ground level : </strong> {{ weatherDataJson['main']['grnd_level'] }} hPa </h6>
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingTwo">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            Accordion Item #2
+                                            Wind
                                             </button>
                                         </h2>
                                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
-                                                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                <h6><strong>Wind Speed : </strong> {{ weatherDataJson['wind']['speed'] }} meter/sec </h6>
+                                                <h6><strong>Wind Gust : </strong> {{ weatherDataJson['wind']['gust'] }} meter/sec </h6>
+                                                <h6><strong>Temperature : </strong> {{ weatherDataJson['main']['temp'] }} &#x2103; </h6>
                                             </div>
                                         </div>
                                     </div>
@@ -106,6 +114,8 @@
                         <!-- End Default Accordion Example -->
                     </div>
                 </div>
+                
+
             </div>
             <!-- End Left side columns -->
 
