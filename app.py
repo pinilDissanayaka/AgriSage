@@ -192,6 +192,10 @@ def logout():
 def pageNotFound(e):
     return render_template('pageNotFound.html'), 404
 
+@app.route('/badRequest.html', methods=['GET', 'POST'])
+def badRequest():
+    return render_template('badRequest.html'), 400
+
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profile(status=" "):
@@ -294,7 +298,9 @@ def weatherForecast():
             if weatherDataJson:
                 return render_template('weatherForecast.html', weatherDataJson=weatherDataJson)
             else:
-                return "Error"
+                return redirect(url_for('badRequest'))
+        else:
+            return redirect(url_for('login'))
     except:
         session['loggedIn']=False
         return redirect(url_for('login'))
