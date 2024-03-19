@@ -86,16 +86,18 @@ def register(errorMassage=" "):
 def dashboard():
     try:
         if not session['loggedIn']:
-
             return redirect(url_for('login'))
         else:
             if session['adminUserFlag']:
                 return redirect(url_for('adminDashboard'))
             else:
+                _, loggedUser=user.getUserByUserName(userName=session['username'])
+                weatherData=weather.getWeatherData(location=loggedUser['address'])
                 currentDate=datetime.now().date()
                 currentTime=datetime.now().time().strftime('%H:%M:%S')
                 temperature=firebase.getValue(key='Temp')
-                return render_template('dashboard.html', currentDate=currentDate, currentTime=currentTime, temperature=temperature)
+                
+                return render_template('dashboard.html', currentDate=currentDate, currentTime=currentTime, temperature=temperature, weatherData=weatherData)
     except:
         session['loggedIn']=False
         return redirect(url_for('login'))
