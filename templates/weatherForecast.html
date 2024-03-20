@@ -60,7 +60,7 @@
 
                     <!-- Location Card -->
                     <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card time-card">
+                        <div class="card info-card location-card">
                             <div class="card-body">
                                 <h5 class="card-title">Location</h5>
                                 <div class="d-flex align-items-center">
@@ -68,7 +68,9 @@
                                         <i class="bi bi-geo-alt-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>{{ currentTime }}</h6>
+                                        <h6> {{ location }}</h6>
+                                        <h6> {{ weatherDataJson['coord']['lon'] }}</h6>
+                                        <h6> {{ weatherDataJson['coord']['lat'] }}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -116,13 +118,19 @@
                                     </div>
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingThree">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            Accordion Item #3
-                                            </button>
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Air Pollution</button>
                                         </h2>
                                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                        <h6><strong>Сoncentration of CO : </strong> {{ airpollutionDataJson['list'][0]['main']['aqi'] }} </h6>
+                                        <h6><strong>Сoncentration of CO : </strong> {{ airpollutionDataJson['list'][0]['components']['co'] }} μg/m3 </h6>
+                                        <h6><strong>Сoncentration of NO : </strong> {{ airpollutionDataJson['list'][0]['components']['no'] }} μg/m3 </h6>
+                                        <h6><strong>Сoncentration of NO2 : </strong> {{ airpollutionDataJson['list'][0]['components']['no2'] }} μg/m3 </h6>
+                                        <h6><strong>Сoncentration of O3 : </strong> {{ airpollutionDataJson['list'][0]['components']['o3'] }} μg/m3 </h6>
+                                        <h6><strong>Сoncentration of SO2 : </strong> {{ airpollutionDataJson['list'][0]['components']['so2'] }} μg/m3 </h6>
+                                        <h6><strong> Сoncentration of PM2.5  : </strong> {{ airpollutionDataJson['list'][0]['components']['pm2_5'] }} μg/m3 </h6>
+                                        <h6><strong>Сoncentration of PM10 : </strong> {{ airpollutionDataJson['list'][0]['components']['pm10'] }} μg/m3 </h6>
+                                        <h6><strong>Сoncentration of NH3 : </strong> {{ airpollutionDataJson['list'][0]['components']['nh3'] }} μg/m3 </h6>
                                     </div>
                                 </div>
                             </div>

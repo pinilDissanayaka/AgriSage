@@ -92,11 +92,11 @@ def dashboard():
                 return redirect(url_for('adminDashboard'))
             else:
                 _, loggedUser=user.getUserByUserName(userName=session['username'])
-                weatherData=weather.getWeatherData(location=loggedUser['address'])
+                location=loggedUser['address']
+                weatherData=weather.getWeatherData(location=location)
                 currentDate=datetime.now().date()
                 currentTime=datetime.now().time().strftime('%H:%M:%S')
                 temperature=firebase.getValue(key='Temp')
-                
                 return render_template('dashboard.html', currentDate=currentDate, currentTime=currentTime, temperature=temperature, weatherData=weatherData)
     except:
         session['loggedIn']=False
@@ -291,21 +291,23 @@ def changePassword(status=" "):
     
 @app.route('/weatherForecast', methods =['GET', 'POST'])
 def weatherForecast():
-    try:
+    #try:
         if session['loggedIn']:
             _, loggedUser=user.getUserByUserName(userName=session['username'])
-            weatherDataJson=weather.getWeatherData(location=loggedUser['address'])
+            location=loggedUser['address']
+            weatherDataJson=weather.getWeatherData(location=location)
+            airpollutionDataJson=weather.getAirPollutionData()
             currentDate=datetime.now().date()
             currentTime=datetime.now().time().strftime('%H:%M:%S')
             if weatherDataJson:
-                return render_template('weatherForecast.html', weatherDataJson=weatherDataJson, currentDate=currentDate, currentTime=currentTime)
+                return render_template('weatherForecast.html', weatherDataJson=weatherDataJson, currentDate=currentDate, currentTime=currentTime, location=location, airpollutionDataJson=airpollutionDataJson)
             else:
                 return redirect(url_for('badRequest'))
         else:
             return redirect(url_for('login'))
-    except:
-        session['loggedIn']=False
-        return redirect(url_for('login'))
+   # except:
+     #   session['loggedIn']=False
+     #   return redirect(url_for('login'))
 
             
 if __name__=="__main__":
