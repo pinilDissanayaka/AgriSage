@@ -100,7 +100,13 @@
                           <button class="btn btn-success w-100" type="submit">Create Account</button>
                         </div>
                         <div class="col-12">
-                          <center><p class="small mb-0" style="color:red;">{{errorMassage}}</p></center>
+                          {% if errorMassage != " " %}
+                            <div class="alert alert-danger alert-warning fade show" role="alert">
+                              <i class="bi bi-exclamation-octagon me-1"></i>
+                                {{ errorMassage }}
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                          {% endif %}
                           <p class="small mb-0">Already have an account? <a href="/login">Log in</a></p>
                         </div>
                       </form>
