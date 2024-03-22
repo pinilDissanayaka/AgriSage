@@ -126,7 +126,7 @@ def dashboard():
                 weatherData=weather.getWeatherData(location=location)
                 currentDate=datetime.now().date()
                 currentTime=datetime.now().time().strftime('%H:%M:%S')
-                temperature=firebase.getValue(key='Temp')
+                temperature=firebase.getValue(key=loggedUser['code'])['Temp']
                 return render_template('dashboard.html', currentDate=currentDate, currentTime=currentTime, temperature=temperature, weatherData=weatherData)
     except:
         session['loggedIn']=False
