@@ -102,12 +102,29 @@ class User(object):
                     collection.update_one({'userName' : userName}, {'$set' : {'name' : name, 'phoneNumber': phoneNumber, 'country' : country, 'location': location, 'phoneNumber': phoneNumber, 'userName' : userNameEdited}})   
                     status="Profile update successfully"  
             else:
-                status="False"
+                status="Couldn't setup profile"
                
         finally:
             client.close()
             
         return status
+    
+    
+    def addIoT(self, userName:str, location:str, country:str, code:str):
+        try:
+            client, collection, connectionStatus=User.connectDB()
+            
+            if connectionStatus is True: 
+                    collection.update_one({'userName' : userName}, {'$set' : { 'location': location, 'country' : country, 'code': code}})   
+                    status=True
+            else:
+                status=False
+               
+        finally:
+            client.close()
+            
+        return status
+
 
         
     

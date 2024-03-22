@@ -85,26 +85,31 @@ def register(errorMassage=" "):
     
 @app.route('/setup', methods=['GET', 'POST'])
 def setup(errorMassage=" "):
-    #try:
-        if not session['loggedIn']:
+    try:
+        if session['loggedIn']:
             if session['registered']:
                 if request.method=='POST':
                     location=request.form['location']
                     country=request.form['country']
                     code=request.form['code']
-                    
-                    #return render_template('setupIoT.html')
-                #else: 
+                    uName=session['username']
+                    status=user.addIoT(userName=uName, location=location, country=country, code=code)
+                    if status:
+                        session['registered']=False
+                        return redirect(url_for('dashboard'))
+                    else:
+                        errorMassage='IoT device setup failed'
+                        return render_template('setupIoT.html', errorMassage=errorMassage)
+                else:
                     return render_template('setupIoT.html', errorMassage=errorMassage)
-            #else:
-        return redirect(url_for('register'))
-        #else:
-            #return redirect(url_for('login'))
-        
-    #except:
-       # session['loggedIn']=False
-       # session['registered']=False
-       # return redirect(url_for('login'))
+            else:
+                return redirect(url_for('register'))
+        else:
+            return redirect(url_for('login')) 
+    except:
+        session['loggedIn']=False
+        session['registered']=False
+        return redirect(url_for('login'))
                 
     
 @app.route('/dashboard', methods=['GET', 'POST'])
