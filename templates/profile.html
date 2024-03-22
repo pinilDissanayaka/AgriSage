@@ -3,27 +3,6 @@
 {% block head %}
 <title>AGRISAGE / Profile</title>
 
-
-<script>
- 
-  const passwordError = document.getElementById('password-error');
-  passwordError.style.display = 'none';
-
-  
-  const submitButton = document.querySelector('button[type="submit"]');
-  submitButton.addEventListener('click', function(event) {
-    const newPassword = document.getElementById('newPassword').value;
-    const renewPassword = document.getElementById('renewPassword').value;
-
-    if (newPassword !== renewPassword) {
-      event.preventDefault(); 
-      passwordError.style.display = 'block';
-    } else {
-      passwordError.style.display = 'none'; 
-    }
-  });
-</script> 
-
 {%endblock%}
 
 
@@ -87,7 +66,7 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                  <div class="col-lg-9 col-md-8">{{ _name }}</div>
+                  <div class="col-lg-9 col-md-8">{{ name }}</div>
                 </div>
 
                 <div class="row">
@@ -97,17 +76,17 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Phone</div>
-                  <div class="col-lg-9 col-md-8">{{ _phoneNumber }}</div>
+                  <div class="col-lg-9 col-md-8">{{ phoneNumber }}</div>
                 </div>
 
                 <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Address</div>
-                  <div class="col-lg-9 col-md-8">{{ _address }}</div>
+                  <div class="col-lg-3 col-md-4 label">Location</div>
+                  <div class="col-lg-9 col-md-8">{{ location }}</div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Country</div>
-                  <div class="col-lg-9 col-md-8">{{ _country }}</div>
+                  <div class="col-lg-9 col-md-8">{{ country }}</div>
                 </div>
               </div>
 
@@ -117,7 +96,7 @@
                   <div class="row mb-3">
                     <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="name" type="text" class="form-control" id="fullName" value= {{ _name }}>
+                      <input name="name" type="text" class="form-control" id="fullName" value= {{ name }}>
                     </div>
                   </div>
                   
@@ -132,21 +111,21 @@
                   <div class="row mb-3">
                     <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="country" type="text" class="form-control" id="Country" value={{ _country }}>
+                      <input name="country" type="text" class="form-control" id="Country" value={{ country }}>
                     </div>
                   </div>
 
                   <div class="row mb-3">
-                    <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
+                    <label for="location" class="col-md-4 col-lg-3 col-form-label">Location</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="address" type="text" class="form-control" id="Address" value={{ _address }}>
+                      <input name="location" type="text" class="form-control" id="Location" value={{ location }}>
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone Number</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="phoneNumber" type="text" class="form-control" id="yourMobile" value={{ _phoneNumber }}>
+                      <input name="phoneNumber" type="text" class="form-control" id="yourMobile" value={{ phoneNumber }}>
                     </div>
                   </div>
 

@@ -94,15 +94,15 @@ class User(object):
             
         
     
-    def updateUser(self, userName : str, name : str, userNameEdited : str, country : str, address:str, phoneNumber:str):
+    def updateUser(self, userName : str, name : str, userNameEdited : str, country : str, location:str, phoneNumber:str):
         try:
             client, collection, connectionStatus=User.connectDB()
             
             if connectionStatus is True: 
-                    collection.update_one({'userName' : userName}, {'$set' : {'name' : name, 'phoneNumber': phoneNumber, 'country' : country, 'address': address, 'phoneNumber': phoneNumber, 'userName' : userNameEdited}})   
-                    status=True  
+                    collection.update_one({'userName' : userName}, {'$set' : {'name' : name, 'phoneNumber': phoneNumber, 'country' : country, 'location': location, 'phoneNumber': phoneNumber, 'userName' : userNameEdited}})   
+                    status="Profile update successfully"  
             else:
-                status=False
+                status="False"
                
         finally:
             client.close()

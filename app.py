@@ -87,8 +87,12 @@ def register(errorMassage=" "):
 def setup(errorMassage=" "):
     #try:
         if not session['loggedIn']:
-            #if session['registered']:
-                #if request.method=='POST':
+            if session['registered']:
+                if request.method=='POST':
+                    location=request.form['location']
+                    country=request.form['country']
+                    code=request.form['code']
+                    
                     #return render_template('setupIoT.html')
                 #else: 
                     return render_template('setupIoT.html', errorMassage=errorMassage)
@@ -113,7 +117,7 @@ def dashboard():
                 return redirect(url_for('adminDashboard'))
             else:
                 _, loggedUser=user.getUserByUserName(userName=session['username'])
-                location=loggedUser['address']
+                location=loggedUser['location']
                 weatherData=weather.getWeatherData(location=location)
                 currentDate=datetime.now().date()
                 currentTime=datetime.now().time().strftime('%H:%M:%S')
@@ -225,11 +229,11 @@ def profile(status=" "):
             _, loggedUser=user.getUserByUserName(userName=session['username'])
             name=loggedUser['name']
             phoneNumber=loggedUser['phoneNumber'] 
-            address=loggedUser['address']
+            location=loggedUser['location']
             country=loggedUser['country']
             
             
-            return render_template('profile.html', status=status, _name=name, _country=country, _address=address, _phoneNumber=phoneNumber)
+            return render_template('profile.html', status=status, name=name, country=country, location=location, phoneNumber=phoneNumber)
         else:
             return redirect(url_for('login'))
     except:
@@ -247,38 +251,38 @@ def changeProfile(status=" "):
                 name=request.form['name']
                 userNameEdited=request.form['username']
                 country=request.form['country']
-                address=request.form['address']
+                location=request.form['location']
                 phoneNumber=request.form['phoneNumber']
                 
-                status=user.updateUser(userName=uName, name=name, userNameEdited=userNameEdited, country=country, address=address, phoneNumber=phoneNumber)
+                status=user.updateUser(userName=uName, name=name, userNameEdited=userNameEdited, country=country, location=location, phoneNumber=phoneNumber)
                 
                 session['username']=userNameEdited
                 
                 _, loggedUser=user.getUserByUserName(userName=session['username'])
                 name=loggedUser['name']
                 phoneNumber=loggedUser['phoneNumber'] 
-                address=loggedUser['address']
+                location=loggedUser['location']
                 country=loggedUser['country']
                 
-                return render_template('profile.html', status=status, _name=name, _country=country, _address=address, _phoneNumber=phoneNumber) 
+                return render_template('profile.html', status=status, name=name, country=country, location=location, phoneNumber=phoneNumber) 
             else:
                 
                 _, loggedUser=user.getUserByUserName(userName=session['username'])
                 name=loggedUser['name']
                 phoneNumber=loggedUser['phoneNumber'] 
-                address=loggedUser['address']
+                location=loggedUser['location']
                 country=loggedUser['country']
                 
-                return render_template('profile.html', status=status, _name=name, _country=country, _address=address, _phoneNumber=phoneNumber) 
+                return render_template('profile.html', status=status, name=name, country=country, location=location, phoneNumber=phoneNumber) 
         else:
             
             _, loggedUser=user.getUserByUserName(userName=session['username'])
             name=loggedUser['name']
             phoneNumber=loggedUser['phoneNumber'] 
-            address=loggedUser['address']
+            location=loggedUser['location']
             country=loggedUser['country']
             
-            return render_template('profile.html', status=status, _name=name, _country=country, _address=address, _phoneNumber=phoneNumber) 
+            return render_template('profile.html', status=status, name=name, country=country, location=location, phoneNumber=phoneNumber) 
     except:
         session['loggedIn']=False
         return redirect(url_for('login'))
@@ -299,7 +303,7 @@ def changePassword(status=" "):
                     status=user.changePassword(userName=uName, oldPassword=password, newPassword=newpassword)
                     return render_template('profile.html', status=status)
                 else:
-                    status='newpassword != renewpassword'
+                    status='Can not change password'
                     return render_template('profile.html', status=status) 
             else:
                 return render_template('profile.html', status=status)
@@ -315,7 +319,7 @@ def weatherForecast():
     #try:
         if session['loggedIn']:
             _, loggedUser=user.getUserByUserName(userName=session['username'])
-            location=loggedUser['address']
+            location=loggedUser['location']
             weatherDataJson=weather.getWeatherData(location=location)
             airpollutionDataJson=weather.getAirPollutionData()
             currentDate=datetime.now().date()
