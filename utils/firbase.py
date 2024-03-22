@@ -10,9 +10,29 @@ class Firebase(object):
         self.cred=credentials.Certificate('agrisage-85205-firebase-adminsdk-6ih1w-881ad47372.json')
         firebase_admin.initialize_app(self.cred, {'databaseURL' : os.getenv('FIREBASE_URL')})
         
+    def getKeys(self, key:str):
+        keys=db.reference('/').get()
+        keys=keys.keys()
+        
+        if key in keys:
+           ifExists=True
+        else:
+           ifExists=False
+           
+        return ifExists
+    
     def getValue(self, key:str):
-        value=db.reference(key).get()
+        ifExists=self.getKeys(key=key)
+        if ifExists:
+            value=db.reference(key).get()
+        else:
+            value="Device not Found"
         return value
+        
+
+        
+    
+        
         
             
 
