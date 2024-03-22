@@ -70,7 +70,15 @@
                       <i class="bi bi-thermometer"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>{{ value }} &#x2103;</h6>
+                      {% if iotData %}
+                        <h6>{{ iotData['Temp'] }} &#x2103;</h6>
+                      {% else %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                          <i class="bi bi-exclamation-octagon me-1"></i>
+                          Couldn't connect IoT device.
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                      {% endif %}
                     </div>
                   </div>
                 </div>
@@ -79,7 +87,7 @@
             <!-- End Tempurature Card -->
 
             <div class='row'>
-              <!-- Humidity Card -->
+              <!-- Humidity Card 
               <div class="col-xxl-4 col-xl-12">
                 <div class="card info-card revenue-card">
                   <div class="card-body">
@@ -89,13 +97,13 @@
                         <i class="bi bi-droplet-fill"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>{{ value }} %</h6>
+                        <h6>{{ w }} %</h6>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <!-- End Humidity Card -->
+               End Humidity Card -->
             </div>
 
             <!-- Soil Report -->

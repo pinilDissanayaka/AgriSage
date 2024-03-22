@@ -25,13 +25,13 @@ class Weather(object):
         weatherUrl=self.makeUrl(location=location)
         weatherData=requests.get(weatherUrl)
         weatherDataJson=weatherData.json()
-
         return weatherDataJson
     
-    def getweatherForecast(self, lat, lon):
+    def getweatherForecast(self, lat=6.9, lon=79.8):
         weatherUrl=self.makeForcastUrl(lat=lat, lon=lon)
         weatherForecast=requests.get(weatherUrl)
         weatherForecastJson=weatherForecast.json()
+        return weatherForecastJson
         
     def getAirPollutionData(self, lat=6.9, lon=79.8):
         pollutionUrl=self.makePollutionUrl(lat=lat, lon=lon)

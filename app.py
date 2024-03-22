@@ -122,12 +122,10 @@ def dashboard():
                 return redirect(url_for('adminDashboard'))
             else:
                 _, loggedUser=user.getUserByUserName(userName=session['username'])
-                location=loggedUser['location']
-                weatherData=weather.getWeatherData(location=location)
                 currentDate=datetime.now().date()
                 currentTime=datetime.now().time().strftime('%H:%M:%S')
-                value=firebase.getValue(key=loggedUser['code'])
-                return render_template('dashboard.html', currentDate=currentDate, currentTime=currentTime, value=value, weatherData=weatherData)
+                iotData=firebase.getValue(key=loggedUser['code'])
+                return render_template('dashboard.html', currentDate=currentDate, currentTime=currentTime, iotData=iotData)
     except:
         session['loggedIn']=False
         return redirect(url_for('login'))
