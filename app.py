@@ -49,7 +49,7 @@ def login():
     except:
         session['loggedIn']=False
         return redirect(url_for('login'))
-        
+    
  
 @app.route('/register', methods=['GET', 'POST'])
 def register(errorMassage=" "):
@@ -65,11 +65,12 @@ def register(errorMassage=" "):
                 
                 if status: 
                     session['loggedIn']=True
+                    session['registered']=True
                     session['username']=uName
                     session['adminUserFlag']=False
                     
                     
-                    return redirect(url_for('dashboard')) 
+                    return redirect(url_for('setup')) 
                 else:
                     errorMassage="Registration Failed"
                     return render_template('register.html', errorMassage=errorMassage)
@@ -80,6 +81,26 @@ def register(errorMassage=" "):
     except:
         session['loggedIn']=False
         return redirect(url_for('register'))
+    
+    
+@app.route('/setup', methods=['GET', 'POST'])
+def setup(errorMassage=" "):
+    #try:
+        if not session['loggedIn']:
+            #if session['registered']:
+                #if request.method=='POST':
+                    #return render_template('setupIoT.html')
+                #else: 
+                    return render_template('setupIoT.html', errorMassage=errorMassage)
+            #else:
+        return redirect(url_for('register'))
+        #else:
+            #return redirect(url_for('login'))
+        
+    #except:
+       # session['loggedIn']=False
+       # session['registered']=False
+       # return redirect(url_for('login'))
                 
     
 @app.route('/dashboard', methods=['GET', 'POST'])

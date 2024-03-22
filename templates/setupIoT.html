@@ -57,11 +57,11 @@
                     <div class="card-body">
     
                       <div class="pt-4 pb-2">
-                        <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
+                        <h5 class="card-title text-center pb-0 fs-4">Setup an Account</h5>
                         <p class="text-center small">Enter your IoT device details for finish your registration</p>
                       </div>
     
-                      <form class="row g-3 needs-validation" novalidate action="{{ url_for("#")}}" method="POST">
+                      <form class="row g-3 needs-validation" novalidate action="#" method="POST">
                         <div class="col-12">
                           <label for="yourName" class="form-label">Field Location</label>
                           <input type="text" name="name" class="form-control" id="yourName" required>
@@ -88,16 +88,9 @@
                           <input type="password" name="password" class="form-control" id="yourPassword" required>
                           <div class="invalid-feedback">Please enter your password!</div>
                         </div>
-    
+  
                         <div class="col-12">
-                          <div class="form-check">
-                            <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
-                            <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
-                            <div class="invalid-feedback">You must agree before submitting.</div>
-                          </div>
-                        </div>
-                        <div class="col-12">
-                          <button class="btn btn-success w-100" type="submit">Create Account</button>
+                          <button class="btn btn-success w-100" type="submit">Finish Setup</button>
                         </div>
                         <div class="col-12">
                           {% if errorMassage != " " %}
@@ -107,7 +100,6 @@
                               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                           {% endif %}
-                          <p class="small mb-0">Already have an account? <a href="/login">Log in</a></p>
                         </div>
                       </form>
     
