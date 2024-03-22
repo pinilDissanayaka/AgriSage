@@ -26,7 +26,7 @@ class Firebase(object):
         if ifExists:
             value=db.reference(key).get()
         else:
-            value="Device not Found"
+            value=False
         return value
         
 
