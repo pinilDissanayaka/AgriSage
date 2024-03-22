@@ -102,7 +102,7 @@ class User(object):
                     collection.update_one({'userName' : userName}, {'$set' : {'name' : name, 'phoneNumber': phoneNumber, 'country' : country, 'location': location, 'phoneNumber': phoneNumber, 'userName' : userNameEdited}})   
                     status="Profile update successfully"  
             else:
-                status="Couldn't setup profile"
+                status="Couldn't update profile"
                
         finally:
             client.close()
