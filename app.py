@@ -335,11 +335,12 @@ def weatherForecast():
             _, loggedUser=user.getUserByUserName(userName=session['username'])
             location=loggedUser['location']
             weatherDataJson=weather.getWeatherData(location=location)
+            weatherForecastJson=weather.getweatherForecast()
             airpollutionDataJson=weather.getAirPollutionData()
             currentDate=datetime.now().date()
             currentTime=datetime.now().time().strftime('%H:%M:%S')
             if weatherDataJson:
-                return render_template('weatherForecast.html', weatherDataJson=weatherDataJson, currentDate=currentDate, currentTime=currentTime, location=location, airpollutionDataJson=airpollutionDataJson)
+                return render_template('weatherForecast.html', weatherDataJson=weatherDataJson, currentDate=currentDate, currentTime=currentTime, location=location, airpollutionDataJson=airpollutionDataJson, weatherForecastJson=weatherForecastJson)
             else:
                 return redirect(url_for('badRequest'))
         else:
@@ -352,7 +353,7 @@ def weatherForecast():
 @app.route('/t')
 def t():
     w=weather.getweatherForecast()
-    return w['list'][0]
+    return w['list'][10]['dt_txt']
 
             
 if __name__=="__main__":

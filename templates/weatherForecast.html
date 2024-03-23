@@ -146,10 +146,11 @@
         </div>
         
         <div class='row'>
+          {{weatherForecastJson}}
             <div class="col-12">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">Soil Condition<span></span></h5>
+                    <h5 class="card-title">Temperature<span></span></h5>
   
                     <!-- Soil Condition Chart -->
                     <div id="reportsChart"></div>
@@ -158,13 +159,13 @@
                       document.addEventListener("DOMContentLoaded", () => {
                         new ApexCharts(document.querySelector("#reportsChart"), {
                           series: [{
-                            name: 'Nitrogen',
+                            name: 'Maximum Temperature',
                             data: [31, 32, 32, 31.5, 30, 30, 30],
                           }, {
-                            name: 'Phosphorus',
+                            name: 'Temperature',
                             data: [11, 12, 12, 12, 12, 12, 11]
                           }, {
-                            name: 'Calcium ',
+                            name: 'Minimum Temperature',
                             data: [15, 16, 16, 15, 15, 14, 14]
                           }],
                           chart: {
@@ -188,7 +189,7 @@
                             }
                           },
                           dataLabels: {
-                            enabled: false
+                            enabled: true
                           },
                           stroke: {
                             curve: 'smooth',
