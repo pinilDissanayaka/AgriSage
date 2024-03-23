@@ -316,6 +316,10 @@ def changePassword(status=" "):
         session['loggedIn']=False
         return redirect(url_for('login'))
     
+@app.route('/needHelp', methods=['GET', 'POST'])
+def needHelp():
+    return render_template('needHelp.html')
+    
     
 @app.route('/weatherForecast', methods =['GET', 'POST'])
 def weatherForecast():
