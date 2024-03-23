@@ -336,6 +336,12 @@ def weatherForecast():
    # except:
      #   session['loggedIn']=False
      #   return redirect(url_for('login'))
+     
+     
+@app.route('/t')
+def t():
+    w=weather.getweatherForecast()
+    return w['list'][0]
 
             
 if __name__=="__main__":

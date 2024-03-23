@@ -66,6 +66,10 @@
                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
               </li>
 
+              <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-delete-account">Delete Account</button>
+              </li>
+
             </ul>
             <div class="tab-content pt-2">
 
@@ -173,19 +177,48 @@
                     </div>
                   </div>
 
-                  <div class="row mb-3" id="password-error">
-                    
-                  <div class="col-md-12">
-                    <span class="text-danger">Passwords do not match!</span>
-                 </div>
-               </div>
-
                   <div class="text-center">
                     <button type="submit" class="btn btn-success">Change Password</button>
                   </div>
                 </form>
                 <!-- End Change Password Form -->
               </div>
+
+
+              <div class="tab-pane fade pt-3" id="profile-delete-account">
+                <!-- Delete account Form -->
+                <form action="" method="POST">
+
+                  <div class="row mb-3">
+                    <label for="password" class="col-md-4 col-lg-3 col-form-label">Password</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="password" type="password" class="form-control" id="Password">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="rePassword" class="col-md-4 col-lg-3 col-form-label">Re-enter Password</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input name="repassword" type="password" class="form-control" id="rePassword">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
+                      <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
+                      <div class="invalid-feedback">You must agree before submitting.</div>
+                    </div>
+                  </div>
+                  
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-success">Delete Account</button>
+                  </div>
+
+                </form>
+                <!-- End Delete Account Form -->
+              </div>
+
             </div>
             <!-- End Bordered Tabs -->
 
