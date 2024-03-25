@@ -220,7 +220,7 @@ def logout():
 def pageNotFound(e):
     return render_template('pageNotFound.html'), 404
 
-@app.route('/badRequest.html', methods=['GET', 'POST'])
+@app.errorhandler(400)
 def badRequest():
     return render_template('badRequest.html'), 400
 
