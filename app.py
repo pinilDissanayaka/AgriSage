@@ -221,7 +221,7 @@ def pageNotFound(e):
     return render_template('pageNotFound.html'), 404
 
 @app.errorhandler(400)
-def badRequest():
+def badRequest(e):
     return render_template('badRequest.html'), 400
 
 
@@ -291,7 +291,7 @@ def changeProfile(status=" "):
         return redirect(url_for('login'))
     
     
- 
+     
 @app.route('/changePassword', methods=['POST'])
 def changePassword(status=" "):
     try:
@@ -307,6 +307,28 @@ def changePassword(status=" "):
                     return render_template('profile.html', status=status)
                 else:
                     status='Can not change password'
+                    return render_template('profile.html', status=status) 
+            else:
+                return render_template('profile.html', status=status)
+        else:
+            return redirect(url_for('login'))
+    except:
+        session['loggedIn']=False
+        return redirect(url_for('login'))
+    
+@app.route('/deleteUser', methods=['GET', 'POST'])
+def deleteUser(status=" "):
+    try:
+        if session['loggedIn']:
+            if request.method == 'POST':
+                password=request.form['password']
+                rePassword=request.form['rePassword']
+                                
+                if password == rePassword:
+                    status=user.deleteUser(password=password)
+                    return redirect(url_for('logout'))
+                else:
+                    status='Can not delete account'
                     return render_template('profile.html', status=status) 
             else:
                 return render_template('profile.html', status=status)

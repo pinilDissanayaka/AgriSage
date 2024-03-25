@@ -149,13 +149,17 @@ class User(object):
             
     
 
-    def deleteUser(self, userName: str):
+    def deleteUser(self, userName: str, password:str):
         try:
             client, collection, connectionStatus=User.connectDB()
-            
             if connectionStatus is True:
-                collection.delete_one({"userName" : userName})
-                status=True
+                _, user=self.getUserByUserName(userName=userName)
+                isValid =self._bycrypt.check_password_hash(user['password'], password)
+                if isValid:
+                    collection.delete_one({"userName" : userName})
+                    status=True
+                else:
+                    status=False
             else:
                 status=False
         finally:
