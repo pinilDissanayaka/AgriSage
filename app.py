@@ -152,7 +152,7 @@ def adminDashboard():
             
     
 @app.route('/addUser', methods=['GET', 'POST'])
-def addUser(errorMassage=""):
+def addUser(errorMassage=" "):
     try:
         if not session['loggedIn']:
             return redirect(url_for('login'))
@@ -179,7 +179,7 @@ def addUser(errorMassage=""):
   
    
 @app.route('/addProduct', methods=['GET', 'POST'])
-def addProduct(errorMassage=""):
+def addProduct(errorMassage=" "):
     try:
         if not session['loggedIn']:
             return redirect(url_for('login'))
@@ -353,7 +353,7 @@ def weatherForecast():
 @app.route('/t')
 def t():
     w=weather.getweatherForecast()
-    return w['list'][10]['dt_txt']
+    return w
 
             
 if __name__=="__main__":
