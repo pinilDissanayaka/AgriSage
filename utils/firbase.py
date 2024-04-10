@@ -21,6 +21,16 @@ class Firebase(object):
            
         return ifExists
     
+    def getDevices(self, keys:list):
+        deviceKeys=[]
+        for key in keys:
+            ifExist=self.getKeys(key=key)
+            if ifExist:
+                deviceKeys.append(key)
+            else:
+                deviceKeys.append(False)
+        return deviceKeys
+    
     def getValue(self, key:str):
         ifExists=self.getKeys(key=key)
         if ifExists:

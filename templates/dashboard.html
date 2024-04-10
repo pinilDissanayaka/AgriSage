@@ -59,52 +59,77 @@
               </div>
             </div>
             <!-- End Time Card -->
+          </div>
 
+
+          <div class='row'>
             <!-- Tempurature Card -->
-            <div class="col-xxl-4 col-xl-12">
-              <div class="card info-card customers-card">
-                <div class="card-body">
-                  <h5 class="card-title">Tempurature <span>| Now</span></h5>
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-thermometer"></i>
-                    </div>
-                    <div class="ps-3">
-                      {% if iotData %}
-                        <h6>{{ iotData['Temp'] }} &#x2103;</h6>
-                      {% else %}
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                          <i class="bi bi-exclamation-octagon me-1"></i>
-                          Couldn't connect IoT device.
-                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            {% if iotDevices %}
+              {% for device in iotDevices %}
+                <div class="col-xxl-4 col-md-6">
+                  <div class="card info-card customers-card">
+                    <div class="card-body">
+                      <h5 class="card-title">Tempurature <span>| Now</span></h5>
+                      <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <i class="bi bi-thermometer"></i>
                         </div>
-                      {% endif %}
+                        <div class="ps-3">
+                              <h6>{{ device }}</h6>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                              <i class="bi bi-exclamation-octagon me-1"></i>
+                              Couldn't connect IoT device.
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                          
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <!-- End Tempurature Card -->
-
-            <div class='row'>
-              <!-- Humidity Card 
-              <div class="col-xxl-4 col-xl-12">
-                <div class="card info-card revenue-card">
+              {% endfor %}
+            {% else %}
+              <div class="col-xxl-4 col-md-6">
+                <div class="card info-card customers-card">
                   <div class="card-body">
-                    <h5 class="card-title">Humidity <span>| Now</span></h5>
+                    <h5 class="card-title">Tempurature <span>| Now</span></h5>
                     <div class="d-flex align-items-center">
                       <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-droplet-fill"></i>
+                        <i class="bi bi-thermometer"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>{{ w }} %</h6>
+                            <h6>{{ device }}</h6>
+                          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="bi bi-exclamation-octagon me-1"></i>
+                            Couldn't connect IoT device.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                          </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-               End Humidity Card -->
+            {% endif %}
+            <!-- End Tempurature Card -->
+
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card time-card">
+                <div class="card-body">
+                  <h5 class="card-title">Time</h5>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-clock"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>Add Another Device</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+
+            
 
             <!-- Soil Report -->
             <div class="col-12">
@@ -322,7 +347,6 @@
               </div>
             </div><!-- End Top Selling -->
 
-          </div>
         </div><!-- End Left side columns -->
 
         <!-- Right side columns -->

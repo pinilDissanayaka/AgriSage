@@ -114,7 +114,7 @@ def setup(errorMassage=" "):
     
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
-    try:
+    #try:
         if not session['loggedIn']:
             return redirect(url_for('login'))
         else:
@@ -124,9 +124,9 @@ def dashboard():
                 _, loggedUser=user.getUserByUserName(userName=session['username'])
                 currentDate=datetime.now().date()
                 currentTime=datetime.now().time().strftime('%H:%M:%S')
-                iotData=firebase.getValue(key=loggedUser['code'])
-                return render_template('dashboard.html', currentDate=currentDate, currentTime=currentTime, iotData=iotData)
-    except:
+                iotDevices=firebase.getDevices(keys=loggedUser['code'])
+                return render_template('dashboard.html', currentDate=currentDate, currentTime=currentTime, iotDevices=iotDevices)
+    #except:
         session['loggedIn']=False
         return redirect(url_for('login'))
     
