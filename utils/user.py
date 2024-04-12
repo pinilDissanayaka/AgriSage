@@ -115,7 +115,8 @@ class User(object):
             client, collection, connectionStatus=User.connectDB()
             
             if connectionStatus is True: 
-                    collection.update_one({'userName' : userName}, {'$set' : { 'location': location, 'country' : country, 'code': code}})   
+                    collection.update_one({'userName' : userName}, {'$set' : { 'location': location, 'country' : country}})
+                    collection.update_one({'userName' : userName}, {'$push' : { 'code' : code}})    
                     status=True
             else:
                 status=False
