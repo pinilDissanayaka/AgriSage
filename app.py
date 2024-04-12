@@ -130,6 +130,10 @@ def dashboard():
         session['loggedIn']=False
         return redirect(url_for('login'))
     
+@app.route('/addIoT', methods=['GET', 'POST'])
+def addIoT():
+    return render_template('addIoT.html')
+    
     
 @app.route('/adminDashboard', methods=['GET', 'POST'])
 def adminDashboard():
