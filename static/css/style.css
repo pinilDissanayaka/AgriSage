@@ -821,18 +821,23 @@ h6 {
   flex-grow: 0;
 }
 
-.dashboard .sales-card .card-icon {
+.dashboard .date-card .card-icon {
   color:var(--primary);
   background: #f6f6fe;
 }
 
-.dashboard .revenue-card .card-icon {
+.dashboard .time-card .card-icon {
   color: #2eca6a;
   background: #e0f8e9;
 }
 
-.dashboard .customers-card .card-icon {
-  color: #ff771d;
+.dashboard .danger-card .card-icon {
+  color: #ff0000;
+  background: #ffecdf;
+}
+
+.dashboard .add-device-card .card-icon {
+  color: #91ff00;
   background: #ffecdf;
 }
 
