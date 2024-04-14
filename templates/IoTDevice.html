@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block head%}
-<title>AGRISAGE / Device</title>
+<title>AGRISAGE / Device - {{ deviceID }}</title>
 {% endblock%}
 
 {% block main%}
@@ -48,7 +48,7 @@
                   <i class="bi bi-people"></i>
                 </div>
                 <div class="ps-3">
-                  <h6></h6>
+                  <h6>{{ iotData }}</h6>
                 </div>
               </div>
             </div>

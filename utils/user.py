@@ -125,10 +125,7 @@ class User(object):
             client.close()
             
         return status
-
-
-        
-    
+            
     def changePassword(self, userName:str, oldPassword:str, newPassword:str):
         try:
             client, collection, connectionStatus=User.connectDB()

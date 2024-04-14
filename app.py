@@ -146,7 +146,8 @@ def IoT(deviceID):
         if not session['loggedIn']:
             return redirect(url_for('login'))
         else:
-            return render_template('IoTDevice.html', deviceID=deviceID)
+            iotData=firebase.getValue(key=deviceID)
+            return render_template('IoTDevice.html', deviceID=deviceID, iotData=iotData)
     except:
         session['loggedIn']=False
         return redirect(url_for('login'))
