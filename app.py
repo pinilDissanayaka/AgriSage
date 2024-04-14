@@ -131,11 +131,25 @@ def dashboard():
     
 @app.route('/addIoT', methods=['GET', 'POST'])
 def addIoT():
-    return render_template('addIoT.html')
+    try:
+        if not session['loggedIn']:
+            return redirect(url_for('login'))
+        else:
+            return render_template('addIoT.html') 
+    except:
+        session['loggedIn']=False
+        return redirect(url_for('login'))
 
-@app.route('/', methods=['GET', 'POST'])
-def IoT():
-    return render_template('IoTDevice.html')
+@app.route('/IoTDevice/<deviceID>', methods=['GET', 'POST'])
+def IoT(deviceID):
+    try:
+        if not session['loggedIn']:
+            return redirect(url_for('login'))
+        else:
+            return render_template('IoTDevice.html', deviceID=deviceID)
+    except:
+        session['loggedIn']=False
+        return redirect(url_for('login'))
     
     
 @app.route('/adminDashboard', methods=['GET', 'POST'])

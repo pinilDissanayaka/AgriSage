@@ -67,9 +67,10 @@
               {% if device %}
                 <div class="col-xxl-4 col-md-6">
                   <div class="card info-card IoT-card">
-                    <a href="#">
+                    <a href="{{url_for('IoT', deviceID=device)}}">
                       <div class="card-body">
-                        <div class="d-flex align-items-center" style="width: 10rem;height:10rem;">
+                        <h5 class="card-title">Device</h5>
+                        <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <i class="bi bi-cpu"></i>
                           </div>
@@ -85,7 +86,8 @@
                 <div class="col-xxl-4 col-md-6">
                   <div class="card info-card danger-card">
                     <div class="card-body">
-                      <div class="d-flex align-items-center" style="width: 10rem;height:10rem;">
+                      <h5 class="card-title"></h5>
+                      <div class="d-flex align-items-center">
                         <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                           <i class="bi bi-exclamation"></i>
                         </div>
@@ -102,7 +104,8 @@
             <div class="col-xxl-4 col-md-6">
               <div class="card info-card danger-card">
                 <div class="card-body">
-                  <div class="d-flex align-items-center" style="width: 10rem;height:10rem;">
+                  <h5 class="card-title"></h5>
+                  <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-thermometer"></i>
                     </div>
@@ -118,9 +121,10 @@
 
           <div class="col-xxl-4 col-md-6">
             <div class="card info-card IoT-card">
-              <a href="addIoT">
+              <a href="{{url_for('addIoT')}}">
                 <div class="card-body">
-                  <div class="d-flex align-items-center" style="width: 10rem;height:10rem;">
+                  <h5 class="card-title"></h5>
+                  <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-plus"></i>
                     </div>
