@@ -68,8 +68,7 @@ def register(errorMassage=" "):
                     session['registered']=True
                     session['username']=uName
                     session['adminUserFlag']=False
-                    
-                    
+                                        
                     return redirect(url_for('setup')) 
                 else:
                     errorMassage="Registration Failed"
@@ -380,11 +379,6 @@ def weatherForecast():
      #   return redirect(url_for('login'))
      
      
-@app.route('/t')
-def t():
-    w=weather.getweatherForecast()
-    return w
-
             
 if __name__=="__main__":
     app.run(debug=True, port=8000)
