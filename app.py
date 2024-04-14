@@ -333,7 +333,7 @@ def deleteUser(status=" "):
                 rePassword=request.form['rePassword']
                                 
                 if password == rePassword:
-                    status=user.deleteUser(password=password)
+                    status=user.deleteUser(userName=session['username'], password=password)
                     return redirect(url_for('logout'))
                 else:
                     status='Can not delete account'
