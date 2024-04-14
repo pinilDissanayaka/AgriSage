@@ -133,6 +133,10 @@ def dashboard():
 @app.route('/addIoT', methods=['GET', 'POST'])
 def addIoT():
     return render_template('addIoT.html')
+
+@app.route('/', methods=['GET', 'POST'])
+def IoT():
+    return render_template('IoTDevice.html')
     
     
 @app.route('/adminDashboard', methods=['GET', 'POST'])
