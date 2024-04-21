@@ -21,43 +21,29 @@
 
   <form novalidate action="{{ url_for("addProduct")}}" method="POST">
       <div class="row mb-3">
-        <label for="yourName" class="col-sm-2 col-form-label">Product Name</label>
+        <label for="yourName" class="col-sm-2 col-form-label">Fertilizer Name</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="yourName", name="name" required>
         </div>
       </div>
       <div class="row mb-3">
-        <label for="yourMobile" class="col-sm-2 col-form-label">Your Mobile number</label>
+        <label for="yourMobile" class="col-sm-2 col-form-label">Nutrient Composition</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="yourMobile", name="phoneNumber" required>
         </div>
       </div>
       <div class="row mb-3">
-          <label for="yourUsername" class="col-sm-2 col-form-label">Username</label>
+          <label for="yourUsername" class="col-sm-2 col-form-label">Fertilizer Type</label>
           <div class="col-sm-10">
             <input type="text" class="form-control" id="yourUsername", name="username" required>
           </div>
         </div>
       <div class="row mb-3">
-        <label for="yourPassword" class="col-sm-2 col-form-label">Password</label>
+        <label for="yourPassword" class="col-sm-2 col-form-label">Manufacturer</label>
         <div class="col-sm-10">
           <input type="password" class="form-control" id="yourPassword" name="password" required>
         </div>
       </div>
-      <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-2 pt-0">User Type</legend>
-        <div class="col-sm-10">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="True" checked>
-            <label class="form-check-label" for="gridRadios1">Common User</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="False">
-            <label class="form-check-label" for="gridRadios2">Admin User</label>
-          </div>
-        </div>
-      </fieldset>
-
 
       <div class="text-center">
         <button type="submit" class="btn btn-primary">Submit</button>
