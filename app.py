@@ -207,13 +207,13 @@ def addProduct(errorMassage=" "):
             return redirect(url_for('login'))
         else:
             if session['adminUserFlag']:
-                '''if request.method=='POST':
-                    name=request.form['name']
-                    phoneNumber=request.form['phoneNumber']
-                    uName=request.form['username']
-                    password=request.form['password']
-                    adminUserFlag=request.form['gridRadios']'''
-                    
+                if request.method=='POST':
+                    fertilizerName=request.form['fertilizerName']
+                    nutrientComposition=request.form['nutrientComposition']
+                    fertilizerType=request.form['fertilizerType']
+                    manufacturer=request.form['manufacturer']
+                    errorMassage='add product'
+                    return render_template('addProduct.html', errorMassage=errorMassage)    
                 return render_template('addProduct.html', errorMassage=errorMassage)
             else:
                 return redirect(url_for('login'))
