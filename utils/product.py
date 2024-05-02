@@ -1,0 +1,44 @@
+import os
+from flask_bcrypt import Bcrypt
+from dotenv import load_dotenv
+from pymongo import MongoClient
+import re
+import base64
+
+load_dotenv(".env")
+
+class Product(object):
+    def __init__(self) -> None:
+        pass
+               
+    @classmethod
+    def connectDB(cls, databaseName = 'AgriSage', collectionName='Products'):
+        try:
+            client=MongoClient(os.getenv('MONGO_CLIENT'))
+            db=client[databaseName]
+            collection=db[collectionName]
+            connectionStatus=True
+        except:
+            print("Database connection failed!")
+            connectionStatus=False
+
+        return client, collection, connectionStatus
+    
+    
+    
+        
+    def addProduct(self, fertilizerName:str, nutrientComposition:str, fertilizerType:str, manufacturer:str):
+        try:
+            client, collection, connectionStatus=Product.connectDB()
+            
+            if connectionStatus:                
+                collection.insert_one({"fertilizerName" : fertilizerName, "nutrientComposition" : nutrientComposition, "fertilizerType" : fertilizerType, "manufacturer" : manufacturer})
+                print("Product successfully added.")
+                status=True
+            else:
+                print("Failed adding product.")
+                status=False
+        finally:
+            client.close()
+        
+        return status

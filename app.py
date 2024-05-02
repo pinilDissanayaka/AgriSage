@@ -5,12 +5,14 @@ import os
 from dotenv import load_dotenv
 from utils.user import User
 from utils.admin import Admin
+from utils.product import Product
 from utils.weather import Weather
 from utils.firbase import Firebase
 
 app=Flask(__name__, static_folder="static", template_folder="templates")
 user=User(app=app)
 admin=Admin(app=app)
+product=Product()
 weather=Weather()
 firebase=Firebase()
 
@@ -212,8 +214,14 @@ def addProduct(errorMassage=" "):
                     nutrientComposition=request.form['nutrientComposition']
                     fertilizerType=request.form['fertilizerType']
                     manufacturer=request.form['manufacturer']
-                    errorMassage='add product'
+                    status=product.addProduct(fertilizerName=fertilizerName, nutrientComposition=nutrientComposition, fertilizerType=fertilizerType, manufacturer=manufacturer)
+                    if status:
+                        errorMassage="Product successfully added."
+                    else:
+                        errorMassage="Failed adding product."
+                        
                     return render_template('addProduct.html', errorMassage=errorMassage)    
+                
                 return render_template('addProduct.html', errorMassage=errorMassage)
             else:
                 return redirect(url_for('login'))
