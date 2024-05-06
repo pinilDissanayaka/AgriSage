@@ -19,7 +19,8 @@
   </div>
   <!-- End Page Title -->
 
-  <form novalidate action="{{ url_for("addProduct")}}" method="POST">
+  <section class="section dashboard">
+    <form novalidate action="{{ url_for("addProduct")}}" method="POST">
       <div class="row mb-3">
         <label for="fertilizerName" class="col-sm-2 col-form-label">Fertilizer Name</label>
         <div class="col-sm-10">
@@ -45,16 +46,30 @@
         </div>
       </div>
 
-      <div class="text-center">
+      <div class="text-center mb-3">
         <button type="submit" class="btn btn-primary">Add</button>
         <button type="reset" class="btn btn-secondary">Reset</button>
       </div>
 
       <div class="col-12">
-        <p></p>
-        <center><p class="small mb-0" style="color:red;">{{ errorMassage }}</p></center>
+        {% if errorMassage != " " %}
+          {% if errorMassage == "Product successfully added."%}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <i class="bi bi-check-circle me-1"></i>
+              {{ errorMassage }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% else %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <i class="bi bi-exclamation-octagon me-1"></i>
+                {{ errorMassage }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endif %}
+        {% endif %}
       </div>
-      
+
     </form>
+  </section>
 </main>
 {% endblock %}
