@@ -42,3 +42,10 @@ class Product(object):
             client.close()
         
         return status
+    
+    def updateProduct(self):
+        try:
+            client, collection, connectionStatus=Product.connectDB()
+        finally:
+            client.close()
+            
