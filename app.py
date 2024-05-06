@@ -165,7 +165,20 @@ def adminDashboard():
                 userCount=admin.getDocumentCount(collectionName='Users', adminUserFlag='False')
                 adminCount=admin.getDocumentCount(collectionName='Users', adminUserFlag='True')
                 productCount=admin.getDocumentCount(collectionName='Products')
-                return render_template('adminDashboard.html', userCount=userCount, productCount=productCount, adminCount=adminCount)
+                
+                labels = [
+                    'January',
+                    'February',
+                    'March',
+                    'April',
+                    'May',
+                    'June',
+                ]
+            
+                data = [0, 10, 15, 8, 22, 18, 25]
+                
+                return render_template('adminDashboard.html', userCount=userCount, productCount=productCount, adminCount=adminCount, data=data, labels=labels)
+                
             elif not session['adminUserFlag']:
                 return redirect(url_for('dashboard'))
             else:
@@ -400,7 +413,6 @@ def weatherForecast():
    # except:
      #   session['loggedIn']=False
      #   return redirect(url_for('login'))
-     
      
             
 if __name__=="__main__":

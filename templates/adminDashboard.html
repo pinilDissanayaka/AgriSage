@@ -319,64 +319,37 @@
           <div class="card">
             <div class="card-body pb-0">
               <h5 class="card-title">Product Owerview<span>| Now</span></h5>
-
-              <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
-
+              <div style="min-height: 400px;">
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <canvas id="myChart"></canvas>
+              </div>
+          
               <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  echarts.init(document.querySelector("#trafficChart")).setOption({
-                    tooltip: {
-                      trigger: 'item'
-                    },
-                    legend: {
-                      top: '5%',
-                      left: 'center'
-                    },
-                    series: [{
-                      name: 'Access From',
-                      type: 'pie',
-                      radius: ['40%', '70%'],
-                      avoidLabelOverlap: false,
-                      label: {
-                        show: false,
-                        position: 'center'
-                      },
-                      emphasis: {
-                        label: {
-                          show: true,
-                          fontSize: '18',
-                          fontWeight: 'bold'
-                        }
-                      },
-                      labelLine: {
-                        show: false
-                      },
-                      data: [{
-                          value: 1048,
-                          name: 'Search Engine'
-                        },
-                        {
-                          value: 735,
-                          name: 'Direct'
-                        },
-                        {
-                          value: 580,
-                          name: 'Email'
-                        },
-                        {
-                          value: 484,
-                          name: 'Union Ads'
-                        },
-                        {
-                          value: 300,
-                          name: 'Video Ads'
-                        }
-                      ]
-                    }]
-                  });
-                });
+                const labels = {{ labels | tojson}};
+            
+                const data = {
+                  labels: labels,
+                  datasets: [{
+                    label: 'Sales',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: {{ data | tojson}},
+                  }]
+                };
+            
+                const config = {
+                  type: 'line',
+                  data: data,
+                  options: { maintainAspectRatio: false }
+                };
+            
+                const myChart = new Chart(
+                  document.getElementById('myChart'),
+                  config
+                );
+            
               </script>
-
+              
             </div>
           </div>
           <!-- End Product Owerview -->
@@ -655,15 +628,19 @@
                   <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
                 </div>
 
-              </div><!-- End sidebar recent posts-->
+              </div>
+              <!-- End sidebar recent posts-->
 
             </div>
-          </div><!-- End News & Updates -->
+          </div>
+          <!-- End News & Updates -->
 
-        </div><!-- End Right side columns -->
+        </div>
+        <!-- End Right side columns -->
 
       </div>
     </section>
 
-</main><!-- End #main -->
+</main>
+<!-- End main -->
 {% endblock %}
