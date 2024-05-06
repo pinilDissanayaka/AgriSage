@@ -21,19 +21,23 @@ class Admin(object):
             print("Database connection failed!")
             connectionStatus=False
 
-        return db, connectionStatus
+        return client, db, connectionStatus
     
     def getDocumentCount(self, collectionName :str, adminUserFlag = None):
-        db, connectionStatus=self.connectDB()
-        collection=db[collectionName]
-        
-        if connectionStatus:
-            if adminUserFlag is None:
-                count=collection.count_documents({})
+        try:
+            client, db, connectionStatus=self.connectDB()
+            collection=db[collectionName]
+            
+            if connectionStatus:
+                if adminUserFlag is None:
+                    count=collection.count_documents({})
+                else:
+                    count=collection.count_documents({"adminUserFlag" : adminUserFlag})
             else:
-                count=collection.count_documents({"adminUserFlag" : adminUserFlag})
-        else:
-            count=None
+                count=None
+        finally:
+            client.close()
+            
         return count
     
     
