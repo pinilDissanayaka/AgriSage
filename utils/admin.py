@@ -20,8 +20,7 @@ class Admin(object):
         except:
             print("Database connection failed!")
             connectionStatus=False
-
-        return client, db, connectionStatus
+            return client, db, connectionStatus
     
     def getDocumentCount(self, collectionName :str, adminUserFlag = None):
         try:
@@ -37,8 +36,7 @@ class Admin(object):
                 count=None
         finally:
             client.close()
-            
-        return count
+            return count
     
     
     

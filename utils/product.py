@@ -21,8 +21,7 @@ class Product(object):
         except:
             print("Database connection failed!")
             connectionStatus=False
-
-        return client, collection, connectionStatus
+            return client, collection, connectionStatus
     
     
     
@@ -40,8 +39,7 @@ class Product(object):
                 status=False
         finally:
             client.close()
-        
-        return status
+            return status
     
     def updateProduct(self):
         try:
