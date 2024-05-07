@@ -22,7 +22,8 @@ class User(object):
         except:
             print("Database connection failed!")
             connectionStatus=False
-            return client, collection, connectionStatus
+            
+        return client, collection, connectionStatus
     
     
     
@@ -46,7 +47,8 @@ class User(object):
                     status=False
         finally:
             client.close()
-            return status
+            
+        return status
     
           
     def getUserByUserName(self, userName : str):
@@ -61,7 +63,8 @@ class User(object):
                 
         finally:
             client.close()
-            return status, user
+            
+        return status, user
     
     
     def logInUser(self, userName:str, password:str):
@@ -87,7 +90,8 @@ class User(object):
                         status="Incorrect password"
         finally:
             client.close()
-            return status, user
+            
+        return status, user
             
         
     
@@ -103,7 +107,8 @@ class User(object):
                
         finally:
             client.close()
-            return status
+            
+        return status
     
     
     def addIoT(self, userName:str, location:str, country:str, code:str):
@@ -119,7 +124,8 @@ class User(object):
                
         finally:
             client.close()
-            return status
+            
+        return status
             
     def changePassword(self, userName:str, oldPassword:str, newPassword:str):
         try:
@@ -137,7 +143,8 @@ class User(object):
                     status='Can not change password'   
         finally:
             client.close()
-            return status
+        
+        return status
             
     
 
@@ -156,7 +163,8 @@ class User(object):
                 status=False
         finally:
             client.close()
-            return status
+            
+        return status
     
 
     def validatePassword(self, password : str):
