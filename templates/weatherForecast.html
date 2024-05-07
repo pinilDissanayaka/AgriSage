@@ -142,77 +142,10 @@
         <!-- End Left side columns -->
       </div>
     </div>
+
+
+    {{weatherForecastJson}}
       
-    <div class='row'>
-      {{weatherForecastJson}}
-      <div class="col-12">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Temperature<span></span></h5>
-
-            <!-- Soil Condition Chart -->
-            <div id="reportsChart"></div>
-
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  new ApexCharts(document.querySelector("#reportsChart"), {
-                    series: [{
-                      name: 'Maximum Temperature',
-                      data: [31, 32, 32, 31.5, 30, 30, 30],
-                    }, {
-                      name: 'Temperature',
-                      data: [11, 12, 12, 12, 12, 12, 11]
-                    }, {
-                      name: 'Minimum Temperature',
-                      data: [15, 16, 16, 15, 15, 14, 14]
-                    }],
-                    chart: {
-                      height: 350,
-                      type: 'area',
-                      toolbar: {
-                        show: true
-                      },
-                    },
-                    markers: {
-                      size: 4
-                    },
-                    colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                    fill: {
-                      type: "gradient",
-                      gradient: {
-                        shadeIntensity: 1,
-                        opacityFrom: 0.3,
-                        opacityTo: 0.4,
-                        stops: [0, 90, 100]
-                      }
-                    },
-                    dataLabels: {
-                      enabled: true
-                    },
-                    stroke: {
-                      curve: 'smooth',
-                      width: 2
-                    },
-                    xaxis: {
-                      type: 'datetime',
-                      categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-                    },
-                    tooltip: {
-                      x: {
-                        format: 'dd/MM/yy HH:mm'
-                      },
-                    }
-                  }).render();
-                });
-              </script>
-              <!-- End Soil Condition Chart -->
-
-            </div>
-
-          </div>
-        </div><!-- End Reports -->
-      </div>
-    </div>
   </section>
 
 </main>
