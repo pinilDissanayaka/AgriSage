@@ -398,12 +398,16 @@ def weatherForecast():
     #try:
         if session['loggedIn']:
             _, loggedUser=user.getUserByUserName(userName=session['username'])
+            
             location=loggedUser['location']
+            
             weatherDataJson=weather.getWeatherData(location=location)
-            weatherForecastJson=weather.getweatherForecast()
-            airpollutionDataJson=weather.getAirPollutionData()
+            weatherForecastJson=weather.getweatherForecast(location=location)
+            airpollutionDataJson=weather.getAirPollutionData(location=location)
+            
             currentDate=datetime.now().date()
             currentTime=datetime.now().time().strftime('%H:%M:%S')
+            
             if weatherDataJson:
                 return render_template('weatherForecast.html', weatherDataJson=weatherDataJson, currentDate=currentDate, currentTime=currentTime, location=location, airpollutionDataJson=airpollutionDataJson, weatherForecastJson=weatherForecastJson)
             else:

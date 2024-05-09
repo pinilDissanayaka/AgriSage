@@ -20,6 +20,15 @@ class Weather(object):
     def makeForcastUrl(self, lat, lon):
         weatherUrl=f'http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={self._weatherAPIKey}&units=metric'
         return weatherUrl
+    
+    def geocoding(self, location):
+        
+        geocordingUrl=f'http://api.openweathermap.org/geo/1.0/direct?q={location}&appid={self._weatherAPIKey}'
+        geocordingData=requests.get(geocordingUrl)
+        geocordingJson=geocordingData.json()
+        lat=geocordingJson[0]['lat']
+        lon=geocordingJson[0]['lon']
+        return lat, lon
         
     def getWeatherData(self, location :str):
         weatherUrl=self.makeUrl(location=location)
@@ -27,13 +36,15 @@ class Weather(object):
         weatherDataJson=weatherData.json()
         return weatherDataJson
     
-    def getweatherForecast(self, lat=6.9, lon=79.8):
+    def getweatherForecast(self, location:str):
+        lat, lon=self.geocoding(location=location)
         weatherUrl=self.makeForcastUrl(lat=lat, lon=lon)
         weatherForecast=requests.get(weatherUrl)
         weatherForecastJson=weatherForecast.json()
         return weatherForecastJson
         
-    def getAirPollutionData(self, lat=6.9, lon=79.8):
+    def getAirPollutionData(self, location:str):
+        lat, lon=self.geocoding(location=location)
         pollutionUrl=self.makePollutionUrl(lat=lat, lon=lon)
         airPollutionData=requests.get(pollutionUrl)
         airPollutionJson=airPollutionData.json()
