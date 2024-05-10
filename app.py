@@ -94,7 +94,7 @@ def setup(errorMassage=" "):
                     country=request.form['country']
                     code=request.form['code']
                     uName=session['username']
-                    status=user.addIoT(userName=uName, location=location, country=country, code=code)
+                    status=user.setupIoT(userName=uName, location=location, country=country, code=code)
                     if status:
                         session['registered']=False
                         return redirect(url_for('dashboard'))
@@ -125,7 +125,7 @@ def dashboard():
                 _, loggedUser=user.getUserByUserName(userName=session['username'])
                 currentDate=datetime.now().date()
                 currentTime=datetime.now().time().strftime('%H:%M:%S')
-                iotDevices=firebase.getDevices(keys=loggedUser['code'])
+                iotDevices=loggedUser['code']
                 return render_template('dashboard.html', currentDate=currentDate, currentTime=currentTime, iotDevices=iotDevices)
     except:
         session['loggedIn']=False
@@ -137,7 +137,19 @@ def addIoT(errorMassage = " "):
         if not session['loggedIn']:
             return redirect(url_for('login'))
         else:
-            return render_template('addIoT.html', errorMassage=errorMassage) 
+            if request.method =='POST':
+                ioTCode=request.form['IoTCode']
+                uName=session['username']
+                status=user.addIoT(userName=uName, code=ioTCode)
+                
+                if status:
+                    errorMassage='IoT device added successfully'
+                    return render_template('addIoT.html', errorMassage=errorMassage)
+                else:
+                    errorMassage='IoT device setup failed'
+                    return render_template('addIoT.html', errorMassage=errorMassage)
+            else:
+                return render_template('addIoT.html', errorMassage=errorMassage) 
     except:
         session['loggedIn']=False
         return redirect(url_for('login'))
@@ -148,7 +160,12 @@ def IoT(deviceID):
         if not session['loggedIn']:
             return redirect(url_for('login'))
         else:
-            iotData=firebase.getValue(key=deviceID)
+            ifExists=firebase.getKeys(key=deviceID)
+            if ifExists:
+                iotData=firebase.getValue(key=deviceID)
+            else:
+                iotData=None
+            
             return render_template('IoTDevice.html', deviceID=deviceID, iotData=iotData)
     except:
         session['loggedIn']=False
@@ -277,8 +294,7 @@ def profile(status=" "):
             phoneNumber=loggedUser['phoneNumber'] 
             location=loggedUser['location']
             country=loggedUser['country']
-            
-            
+                        
             return render_template('profile.html', status=status, name=name, country=country, location=location, phoneNumber=phoneNumber)
         else:
             return redirect(url_for('login'))
@@ -321,7 +337,6 @@ def changeProfile(status=" "):
                 
                 return render_template('profile.html', status=status, name=name, country=country, location=location, phoneNumber=phoneNumber) 
         else:
-            
             _, loggedUser=user.getUserByUserName(userName=session['username'])
             name=loggedUser['name']
             phoneNumber=loggedUser['phoneNumber'] 

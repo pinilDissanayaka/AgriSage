@@ -111,12 +111,27 @@ class User(object):
         return status
     
     
-    def addIoT(self, userName:str, location:str, country:str, code:str):
+    def setupIoT(self, userName:str, location:str, country:str, code:str):
         try:
             client, collection, connectionStatus=User.connectDB()
             
             if connectionStatus is True: 
                     collection.update_one({'userName' : userName}, {'$set' : { 'location': location, 'country' : country}})
+                    collection.update_one({'userName' : userName}, {'$push' : { 'code' : code}})    
+                    status=True
+            else:
+                status=False
+               
+        finally:
+            client.close()
+            
+        return status
+    
+    def addIoT(self, userName:str, code:str):
+        try:
+            client, collection, connectionStatus=User.connectDB()
+            
+            if connectionStatus is True: 
                     collection.update_one({'userName' : userName}, {'$push' : { 'code' : code}})    
                     status=True
             else:

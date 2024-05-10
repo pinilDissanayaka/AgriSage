@@ -12,145 +12,147 @@
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-        <li class="breadcrumb-item active">IoT Device</li>
+        <li class="breadcrumb-item active">IoT Device - {{ deviceID }}</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
 
-  <section class="section dashboard">
-    <div class="col-lg-8">
-      <div class="row">
-        <!-- User Card -->
-        <div class="col-xxl-4 col-md-6">
-          <div class="card info-card">
-            <div class="card-body">
-              <h5 class="card-title">Device ID<span></span></h5>
-              <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-people"></i>
-                </div>
-                <div class="ps-3">
-                  <h6>{{ deviceID }}</h6>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- End User Card -->
-
-        <!-- humidity Card -->
-        <div class="col-xxl-4 col-md-6">
-          <div class="card info-card">
-            <div class="card-body">
-              <h5 class="card-title">Humidity<span></span></h5>
-              <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-people"></i>
-                </div>
-                <div class="ps-3">
-                  <h6>{{ iotData['humidity'] }} % </h6>
+  {% if iotData %}
+    <section class="section dashboard">
+      <div class="col-lg-8">
+        <div class="row">
+          <!-- User Card -->
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card">
+              <div class="card-body">
+                <h5 class="card-title">Device ID<span></span></h5>
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-people"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>{{ deviceID }}</h6>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- End humidity Card -->
+          <!-- End User Card -->
 
-        <!-- Temperature Card -->
-        <div class="col-xxl-4 col-xl-12">
-          <div class="card info-card">
-            <div class="card-body">
-              <h5 class="card-title">Temperature<span></span></h5>
-              <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-archive"></i>
-                </div>
-                <div class="ps-3">
-                  <h6>{{ iotData['temperature'] }}&#176;C</h6>
+          <!-- humidity Card -->
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card">
+              <div class="card-body">
+                <h5 class="card-title">Humidity<span></span></h5>
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-people"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>{{ iotData['humidity'] }} % </h6>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- End Temperature Card -->
+          <!-- End humidity Card -->
 
+          <!-- Temperature Card -->
+          <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card">
+              <div class="card-body">
+                <h5 class="card-title">Temperature<span></span></h5>
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-archive"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>{{ iotData['temperature'] }}&#176;C</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Temperature Card -->
+
+        </div>
       </div>
-    </div>
     <!-- End Left side columns -->
 
-    <div class='row'>
-      <div class="col-12">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Soil Nutrients<span></span></h5>
+      <div class='row'>
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Soil Nutrients<span></span></h5>
 
-            <!-- Soil Condition Chart -->
-            <div id="reportsChart"></div>
+              <!-- Soil Condition Chart -->
+              <div id="reportsChart"></div>
 
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  new ApexCharts(document.querySelector("#reportsChart"), {
-                    series: [{
-                      name: 'Maximum Temperature',
-                      data: [31, 32, 32, 31.5, 30, 30, 30],
-                    }, {
-                      name: 'Temperature',
-                      data: [11, 12, 12, 12, 12, 12, 11]
-                    }, {
-                      name: 'Minimum Temperature',
-                      data: [15, 16, 16, 15, 15, 14, 14]
-                    }],
-                    chart: {
-                      height: 350,
-                      type: 'area',
-                      toolbar: {
-                        show: true
+                <script>
+                  document.addEventListener("DOMContentLoaded", () => {
+                    new ApexCharts(document.querySelector("#reportsChart"), {
+                      series: [{
+                        name: 'Maximum Temperature',
+                        data: [31, 32, 32, 31.5, 30, 30, 30],
+                      }, {
+                        name: 'Temperature',
+                        data: [11, 12, 12, 12, 12, 12, 11]
+                      }, {
+                        name: 'Minimum Temperature',
+                        data: [15, 16, 16, 15, 15, 14, 14]
+                      }],
+                      chart: {
+                        height: 350,
+                        type: 'area',
+                        toolbar: {
+                          show: true
+                        },
                       },
-                    },
-                    markers: {
-                      size: 4
-                    },
-                    colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                    fill: {
-                      type: "gradient",
-                      gradient: {
-                        shadeIntensity: 1,
-                        opacityFrom: 0.3,
-                        opacityTo: 0.4,
-                        stops: [0, 90, 100]
+                      markers: {
+                        size: 4
+                      },
+                      colors: ['#4154f1', '#2eca6a', '#ff771d'],
+                      fill: {
+                        type: "gradient",
+                        gradient: {
+                          shadeIntensity: 1,
+                          opacityFrom: 0.3,
+                          opacityTo: 0.4,
+                          stops: [0, 90, 100]
+                        }
+                      },
+                      dataLabels: {
+                        enabled: true
+                      },
+                      stroke: {
+                        curve: 'smooth',
+                        width: 2
+                      },
+                      xaxis: {
+                        type: 'datetime',
+                        categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+                      },
+                      tooltip: {
+                        x: {
+                          format: 'dd/MM/yy HH:mm'
+                        },
                       }
-                    },
-                    dataLabels: {
-                      enabled: true
-                    },
-                    stroke: {
-                      curve: 'smooth',
-                      width: 2
-                    },
-                    xaxis: {
-                      type: 'datetime',
-                      categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-                    },
-                    tooltip: {
-                      x: {
-                        format: 'dd/MM/yy HH:mm'
-                      },
-                    }
-                  }).render();
-                });
-              </script>
-              <!-- End Soil Condition Chart -->
+                    }).render();
+                  });
+                </script>
+                <!-- End Soil Condition Chart -->
+
+              </div>
 
             </div>
-
           </div>
+          <!-- End Reports -->
         </div>
-        <!-- End Reports -->
       </div>
-    </div>
 
 
-  </section>
+    </section>
+    {% endif %}
 
 </main>
   <!-- End #main -->
