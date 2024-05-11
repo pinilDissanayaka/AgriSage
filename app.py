@@ -250,9 +250,9 @@ def addProduct(errorMassage=" "):
                     else:
                         errorMassage="Failed adding product."
                         
-                    return render_template('addProduct.html', errorMassage=errorMassage)    
-                
-                return render_template('addProduct.html', errorMassage=errorMassage)
+                    return render_template('addProduct.html', errorMassage=errorMassage)   
+                else: 
+                    return render_template('addProduct.html', errorMassage=errorMassage)
             else:
                 return redirect(url_for('login'))
     except:
