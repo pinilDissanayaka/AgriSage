@@ -179,7 +179,7 @@ def adminDashboard():
             return redirect(url_for('login'))
         else:
             if session['adminUserFlag']:
-                userCount=admin.getDocumentCount(collectionName='Users', adminUserFlag='False')
+                nonAdminUserCount=admin.getDocumentCount(collectionName='Users', adminUserFlag='False')
                 adminCount=admin.getDocumentCount(collectionName='Users', adminUserFlag='True')
                 productCount=admin.getDocumentCount(collectionName='Products')
                 
@@ -194,7 +194,7 @@ def adminDashboard():
             
                 data = [0, 10, 15, 8, 22, 18, 25]
                 
-                return render_template('adminDashboard.html', userCount=userCount, productCount=productCount, adminCount=adminCount, data=data, labels=labels)
+                return render_template('adminDashboard.html', nonAdminUserCount=nonAdminUserCount, productCount=productCount, adminCount=adminCount, data=data, labels=labels)
                 
             elif not session['adminUserFlag']:
                 return redirect(url_for('dashboard'))
