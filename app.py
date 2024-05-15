@@ -433,6 +433,19 @@ def weatherForecast():
      #   session['loggedIn']=False
      #   return redirect(url_for('login'))
      
+     
+@app.route('/diseasePrediction', methods =['GET', 'POST'])
+def diseasePrediction():
+    #try:
+        if session['loggedIn']:
+            return render_template('prediction.html')
+
+        else:
+            return redirect(url_for('login'))
+   # except:
+     #   session['loggedIn']=False
+     #   return redirect(url_for('login'))
+     
             
 if __name__=="__main__":
     app.run(debug=True, port=8000)
