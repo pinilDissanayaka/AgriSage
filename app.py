@@ -186,6 +186,36 @@ def deleteIoTDevice(deviceID):
         session['loggedIn']=False
         return redirect(url_for('login'))
     
+@app.route('/editIoTDevice/<deviceID>', methods=['GET', 'POST'])
+def editIoTDevice(deviceID, errorMassage = " "):
+    try:
+        if not session['loggedIn']:
+            return redirect(url_for('login'))
+        else:
+            _, loggedUser=user.getUserByUserName(userName=session['username'])
+            
+            location=loggedUser['location']
+            
+            if request.method =='POST':
+                uName=session['username']
+                newDeviceID=request.form['IoTCode']
+                
+                if deviceID != newDeviceID:
+                    status=user.editIoT(userName=uName, code=deviceID, newCode=newDeviceID)
+                    if status:
+                        return redirect(url_for('IoT', deviceID=newDeviceID))
+                    else:
+                        errorMassage="couldn't not change IoT device"
+                        return render_template('editIoT.html', deviceID=deviceID, location=location, errorMassage=errorMassage)
+                else:
+                    errorMassage="Your new device ID is too similar to one of your device ID"
+                    return render_template('editIoT.html', deviceID=deviceID, location=location, errorMassage=errorMassage)
+            else:
+                return render_template('editIoT.html', deviceID=deviceID, location=location, errorMassage=errorMassage)
+    except:
+        session['loggedIn']=False
+        return redirect(url_for('login'))
+    
     
 @app.route('/adminDashboard', methods=['GET', 'POST'])
 def adminDashboard():
