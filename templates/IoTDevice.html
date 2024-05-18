@@ -182,7 +182,6 @@
               </button>
               <a role="button" class="btn btn-success" href="javascript: location.reload();">Refresh Page</a>
 
-
               <div class="modal fade" id="deleteDeviceModal" tabindex="-1">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -199,8 +198,10 @@
                       <h6><strong>Do you wish to proceed?</strong></h6>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-danger">Delete</button>
+                      <form action="{{ url_for("deleteIoTDevice", deviceID=deviceID)}}" method="POST">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                      </form>
                     </div>
                   </div>
                 </div>

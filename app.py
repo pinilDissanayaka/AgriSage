@@ -165,8 +165,23 @@ def IoT(deviceID):
                 iotData=firebase.getValue(key=deviceID)
             else:
                 iotData=None
-            
             return render_template('IoTDevice.html', deviceID=deviceID, iotData=iotData)
+    except:
+        session['loggedIn']=False
+        return redirect(url_for('login'))
+    
+@app.route('/deleteIoTDevice/<deviceID>', methods=['GET', 'POST'])
+def deleteIoTDevice(deviceID):
+    try:
+        if not session['loggedIn']:
+            return redirect(url_for('login'))
+        else:
+            uName=session['username']
+            status=user.deleteIoT(userName=uName, code=deviceID)
+            if status:
+                return redirect(url_for('dashboard'))
+            else:
+                return redirect(url_for('IoT', deviceID=deviceID))
     except:
         session['loggedIn']=False
         return redirect(url_for('login'))
@@ -435,10 +450,10 @@ def weatherForecast():
      
      
 @app.route('/diseasePrediction', methods =['GET', 'POST'])
-def diseasePrediction():
+def diseasePrediction(prediction=" "):
     #try:
         if session['loggedIn']:
-            return render_template('prediction.html')
+            return render_template('prediction.html', prediction=prediction)
 
         else:
             return redirect(url_for('login'))

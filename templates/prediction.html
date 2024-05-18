@@ -21,53 +21,58 @@
 
   <section class="section dashboard">
     <div class="row">
-        <div class="col-lg-6">
-            <div>
-                <p class="mb-4">Welcome to our AI-Powered Beauty Disease Identification System – your digital ally in skincare. Harnessing the power of artificial intelligence, this platform is designed to elevate your skincare experience by accurately diagnosing various skin conditions and beauty-related concerns.Empower yourself with precise insights into your skin's needs. Simply upload a photo, and our advanced AI algorithms will analyze it against a comprehensive database of skin conditions, providing personalized assessments and tailored recommendations.Discover a new level of confidence and clarity in your skincare journey with our AI-driven solution. Your skin deserves the best care, and we're here to provide it. Explore our Beauty Disease Identification System today and unlock the secrets to radiant, healthy skin.</p>
-                <form method="POST" action="#" enctype="multipart/form-data">                 
-                    <div class="mb-3">
-                        <label for="formFile" class="form-label">Click the "Choose File" button to select a photo. Ensure the image is clear and well-lit.</label>
-                        <input class="form-control" type="file" id="formFile" accept="image/*" name="file" onchange="previewFile(this);">
+      <div class="col-lg-6">
+          <div>
+              <p class="mb-4">Welcome to our AI-Powered Beauty Disease Identification System – your digital ally in skincare. Harnessing the power of artificial intelligence, this platform is designed to elevate your skincare experience by accurately diagnosing various skin conditions and beauty-related concerns.Empower yourself with precise insights into your skin's needs. Simply upload a photo, and our advanced AI algorithms will analyze it against a comprehensive database of skin conditions, providing personalized assessments and tailored recommendations.Discover a new level of confidence and clarity in your skincare journey with our AI-driven solution. Your skin deserves the best care, and we're here to provide it. Explore our Beauty Disease Identification System today and unlock the secrets to radiant, healthy skin.</p>
+              <form method="POST" action="#" enctype="multipart/form-data">                 
+                  <div class="mb-3">
+                      <label for="formFile" class="form-label">Click the "Choose File" button to select a photo. Ensure the image is clear and well-lit.</label>
+                      <input class="form-control" type="file" id="formFile" accept="image/*" name="file" onchange="previewFile(this);">
+                      
+                      <script>
+                        function previewFile(input){
+                          var file = $("input[type=file]").get(0).files[0];
                         
-                        <script>
-                          function previewFile(input){
-                            var file = $("input[type=file]").get(0).files[0];
-                          
-                            if(file){
-                                var reader = new FileReader();
-                          
-                                reader.onload = function(){
-                                    $(".img-thumbnail").attr("src", reader.result);
-                                }
-                          
-                                reader.readAsDataURL(file);
-                            }
+                          if(file){
+                              var reader = new FileReader();
+                        
+                              reader.onload = function(){
+                                  $(".img-thumbnail").attr("src", reader.result);
+                              }
+                        
+                              reader.readAsDataURL(file);
                           }
-                        </script>
+                        }
+                      </script>
 
-                        <div class="col-12">
-                            <img class="img-thumbnail" src="" alt="">
-                        </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary" type="submit">Upload</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+                      <div class="col-12">
+                          <img class="img-thumbnail" src="" alt="">
+                      </div>
+                      <div class="col-12">
+                          <button class="btn btn-primary" type="submit">Upload</button>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
 
-        <div class="col-lg-6">
-            <div class="mb-3">
-                {% if prediction != 0%}
-                    <label>Identified as a :  </label>
-                {% endif %}
-            </div>
-            <div class="mb-3">
-                {% if response != 0%}
-                    {{response}}
-                {% endif %}
-            </div>
-        </div>
+      <div class="col-lg-6">
+          <div class="mb-3">
+            {% if prediction == " "%}
+              <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">Well done!</h4>
+                <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+                <hr>
+                <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+              </div>
+            {% endif %}
+          </div>
+          <div class="mb-3">
+              {% if response != 0%}
+                  {{response}}
+              {% endif %}
+          </div>
+      </div>
     </div>
   </section>
 </main>

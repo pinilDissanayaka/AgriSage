@@ -141,6 +141,22 @@ class User(object):
             client.close()
             
         return status
+    
+    
+    def deleteIoT(self, userName:str, code:str):
+        try:
+            client, collection, connectionStatus=User.connectDB()
+            
+            if connectionStatus is True: 
+                    collection.update_one({'userName' : userName}, {'$pull' : { 'code' : code}})    
+                    status=True
+            else:
+                status=False
+               
+        finally:
+            client.close()
+            
+        return status
             
     def changePassword(self, userName:str, oldPassword:str, newPassword:str):
         try:
