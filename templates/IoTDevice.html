@@ -156,24 +156,51 @@
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Device {{ deviceID }} Not Found !</h5>
-              <p>Toggle a working modal demo by clicking the button below. It will slide down and fade in from the top of the page</p>
-              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal">
+              <h5 class="card-title"><strong>Device {{ deviceID }} Not Found !</strong></h5>
+              <div>
+                <h6>We couldn't locate the IoT device you're looking for. Please try the following steps:</h6>
+                <ol>
+                  <li>Ensure Device is Powered On: Check that your device is properly connected to a power source.</li>
+                  <li>Check Network Connection: Verify that your device is connected to your Wi-Fi or Ethernet network.</li>
+                  <li>Refresh Page: Sometimes, a simple refresh can help.</li>
+                  <li>Move Closer: Ensure the device is within range of your network and free from obstructions.</li>
+                  <li>Restart Device: Power off your device, wait a few seconds, and power it back on.</li>
+                  <li>Update Firmware: Make sure your device firmware is up to date.</li>
+                  <li>Check App Settings: Confirm that the app or platform you're using is correctly set up and up to date.</li>
+                </ol>
+                <p>If these steps don’t resolve the issue, please contact our support team.<p>
+                <h1>Contact Support:</h1>
+                <ul>
+                  <li>Email: support@example.com</li>
+                  <li>Phone: 1-800-123-4567</li>
+                  <li>Live Chat: Start Chat</li>
+                </ul>
+                <p>Thank you for your patience!</p>
+              </div>
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteDeviceModal">
                 Delete Device
               </button>
-              <div class="modal fade" id="basicModal" tabindex="-1">
+              <a role="button" class="btn btn-success" href="javascript: location.reload();">Refresh Page</a>
+
+
+              <div class="modal fade" id="deleteDeviceModal" tabindex="-1">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title">Basic Modal</h5>
+                      <h5 class="modal-title">Delete Device Confirmation</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      Non omnis incidunt qui sed occaecati magni asperiores est mollitia. Soluta at et reprehenderit. Placeat autem numquam et fuga numquam. Tempora in facere consequatur sit dolor ipsum. Consequatur nemo amet incidunt est facilis. Dolorem neque recusandae quo sit molestias sint dignissimos.
+                      <h6><strong>Are you sure you want to delete this device?</strong></h6>
+                      <ul>
+                        <li>Device ID: {{ deviceID }}</li>
+                      </ul>
+                      <h6>Deleting this device will remove it permanently from your account. This action cannot be undone.</h6>
+                      <h6><strong>Do you wish to proceed?</strong></h6>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-danger">Save changes</button>
+                      <button type="button" class="btn btn-danger">Delete</button>
                     </div>
                   </div>
                 </div>
