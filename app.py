@@ -8,6 +8,7 @@ from utils.admin import Admin
 from utils.product import Product
 from utils.weather import Weather
 from utils.firbase import Firebase
+from utils.prediction import Prediction
 
 app=Flask(__name__, static_folder="static", template_folder="templates")
 user=User(app=app)
@@ -15,6 +16,7 @@ admin=Admin(app=app)
 product=Product()
 weather=Weather()
 firebase=Firebase()
+prediction=Prediction()
 
 load_dotenv('.env')
 app.secret_key=os.getenv('APP_SECRECT_KEY')
@@ -480,10 +482,11 @@ def weatherForecast():
      
      
 @app.route('/diseasePrediction', methods =['GET', 'POST'])
-def diseasePrediction(prediction=" "):
+def diseasePrediction(pred=" "):
     #try:
         if session['loggedIn']:
-            return render_template('prediction.html', prediction=prediction)
+            pred=prediction.makePrediction()
+            return render_template('prediction.html', pred=pred)
 
         else:
             return redirect(url_for('login'))
