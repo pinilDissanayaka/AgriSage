@@ -2,6 +2,8 @@ from flask import Flask, url_for, redirect, request, render_template, session
 from io import BytesIO
 from datetime import datetime
 import os
+from urllib import request
+from werkzeug.utils import secure_filename
 from dotenv import load_dotenv
 from utils.user import User
 from utils.admin import Admin
@@ -464,14 +466,14 @@ def weatherForecast():
             location=loggedUser['location']
             
             weatherDataJson=weather.getWeatherData(location=location)
-            weatherForecastJson=weather.getweatherForecast(location=location)
-            airpollutionDataJson=weather.getAirPollutionData(location=location)
+            weatherForecastJson=weather.getWeatherForecast(location=location)
+            airPollutionDataJson=weather.getAirPollutionData(location=location)
             
             currentDate=datetime.now().date()
             currentTime=datetime.now().time().strftime('%H:%M:%S')
             
             if weatherDataJson:
-                return render_template('weatherForecast.html', weatherDataJson=weatherDataJson, currentDate=currentDate, currentTime=currentTime, location=location, airpollutionDataJson=airpollutionDataJson, weatherForecastJson=weatherForecastJson)
+                return render_template('weatherForecast.html', weatherDataJson=weatherDataJson, currentDate=currentDate, currentTime=currentTime, location=location, airPollutionDataJson=airPollutionDataJson, weatherForecastJson=weatherForecastJson)
             else:
                 return redirect(url_for('badRequest'))
         else:

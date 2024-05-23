@@ -36,7 +36,7 @@ class Weather(object):
         weatherDataJson=weatherData.json()
         return weatherDataJson
     
-    def getweatherForecast(self, location:str):
+    def getWeatherForecast(self, location:str):
         lat, lon=self.geocoding(location=location)
         weatherUrl=self.makeForcastUrl(lat=lat, lon=lon)
         weatherForecast=requests.get(weatherUrl)
