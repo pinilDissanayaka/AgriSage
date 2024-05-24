@@ -17,17 +17,17 @@ class Weather(object):
         weatherUrl =f"http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={self._weatherAPIKey}&units=metric"
         return weatherUrl
         
-    def makeForcastUrl(self, lat, lon):
+    def makeForecastUrl(self, lat, lon):
         weatherUrl=f'http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={self._weatherAPIKey}&units=metric'
         return weatherUrl
     
     def geocoding(self, location):
         try:
-            geocordingUrl=f'http://api.openweathermap.org/geo/1.0/direct?q={location}&appid={self._weatherAPIKey}'
-            geocordingData=requests.get(geocordingUrl)
-            geocordingJson=geocordingData.json()
-            lat=geocordingJson[0]['lat']
-            lon=geocordingJson[0]['lon']
+            geocodingUrl=f'http://api.openweathermap.org/geo/1.0/direct?q={location}&appid={self._weatherAPIKey}'
+            geocodingData=requests.get(geocodingUrl)
+            geocodingJson=geocodingData.json()
+            lat=geocodingJson[0]['lat']
+            lon=geocodingJson[0]['lon']
             return lat, lon
         except:
             return None, None
@@ -45,7 +45,7 @@ class Weather(object):
         try:
             lat, lon=self.geocoding(location=location)
             if lat and lon:
-                weatherUrl=self.makeForcastUrl(lat=lat, lon=lon)
+                weatherUrl=self.makeForecastUrl(lat=lat, lon=lon)
                 weatherForecast=requests.get(weatherUrl)
                 weatherForecastJson=weatherForecast.json()
                 return weatherForecastJson
