@@ -2,7 +2,6 @@ from flask import Flask, url_for, redirect, request, render_template, session
 from io import BytesIO
 from datetime import datetime
 import os
-from urllib import request
 from werkzeug.utils import secure_filename
 from dotenv import load_dotenv
 from utils.user import User
@@ -487,7 +486,8 @@ def weatherForecast():
 def diseasePrediction(pred=" "):
     #try:
         if session['loggedIn']:
-            pred=prediction.makePrediction()
+            #pred=prediction.makePrediction()
+            pred="Hu"
             return render_template('prediction.html', pred=pred)
 
         else:
