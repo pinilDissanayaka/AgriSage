@@ -11,22 +11,28 @@ class Firebase(object):
         firebase_admin.initialize_app(self.cred, {'databaseURL' : os.getenv('FIREBASE_URL')})
         
     def getKeys(self, key:str):
-        keys=db.reference('/').get()
-        keys=keys.keys()
+        try:
+            keys=db.reference('/').get()
+            keys=keys.keys()
         
-        if key in keys:
-           ifExists=True
-        else:
-           ifExists=False
-        return ifExists
+            if key in keys:
+                ifExists=True
+            else:
+                ifExists=False
+            return ifExists
+        except:
+            return None
     
     def getValue(self, key:str):
-        ifExists=self.getKeys(key=key)
-        if ifExists:
-            value=db.reference(key).get()
-        else:
-            value=False
-        return value
+        try:
+            ifExists=self.getKeys(key=key)
+            if ifExists:
+                value=db.reference(key).get()
+            else:
+                value=False
+            return value
+        except:
+            return None
         
 
         

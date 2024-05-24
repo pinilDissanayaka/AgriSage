@@ -22,33 +22,51 @@ class Weather(object):
         return weatherUrl
     
     def geocoding(self, location):
-        
-        geocordingUrl=f'http://api.openweathermap.org/geo/1.0/direct?q={location}&appid={self._weatherAPIKey}'
-        geocordingData=requests.get(geocordingUrl)
-        geocordingJson=geocordingData.json()
-        lat=geocordingJson[0]['lat']
-        lon=geocordingJson[0]['lon']
-        return lat, lon
+        try:
+            geocordingUrl=f'http://api.openweathermap.org/geo/1.0/direct?q={location}&appid={self._weatherAPIKey}'
+            geocordingData=requests.get(geocordingUrl)
+            geocordingJson=geocordingData.json()
+            lat=geocordingJson[0]['lat']
+            lon=geocordingJson[0]['lon']
+            return lat, lon
+        except:
+            return None, None
         
     def getWeatherData(self, location :str):
-        weatherUrl=self.makeUrl(location=location)
-        weatherData=requests.get(weatherUrl)
-        weatherDataJson=weatherData.json()
-        return weatherDataJson
+        try:
+            weatherUrl=self.makeUrl(location=location)
+            weatherData=requests.get(weatherUrl)
+            weatherDataJson=weatherData.json()
+            return weatherDataJson
+        except:
+            return None
     
     def getWeatherForecast(self, location:str):
-        lat, lon=self.geocoding(location=location)
-        weatherUrl=self.makeForcastUrl(lat=lat, lon=lon)
-        weatherForecast=requests.get(weatherUrl)
-        weatherForecastJson=weatherForecast.json()
-        return weatherForecastJson
+        try:
+            lat, lon=self.geocoding(location=location)
+            if lat and lon:
+                weatherUrl=self.makeForcastUrl(lat=lat, lon=lon)
+                weatherForecast=requests.get(weatherUrl)
+                weatherForecastJson=weatherForecast.json()
+                return weatherForecastJson
+            else:
+                return None
+        except:
+            return None
         
     def getAirPollutionData(self, location:str):
-        lat, lon=self.geocoding(location=location)
-        pollutionUrl=self.makePollutionUrl(lat=lat, lon=lon)
-        airPollutionData=requests.get(pollutionUrl)
-        airPollutionJson=airPollutionData.json()
-        return airPollutionJson
+        try:
+            lat, lon=self.geocoding(location=location)
+            if lat and lon:
+                pollutionUrl=self.makePollutionUrl(lat=lat, lon=lon)
+                airPollutionData=requests.get(pollutionUrl)
+                airPollutionJson=airPollutionData.json()
+                return airPollutionJson
+            else:
+                return None
+        except:
+            return None
+    
         
         
         

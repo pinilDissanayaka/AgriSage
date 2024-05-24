@@ -159,7 +159,7 @@ def addIoT(errorMassage = " "):
 
 @app.route('/IoTDevice/<deviceID>', methods=['GET', 'POST'])
 def IoT(deviceID):
-    try:
+    #try:
         if not session['loggedIn']:
             return redirect(url_for('login'))
         else:
@@ -169,7 +169,7 @@ def IoT(deviceID):
             else:
                 iotData=None
             return render_template('IoTDevice.html', deviceID=deviceID, iotData=iotData)
-    except:
+    #except:
         session['loggedIn']=False
         return redirect(url_for('login'))
     
@@ -332,6 +332,10 @@ def pageNotFound(e):
 def badRequest(e):
     return render_template('badRequest.html'), 400
 
+@app.route('/youAreOffline')
+def youAreOffline():
+    return render_template('youAreOffline.html'), 503 
+
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profile(status=" "):
@@ -471,10 +475,10 @@ def weatherForecast():
             currentDate=datetime.now().date()
             currentTime=datetime.now().time().strftime('%H:%M:%S')
             
-            if weatherDataJson:
+            if weatherDataJson or weatherForecastJson or airPollutionDataJson:
                 return render_template('weatherForecast.html', weatherDataJson=weatherDataJson, currentDate=currentDate, currentTime=currentTime, location=location, airPollutionDataJson=airPollutionDataJson, weatherForecastJson=weatherForecastJson)
             else:
-                return redirect(url_for('badRequest'))
+                return redirect(url_for('youAreOffline'))
         else:
             return redirect(url_for('login'))
    # except:
