@@ -411,12 +411,17 @@ def changePassword(status=" "):
                 password=request.form['password']
                 newpassword=request.form['newpassword']
                 renewpassword=request.form['renewpassword']
+                
                                 
                 if newpassword == renewpassword:
-                    status=user.changePassword(userName=uName, oldPassword=password, newPassword=newpassword)
-                    return render_template('profile.html', status=status)
+                    if newpassword != password:
+                        status=user.changePassword(userName=uName, oldPassword=password, newPassword=newpassword)
+                        return render_template('profile.html', status=status)
+                    else:
+                        status="Your new password is too similar to one of your new password."
+                        return render_template('profile.html', status=status) 
                 else:
-                    status='Can not change password'
+                    status="Can not change password."
                     return render_template('profile.html', status=status) 
             else:
                 return render_template('profile.html', status=status)

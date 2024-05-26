@@ -90,6 +90,9 @@
                       <h2 class="accordion-header" id="headingOne">
                       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                           Weather Description : {{ weatherDataJson['weather'][0]['description'] }}
+                          <div class="d-flex justify-content-end">
+                            <img src="https://openweathermap.org/img/wn/{{ weatherDataJson['weather'][0]['icon'] }}@2x.png" class="rounded-circle">
+                          </div>
                       </button>
                       </h2>
                       <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -146,7 +149,6 @@
                 
                 <!-- Weather Forecast Accordion -->
                 <div class="accordion" id="weatherForecast">
-
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="headingFour">
                       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
@@ -159,7 +161,10 @@
                     </h2>
                     <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#weatherForecast">
                       <div class="accordion-body">
-                        {{ weatherForecastJson['list'][0]}}
+                        <h6><strong>Temperature : </strong> {{ weatherForecastJson['list'][0]['main']['temp'] }} &#x2103; </h6>
+                        <h6><strong>Humidity : </strong> {{ weatherForecastJson['list'][0]['main']['humidity'] }} % </h6>
+                        <h6><strong>Wind Speed :  </strong> {{ weatherForecastJson['list'][0]['wind']['speed'] }} meter/sec </h6>
+                        <h6><strong>Wind Gust :  </strong> {{ weatherForecastJson['list'][0]['wind']['gust'] }} meter/sec </h6>
                       </div>
                     </div>
                   </div>
@@ -167,16 +172,19 @@
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="headingFive">
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                        {{ weatherForecastJson['list'][6]['dt_txt'] }}
-                        {{ weatherForecastJson['list'][6]['weather'][0]['description'] }}
+                        {{ weatherForecastJson['list'][5]['dt_txt'] }}
+                        {{ weatherForecastJson['list'][5]['weather'][0]['description'] }}
                         <div class="d-flex justify-content-end">
-                          <img src="https://openweathermap.org/img/wn/{{ weatherForecastJson['list'][6]['weather'][0]['icon'] }}@2x.png" class="rounded-circle">
+                          <img src="https://openweathermap.org/img/wn/{{ weatherForecastJson['list'][5]['weather'][0]['icon'] }}@2x.png" class="rounded-circle">
                         </div>
                       </button>
                     </h2>
                     <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#weatherForecast">
                       <div class="accordion-body">
-                        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        <h6><strong>Temperature : </strong> {{ weatherForecastJson['list'][5]['main']['temp'] }} &#x2103; </h6>
+                        <h6><strong>Humidity : </strong> {{ weatherForecastJson['list'][5]['main']['humidity'] }} % </h6>
+                        <h6><strong>Wind Speed :  </strong> {{ weatherForecastJson['list'][5]['wind']['speed'] }} meter/sec </h6>
+                        <h6><strong>Wind Gust :  </strong> {{ weatherForecastJson['list'][5]['wind']['gust'] }} meter/sec </h6>
                       </div>
                     </div>
                   </div>
@@ -184,16 +192,19 @@
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="headingSix">
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                        {{ weatherForecastJson['list'][12]['dt_txt'] }}
-                        {{ weatherForecastJson['list'][12]['weather'][0]['description'] }}
+                        {{ weatherForecastJson['list'][11]['dt_txt'] }}
+                        {{ weatherForecastJson['list'][11]['weather'][0]['description'] }}
                         <div class="d-flex justify-content-end">
-                          <img src="https://openweathermap.org/img/wn/{{ weatherForecastJson['list'][12]['weather'][0]['icon'] }}@2x.png" class="rounded-circle">
+                          <img src="https://openweathermap.org/img/wn/{{ weatherForecastJson['list'][11]['weather'][0]['icon'] }}@2x.png" class="rounded-circle">
                         </div>
                       </button>
                     </h2>
                     <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#weatherForecast">
                       <div class="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        <h6><strong>Temperature : </strong> {{ weatherForecastJson['list'][11]['main']['temp'] }} &#x2103; </h6>
+                        <h6><strong>Humidity : </strong> {{ weatherForecastJson['list'][11]['main']['humidity'] }} % </h6>
+                        <h6><strong>Wind Speed :  </strong> {{ weatherForecastJson['list'][11]['wind']['speed'] }} meter/sec </h6>
+                        <h6><strong>Wind Gust :  </strong> {{ weatherForecastJson['list'][11]['wind']['gust'] }} meter/sec </h6>
                       </div>
                     </div>
                   </div>
@@ -201,16 +212,19 @@
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="headingSeven">
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                        {{ weatherForecastJson['list'][18]['dt_txt'] }}
-                        {{ weatherForecastJson['list'][18]['weather'][0]['description'] }}
+                        {{ weatherForecastJson['list'][17]['dt_txt'] }}
+                        {{ weatherForecastJson['list'][17]['weather'][0]['description'] }}
                         <div class="d-flex justify-content-end">
-                          <img src="https://openweathermap.org/img/wn/{{ weatherForecastJson['list'][18]['weather'][0]['icon'] }}@2x.png" class="rounded-circle">
+                          <img src="https://openweathermap.org/img/wn/{{ weatherForecastJson['list'][17]['weather'][0]['icon'] }}@2x.png" class="rounded-circle">
                         </div>
                       </button>
                     </h2>
                     <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#weatherForecast">
                       <div class="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        <h6><strong>Temperature : </strong> {{ weatherForecastJson['list'][17]['main']['temp'] }} &#x2103; </h6>
+                        <h6><strong>Humidity : </strong> {{ weatherForecastJson['list'][17]['main']['humidity'] }} % </h6>
+                        <h6><strong>Wind Speed :  </strong> {{ weatherForecastJson['list'][17]['wind']['speed'] }} meter/sec </h6>
+                        <h6><strong>Wind Gust :  </strong> {{ weatherForecastJson['list'][17]['wind']['gust'] }} meter/sec </h6>
                       </div>
                     </div>
                   </div>
@@ -218,16 +232,19 @@
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="headingEight">
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                        {{ weatherForecastJson['list'][24]['dt_txt'] }}
-                        {{ weatherForecastJson['list'][24]['weather'][0]['description'] }}
+                        {{ weatherForecastJson['list'][23]['dt_txt'] }}
+                        {{ weatherForecastJson['list'][23]['weather'][0]['description'] }}
                         <div class="d-flex justify-content-end">
-                          <img src="https://openweathermap.org/img/wn/{{ weatherForecastJson['list'][24]['weather'][0]['icon'] }}@2x.png" class="rounded-circle">
+                          <img src="https://openweathermap.org/img/wn/{{ weatherForecastJson['list'][23]['weather'][0]['icon'] }}@2x.png" class="rounded-circle">
                         </div>
                       </button>
                     </h2>
                     <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#weatherForecast">
                       <div class="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        <h6><strong>Temperature : </strong> {{ weatherForecastJson['list'][23]['main']['temp'] }} &#x2103; </h6>
+                        <h6><strong>Humidity : </strong> {{ weatherForecastJson['list'][23]['main']['humidity'] }} % </h6>
+                        <h6><strong>Wind Speed :  </strong> {{ weatherForecastJson['list'][23]['wind']['speed'] }} meter/sec </h6>
+                        <h6><strong>Wind Gust :  </strong> {{ weatherForecastJson['list'][23]['wind']['gust'] }} meter/sec </h6>
                       </div>
                     </div>
                   </div>
@@ -235,16 +252,19 @@
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="headingNine">
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
-                        {{ weatherForecastJson['list'][30]['dt_txt'] }}
-                        {{ weatherForecastJson['list'][30]['weather'][0]['description'] }}
+                        {{ weatherForecastJson['list'][29]['dt_txt'] }}
+                        {{ weatherForecastJson['list'][29]['weather'][0]['description'] }}
                         <div class="d-flex justify-content-end">
-                          <img src="https://openweathermap.org/img/wn/{{ weatherForecastJson['list'][30]['weather'][0]['icon'] }}@2x.png" class="rounded-circle">
+                          <img src="https://openweathermap.org/img/wn/{{ weatherForecastJson['list'][29]['weather'][0]['icon'] }}@2x.png" class="rounded-circle">
                         </div>
                       </button>
                     </h2>
                     <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#weatherForecast">
                       <div class="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        <h6><strong>Temperature : </strong> {{ weatherForecastJson['list'][29]['main']['temp'] }} &#x2103; </h6>
+                        <h6><strong>Humidity : </strong> {{ weatherForecastJson['list'][29]['main']['humidity'] }} % </h6>
+                        <h6><strong>Wind Speed :  </strong> {{ weatherForecastJson['list'][29]['wind']['speed'] }} meter/sec </h6>
+                        <h6><strong>Wind Gust :  </strong> {{ weatherForecastJson['list'][29]['wind']['gust'] }} meter/sec </h6>
                       </div>
                     </div>
                   </div>
@@ -252,16 +272,19 @@
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTen">
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
-                        {{ weatherForecastJson['list'][36]['dt_txt'] }}
-                        {{ weatherForecastJson['list'][36]['weather'][0]['description'] }}
+                        {{ weatherForecastJson['list'][35]['dt_txt'] }}
+                        {{ weatherForecastJson['list'][35]['weather'][0]['description'] }}
                         <div class="d-flex justify-content-end">
-                          <img src="https://openweathermap.org/img/wn/{{ weatherForecastJson['list'][36]['weather'][0]['icon'] }}@2x.png" class="rounded-circle">
+                          <img src="https://openweathermap.org/img/wn/{{ weatherForecastJson['list'][35]['weather'][0]['icon'] }}@2x.png" class="rounded-circle">
                         </div>
                       </button>
                     </h2>
                     <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#weatherForecast">
                       <div class="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        <h6><strong>Temperature : </strong> {{ weatherForecastJson['list'][35]['main']['temp'] }} &#x2103; </h6>
+                        <h6><strong>Humidity : </strong> {{ weatherForecastJson['list'][35]['main']['humidity'] }} % </h6>
+                        <h6><strong>Wind Speed :  </strong> {{ weatherForecastJson['list'][35]['wind']['speed'] }} meter/sec </h6>
+                        <h6><strong>Wind Gust :  </strong> {{ weatherForecastJson['list'][35]['wind']['gust'] }} meter/sec </h6>
                       </div>
                     </div>
                   </div>
