@@ -412,19 +412,24 @@ def changePassword(status=" "):
                 newpassword=request.form['newpassword']
                 renewpassword=request.form['renewpassword']
                 
-                                
+                _, loggedUser=user.getUserByUserName(userName=session['username'])
+                name=loggedUser['name']
+                phoneNumber=loggedUser['phoneNumber'] 
+                location=loggedUser['location']
+                country=loggedUser['country']
+                
                 if newpassword == renewpassword:
                     if newpassword != password:
                         status=user.changePassword(userName=uName, oldPassword=password, newPassword=newpassword)
-                        return render_template('profile.html', status=status)
+                        return render_template('profile.html', status=status, name=name, country=country, location=location, phoneNumber=phoneNumber)
                     else:
                         status="Your new password is too similar to one of your new password."
-                        return render_template('profile.html', status=status) 
+                        return render_template('profile.html', status=status, name=name, country=country, location=location, phoneNumber=phoneNumber) 
                 else:
                     status="Can not change password."
-                    return render_template('profile.html', status=status) 
+                    return render_template('profile.html', status=status, name=name, country=country, location=location, phoneNumber=phoneNumber) 
             else:
-                return render_template('profile.html', status=status)
+                return render_template('profile.html', status=status, name=name, country=country, location=location, phoneNumber=phoneNumber)
         else:
             return redirect(url_for('login'))
     except:
@@ -467,7 +472,7 @@ def needHelp():
     
 @app.route('/weatherForecast', methods =['GET', 'POST'])
 def weatherForecast():
-    #try:
+    try:
         if session['loggedIn']:
             _, loggedUser=user.getUserByUserName(userName=session['username'])
             
@@ -486,9 +491,9 @@ def weatherForecast():
                 return redirect(url_for('youAreOffline'))
         else:
             return redirect(url_for('login'))
-   # except:
-     #   session['loggedIn']=False
-     #   return redirect(url_for('login'))
+    except:
+        session['loggedIn']=False
+        return redirect(url_for('login'))
      
      
 @app.route('/diseasePrediction', methods =['GET', 'POST'])
