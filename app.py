@@ -505,6 +505,20 @@ def diseasePrediction(pred=" "):
      #   session['loggedIn']=False
      #   return redirect(url_for('login'))
      
+@app.route('/fertilizers', methods =['GET', 'POST'])
+def fertilizers():
+    #try:
+        if session['loggedIn']:
+            #pred=prediction.makePrediction()
+            fertilizers=[12, 13, 15, 18, 15, 16]
+            return render_template('fertilizers.html', fertilizers=fertilizers)
+
+        else:
+            return redirect(url_for('login'))
+   # except:
+     #   session['loggedIn']=False
+     #   return redirect(url_for('login'))
+     
             
 if __name__=="__main__":
     app.run(debug=True, port=8000)

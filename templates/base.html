@@ -280,7 +280,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="/dashboard">
+        <a class="nav-link " href="{{url_for('dashboard')}}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -288,7 +288,7 @@
       <!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link " href="/weatherForecast">
+        <a class="nav-link " href="{{ url_for('weatherForecast')}}">
           <i class="bi bi-cloud-rain"></i>
           <span>Weather Forecast</span>
         </a>
@@ -296,7 +296,7 @@
       <!-- End Weather Forecast Nav -->
 
       <li class="nav-item">
-        <a class="nav-link " href="/diseasePrediction">
+        <a class="nav-link " href="{{ url_for('diseasePrediction')}}">
           <i class="bi bi-flower1"></i>
           <span>Disease Prediction</span>
         </a>
@@ -304,7 +304,7 @@
       <!-- End Disease Prediction Nav -->
 
       <li class="nav-item">
-        <a class="nav-link " href="/diseasePrediction">
+        <a class="nav-link " href="{{ url_for('fertilizers')}}">
           <i class="bi bi-flower1"></i>
           <span>Fertilisers</span>
         </a>
