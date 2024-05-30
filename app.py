@@ -10,6 +10,7 @@ from utils.product import Product
 from utils.weather import Weather
 from utils.firbase import Firebase
 from utils.prediction import Prediction
+import asyncio
 
 app=Flask(__name__, static_folder="static", template_folder="templates")
 user=User(app=app)
@@ -159,7 +160,7 @@ def addIoT(errorMassage = " "):
 
 @app.route('/IoTDevice/<deviceID>', methods=['GET', 'POST'])
 def IoT(deviceID):
-    #try:
+    try:
         if not session['loggedIn']:
             return redirect(url_for('login'))
         else:
@@ -169,7 +170,7 @@ def IoT(deviceID):
             else:
                 iotData=None
             return render_template('IoTDevice.html', deviceID=deviceID, iotData=iotData)
-    #except:
+    except:
         session['loggedIn']=False
         return redirect(url_for('login'))
     
@@ -478,9 +479,7 @@ def weatherForecast():
             
             location=loggedUser['location']
             
-            weatherDataJson=weather.getWeatherData(location=location)
-            weatherForecastJson=weather.getWeatherForecast(location=location)
-            airPollutionDataJson=weather.getAirPollutionData(location=location)
+            weatherDataJson, weatherForecastJson, airPollutionDataJson=weather.getAllWeatherData(location=location)
             
             currentDate=datetime.now().date()
             currentTime=datetime.now().time().strftime('%H:%M:%S')

@@ -66,6 +66,17 @@ class Weather(object):
                 return None
         except:
             return None
+        
+    def getAllWeatherData(self, location:str):
+        try:
+            weatherDataJson=self.getWeatherData(location=location)
+            weatherForecastJson=self.getWeatherForecast(location=location)
+            airPollutionDataJson=self.getAirPollutionData(location=location)
+                        
+            return weatherDataJson, weatherForecastJson, airPollutionDataJson
+        except:
+            return None, None, None
+            
     
         
         
