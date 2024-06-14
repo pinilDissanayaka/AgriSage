@@ -10,6 +10,8 @@ from utils.product import Product
 from utils.weather import Weather
 from utils.firbase import Firebase
 from utils.prediction import Prediction
+from utils.message import Message
+from utils.otp import OTP
 import asyncio
 
 app=Flask(__name__, static_folder="static", template_folder="templates")
@@ -19,6 +21,8 @@ product=Product()
 weather=Weather()
 firebase=Firebase()
 prediction=Prediction()
+message=Message()
+otp=OTP()
 
 load_dotenv('.env')
 app.secret_key=os.getenv('APP_SECRECT_KEY')
@@ -59,7 +63,7 @@ def login():
  
 @app.route('/register', methods=['GET', 'POST'])
 def register(errorMassage=" "):
-    try:
+    #try:
         if not session['loggedIn']:
             if request.method=='POST':
                 name=request.form['name']
@@ -73,9 +77,10 @@ def register(errorMassage=" "):
                     session['loggedIn']=True
                     session['registered']=True
                     session['username']=uName
+                    session['phoneNumber']=phoneNumber
                     session['adminUserFlag']=False
                                         
-                    return redirect(url_for('setup')) 
+                    return redirect(url_for('verifyAccount')) 
                 else:
                     errorMassage="Registration Failed"
                     return render_template('register.html', errorMassage=errorMassage)
@@ -83,9 +88,38 @@ def register(errorMassage=" "):
                 return render_template('register.html', errorMassage=errorMassage)
         else:
             return redirect(url_for('dashboard'))
-    except:
+    #except:
         session['loggedIn']=False
         return redirect(url_for('register'))
+    
+@app.route('/verifyAccount', methods=['GET', 'POST'])
+def verifyAccount(errorMassage=" "):
+    #try:
+        if session['loggedIn']:
+            if session['registered']:
+                if request.method=='POST':
+                    verificationCode=int(request.form['verificationCode'])
+                    
+                    message.sendSms(otp=otp.generateOTP(), toNumber=session['phoneNumber'])
+                    
+                    status=otp.checkOTP(otp=verificationCode)
+    
+                    if status:
+                        session['registered']=True
+                        return redirect(url_for('setup'))
+                    else:
+                        errorMassage='IoT device setup failed'
+                        return render_template('setupAccount.html', errorMassage=errorMassage)
+                else:
+                    return render_template('setupAccount.html', errorMassage=errorMassage)
+            else:
+                return redirect(url_for('register'))
+        else:
+            return redirect(url_for('login')) 
+    #except:
+        session['loggedIn']=False
+        session['registered']=False
+        return redirect(url_for('login'))
     
     
 @app.route('/setup', methods=['GET', 'POST'])
@@ -513,10 +547,8 @@ def diseasePrediction(pred=" "):
 def fertilizers():
     #try:
         if session['loggedIn']:
-            #pred=prediction.makePrediction()
-            fertilizers=[12, 13, 15, 18, 15, 16]
+            fertilizers =product.showAllProducts()
             return render_template('fertilizers.html', fertilizers=fertilizers)
-
         else:
             return redirect(url_for('login'))
    # except:

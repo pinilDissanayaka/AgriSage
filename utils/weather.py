@@ -2,6 +2,7 @@ import os
 import json, requests
 from dotenv import load_dotenv
 import json
+import threading
 
 load_dotenv('.env')
 
@@ -72,7 +73,8 @@ class Weather(object):
             weatherDataJson=self.getWeatherData(location=location)
             weatherForecastJson=self.getWeatherForecast(location=location)
             airPollutionDataJson=self.getAirPollutionData(location=location)
-                        
+        
+                                
             return weatherDataJson, weatherForecastJson, airPollutionDataJson
         except:
             return None, None, None

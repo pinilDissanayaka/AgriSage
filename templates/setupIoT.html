@@ -60,7 +60,7 @@
                         <p class="text-center small">Enter your IoT device details for finish your registration</p>
                       </div>
     
-                      <form class="row g-3 needs-validation" novalidate action="#" method="POST">
+                      <form class="row g-3 needs-validation" novalidate action="{{url_for('setup')}}" method="POST">
                         <div class="col-12">
                           <label for="yourLocation" class="form-label">Field Location</label>
                           <input type="text" name="location" class="form-control" id="yourLocation" required>

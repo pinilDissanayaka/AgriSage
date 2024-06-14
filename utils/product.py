@@ -49,3 +49,19 @@ class Product(object):
         finally:
             client.close()
             
+    def showAllProducts(self):
+        try:
+            client, collection, connectionStatus=Product.connectDB()
+            if connectionStatus:
+                products=collection.find()
+                if products:
+                    return products
+                else:
+                    products=None
+                    return products
+            else:
+                products=None
+                return products
+        except:
+            client.close()
+            
