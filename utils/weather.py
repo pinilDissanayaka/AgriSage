@@ -73,7 +73,7 @@ class Weather(object):
         try:
             data=list()
             targets=[self.getWeatherData, self.getWeatherForecast, self.getAirPollutionData]
-            with futures.ThreadPoolExecutor() as executor:
+            with futures.ProcessPoolExecutor() as executor:
                 results=[executor.submit(target,  location) for target in targets]
                 
             for result in results:
