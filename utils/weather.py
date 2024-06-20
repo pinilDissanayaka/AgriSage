@@ -3,6 +3,7 @@ import json, requests
 from dotenv import load_dotenv
 import json
 import threading
+from concurrent import futures
 
 load_dotenv('.env')
 
@@ -70,12 +71,15 @@ class Weather(object):
         
     def getAllWeatherData(self, location:str):
         try:
-            weatherDataJson=self.getWeatherData(location=location)
-            weatherForecastJson=self.getWeatherForecast(location=location)
-            airPollutionDataJson=self.getAirPollutionData(location=location)
-        
-                                
-            return weatherDataJson, weatherForecastJson, airPollutionDataJson
+            data=list()
+            targets=[self.getWeatherData, self.getWeatherForecast, self.getAirPollutionData]
+            with futures.ThreadPoolExecutor() as executor:
+                results=[executor.submit(target,  location) for target in targets]
+                
+            for result in results:
+                data.append(result.result())
+               
+            return data
         except:
             return None, None, None
             

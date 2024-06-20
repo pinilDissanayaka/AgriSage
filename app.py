@@ -513,7 +513,10 @@ def weatherForecast():
             
             location=loggedUser['location']
             
-            weatherDataJson, weatherForecastJson, airPollutionDataJson=weather.getAllWeatherData(location=location)
+            data=weather.getAllWeatherData(location=location)
+            weatherDataJson=data[0]
+            weatherForecastJson=data[1]
+            airPollutionDataJson=data[2]
             
             currentDate=datetime.now().date()
             currentTime=datetime.now().time().strftime('%H:%M:%S')
