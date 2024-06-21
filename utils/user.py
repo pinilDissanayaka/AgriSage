@@ -83,7 +83,7 @@ class User(object):
                     if isValid:
                         print("Loging successfull")
                         user=user
-                        status="Loging successfull"
+                        status="Login successful"
                     else:
                         print("Incorrect password")
                         user=None
