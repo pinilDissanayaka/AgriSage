@@ -30,7 +30,7 @@ app.secret_key=os.getenv('APP_SECRECT_KEY')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    try:
+    #try:
         if not session['loggedIn']:
             if request.method=='POST':
                 uName=request.form['username']
@@ -56,7 +56,7 @@ def login():
                 return render_template('login.html', errorMassage=" ")
         else:
             return redirect(url_for('dashboard'))
-    except:
+    #except:
         session['loggedIn']=False
         return redirect(url_for('login'))
     
