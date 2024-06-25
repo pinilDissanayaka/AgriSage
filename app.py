@@ -80,7 +80,7 @@ def register(errorMassage=" "):
                     session['phoneNumber']=phoneNumber
                     session['adminUserFlag']=False
                                         
-                    return redirect(url_for('verifyAccount')) 
+                    return redirect(url_for('setup')) 
                 else:
                     errorMassage="Registration Failed"
                     return render_template('register.html', errorMassage=errorMassage)
