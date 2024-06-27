@@ -4,8 +4,11 @@ from dotenv import load_dotenv
 from pymongo import MongoClient
 import re
 import base64
+import logging
 
 load_dotenv(".env")
+logging.basicConfig(filename='logging')
+
 
 class User(object):
     def __init__(self, app) -> None:
@@ -19,7 +22,9 @@ class User(object):
             db=client[databaseName]
             collection=db[collectionName]
             connectionStatus=True
-        except:
+            logging.info('Connected to the database')
+        except Exception as e:
+            logging.error(e)
             print("Database connection failed!")
             connectionStatus=False
             
@@ -45,6 +50,8 @@ class User(object):
                 else:
                     print("Failed adding user.")
                     status=False
+        except Exception as e:
+            logging.error(e)
         finally:
             client.close()
             
@@ -60,7 +67,8 @@ class User(object):
                     status='User not found'
                 else:
                     status='User was found'
-                
+        except Exception as e:
+            logging.error(e)
         finally:
             client.close()
             
@@ -88,6 +96,8 @@ class User(object):
                         print("Incorrect password")
                         user=None
                         status="Incorrect password"
+        except Exception as e:
+            logging.error(e)
         finally:
             client.close()
             
@@ -104,7 +114,8 @@ class User(object):
                     status="Profile update successfully"  
             else:
                 status="Couldn't update profile"
-               
+        except Exception as e:
+            logging.error(e)      
         finally:
             client.close()
             
@@ -121,6 +132,9 @@ class User(object):
                     status=True
             else:
                 status=False
+                
+        except Exception as e:
+            logging.error(e)
                
         finally:
             client.close()
@@ -136,6 +150,9 @@ class User(object):
                     status=True
             else:
                 status=False
+                
+        except Exception as e:
+            logging.error(e)
                
         finally:
             client.close()
@@ -152,7 +169,9 @@ class User(object):
                     status=True
             else:
                 status=False
-               
+        except Exception as e:
+            logging.error(e)
+            
         finally:
             client.close()
             
@@ -168,7 +187,8 @@ class User(object):
                     status=True
             else:
                 status=False
-               
+        except Exception as e:
+            logging.error(e) 
         finally:
             client.close()
             
@@ -188,6 +208,8 @@ class User(object):
                     status='Password change successfully'
                 else:
                     status='Can not change password'   
+        except Exception as e:
+            logging.error(e)
         finally:
             client.close()
         
@@ -208,6 +230,8 @@ class User(object):
                     status=False
             else:
                 status=False
+        except Exception as e:
+            logging.error(e)
         finally:
             client.close()
             

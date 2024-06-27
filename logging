@@ -1,0 +1,738 @@
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://192.168.8.100:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:52] "[33mGET / HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:52] "[36mGET /static/vendor/quill/quill.snow.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:52] "[36mGET /static/vendor/boxicons/css/boxicons.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:52] "[36mGET /static/vendor/quill/quill.bubble.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:52] "[36mGET /static/vendor/bootstrap/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:52] "[36mGET /static/vendor/remixicon/remixicon.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:52] "[36mGET /static/vendor/bootstrap-icons/bootstrap-icons.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:52] "[36mGET /static/vendor/simple-datatables/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:52] "[36mGET /static/img/not-found.jpg HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:52] "[36mGET /static/vendor/apexcharts/apexcharts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:52] "[36mGET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:52] "[36mGET /static/vendor/simple-datatables/simple-datatables.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:52] "[33mGET /static/vendor/php-email-form/validate.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:52] "[36mGET /static/vendor/echarts/echarts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:52] "[36mGET /static/vendor/quill/quill.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:52] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:52] "[36mGET /static/vendor/chart.js/chart.umd.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:52] "[36mGET /static/vendor/tinymce/tinymce.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:54] "[32mGET /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:54] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:54] "[36mGET /static/vendor/bootstrap-icons/bootstrap-icons.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:54] "[36mGET /static/vendor/bootstrap/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:54] "[36mGET /static/vendor/boxicons/css/boxicons.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:54] "[36mGET /static/vendor/quill/quill.snow.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:54] "[36mGET /static/vendor/quill/quill.bubble.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:54] "[36mGET /static/vendor/remixicon/remixicon.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:54] "[36mGET /static/vendor/simple-datatables/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:54] "[36mGET /static/vendor/apexcharts/apexcharts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:54] "[36mGET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:54] "[36mGET /static/vendor/chart.js/chart.umd.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:54] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:54] "[36mGET /static/vendor/quill/quill.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:54] "[36mGET /static/vendor/echarts/echarts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:54] "[36mGET /static/vendor/simple-datatables/simple-datatables.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:54] "[36mGET /static/vendor/tinymce/tinymce.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:54] "[33mGET /static/vendor/php-email-form/validate.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:53:54] "[36mGET /static/vendor/bootstrap-icons/fonts/bootstrap-icons.woff2?dd67030699838ea613ee6dbda90effa6 HTTP/1.1[0m" 304 -
+ERROR:root:SSL handshake failed: ac-rkayphv-shard-00-02.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: ac-rkayphv-shard-00-00.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: ac-rkayphv-shard-00-01.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 667bb404c84d221c69a34b89, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-rkayphv-shard-00-00.zx8kt2x.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect("SSL handshake failed: ac-rkayphv-shard-00-00.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)")>, <ServerDescription ('ac-rkayphv-shard-00-01.zx8kt2x.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect("SSL handshake failed: ac-rkayphv-shard-00-01.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)")>, <ServerDescription ('ac-rkayphv-shard-00-02.zx8kt2x.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect("SSL handshake failed: ac-rkayphv-shard-00-02.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)")>]>
+ERROR:root:cannot access local variable 'status' where it is not associated with a value
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:54:35] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:54:35] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:54:35] "[36mGET /static/vendor/bootstrap/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:54:35] "[36mGET /static/vendor/bootstrap-icons/bootstrap-icons.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:54:35] "[36mGET /static/vendor/quill/quill.snow.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:54:35] "[36mGET /static/vendor/quill/quill.bubble.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:54:35] "[36mGET /static/vendor/boxicons/css/boxicons.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:54:35] "[36mGET /static/vendor/remixicon/remixicon.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:54:35] "[36mGET /static/vendor/simple-datatables/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:54:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:54:35] "[36mGET /static/vendor/apexcharts/apexcharts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:54:35] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:54:35] "[36mGET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:54:35] "[36mGET /static/vendor/chart.js/chart.umd.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:54:35] "[36mGET /static/vendor/echarts/echarts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:54:35] "[36mGET /static/vendor/quill/quill.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:54:35] "[36mGET /static/vendor/simple-datatables/simple-datatables.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:54:35] "[36mGET /static/vendor/tinymce/tinymce.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:54:35] "[33mGET /static/vendor/php-email-form/validate.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:54:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+ERROR:root:SSL handshake failed: ac-rkayphv-shard-00-02.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: ac-rkayphv-shard-00-00.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: ac-rkayphv-shard-00-01.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 667bb42ec84d221c69a34b8b, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-rkayphv-shard-00-00.zx8kt2x.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect("SSL handshake failed: ac-rkayphv-shard-00-00.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)")>, <ServerDescription ('ac-rkayphv-shard-00-01.zx8kt2x.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect("SSL handshake failed: ac-rkayphv-shard-00-01.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)")>, <ServerDescription ('ac-rkayphv-shard-00-02.zx8kt2x.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect("SSL handshake failed: ac-rkayphv-shard-00-02.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)")>]>
+ERROR:root:cannot access local variable 'status' where it is not associated with a value
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:55:16] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:55:16] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:55:16] "[36mGET /static/vendor/bootstrap/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:55:16] "[36mGET /static/vendor/bootstrap-icons/bootstrap-icons.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:55:16] "[36mGET /static/vendor/quill/quill.snow.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:55:16] "[36mGET /static/vendor/boxicons/css/boxicons.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:55:16] "[36mGET /static/vendor/remixicon/remixicon.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:55:16] "[36mGET /static/vendor/quill/quill.bubble.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:55:16] "[36mGET /static/vendor/simple-datatables/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:55:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:55:16] "[36mGET /static/vendor/apexcharts/apexcharts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:55:16] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:55:16] "[36mGET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:55:16] "[36mGET /static/vendor/chart.js/chart.umd.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:55:16] "[36mGET /static/vendor/quill/quill.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:55:16] "[36mGET /static/vendor/simple-datatables/simple-datatables.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:55:16] "[36mGET /static/vendor/echarts/echarts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:55:16] "[33mGET /static/vendor/php-email-form/validate.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:55:16] "[36mGET /static/vendor/tinymce/tinymce.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:55:16] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+ERROR:root:SSL handshake failed: ac-rkayphv-shard-00-02.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: ac-rkayphv-shard-00-00.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: ac-rkayphv-shard-00-01.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 667bb484c84d221c69a34b8d, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-rkayphv-shard-00-00.zx8kt2x.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect("SSL handshake failed: ac-rkayphv-shard-00-00.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)")>, <ServerDescription ('ac-rkayphv-shard-00-01.zx8kt2x.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect("SSL handshake failed: ac-rkayphv-shard-00-01.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)")>, <ServerDescription ('ac-rkayphv-shard-00-02.zx8kt2x.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect("SSL handshake failed: ac-rkayphv-shard-00-02.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)")>]>
+ERROR:root:cannot access local variable 'status' where it is not associated with a value
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:56:42] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:56:42] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:56:42] "[36mGET /static/vendor/bootstrap/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:56:42] "[36mGET /static/vendor/bootstrap-icons/bootstrap-icons.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:56:42] "[36mGET /static/vendor/boxicons/css/boxicons.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:56:42] "[36mGET /static/vendor/quill/quill.snow.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:56:42] "[36mGET /static/vendor/quill/quill.bubble.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:56:42] "[36mGET /static/vendor/remixicon/remixicon.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:56:42] "[36mGET /static/vendor/simple-datatables/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:56:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:56:42] "[36mGET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:56:42] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:56:42] "[36mGET /static/vendor/apexcharts/apexcharts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:56:42] "[36mGET /static/vendor/echarts/echarts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:56:42] "[36mGET /static/vendor/chart.js/chart.umd.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:56:42] "[36mGET /static/vendor/quill/quill.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:56:42] "[36mGET /static/vendor/simple-datatables/simple-datatables.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:56:42] "[36mGET /static/vendor/tinymce/tinymce.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:56:42] "[33mGET /static/vendor/php-email-form/validate.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:56:42] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:58:29] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:58:29] "[36mGET /static/vendor/bootstrap/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:58:29] "[36mGET /static/vendor/bootstrap-icons/bootstrap-icons.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:58:29] "[36mGET /static/vendor/boxicons/css/boxicons.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:58:29] "[36mGET /static/vendor/quill/quill.snow.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:58:29] "[36mGET /static/vendor/quill/quill.bubble.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:58:29] "[36mGET /static/vendor/remixicon/remixicon.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:58:29] "[36mGET /static/vendor/simple-datatables/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:58:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:58:29] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:58:29] "[36mGET /static/vendor/apexcharts/apexcharts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:58:29] "[36mGET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:58:29] "[36mGET /static/vendor/chart.js/chart.umd.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:58:29] "[36mGET /static/vendor/echarts/echarts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:58:29] "[36mGET /static/vendor/quill/quill.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:58:29] "[36mGET /static/vendor/simple-datatables/simple-datatables.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:58:29] "[36mGET /static/vendor/tinymce/tinymce.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:58:29] "[33mGET /static/vendor/php-email-form/validate.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:58:29] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:58:29] "[36mGET /static/vendor/bootstrap-icons/fonts/bootstrap-icons.woff2?dd67030699838ea613ee6dbda90effa6 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:58:29] "[36mGET /static/img/favicon.png HTTP/1.1[0m" 304 -
+ERROR:root:SSL handshake failed: ac-rkayphv-shard-00-02.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: ac-rkayphv-shard-00-00.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: ac-rkayphv-shard-00-01.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 667bb517c84d221c69a34b8f, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-rkayphv-shard-00-00.zx8kt2x.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect("SSL handshake failed: ac-rkayphv-shard-00-00.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)")>, <ServerDescription ('ac-rkayphv-shard-00-01.zx8kt2x.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect("SSL handshake failed: ac-rkayphv-shard-00-01.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)")>, <ServerDescription ('ac-rkayphv-shard-00-02.zx8kt2x.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect("SSL handshake failed: ac-rkayphv-shard-00-02.zx8kt2x.mongodb.net:27017: [('SSL routines', '', 'tlsv1 alert internal error')] (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)")>]>
+ERROR:root:cannot access local variable 'status' where it is not associated with a value
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:09] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:09] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:09] "[36mGET /static/vendor/bootstrap/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:09] "[36mGET /static/vendor/bootstrap-icons/bootstrap-icons.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:09] "[36mGET /static/vendor/boxicons/css/boxicons.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:09] "[36mGET /static/vendor/quill/quill.snow.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:10] "[36mGET /static/vendor/quill/quill.bubble.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:10] "[36mGET /static/vendor/remixicon/remixicon.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:10] "[36mGET /static/vendor/simple-datatables/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:10] "[36mGET /static/vendor/apexcharts/apexcharts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:10] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:10] "[36mGET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:10] "[36mGET /static/vendor/chart.js/chart.umd.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:10] "[36mGET /static/vendor/echarts/echarts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:10] "[36mGET /static/vendor/quill/quill.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:10] "[36mGET /static/vendor/simple-datatables/simple-datatables.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:10] "[36mGET /static/vendor/tinymce/tinymce.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:10] "[33mGET /static/vendor/php-email-form/validate.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:10] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:10] "[36mGET /static/vendor/bootstrap-icons/fonts/bootstrap-icons.woff2?dd67030699838ea613ee6dbda90effa6 HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 515-405-555
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:36] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:36] "[36mGET /static/vendor/bootstrap/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:36] "[36mGET /static/vendor/simple-datatables/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:36] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:36] "[36mGET /static/vendor/apexcharts/apexcharts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:36] "[36mGET /static/vendor/quill/quill.snow.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:36] "[36mGET /static/vendor/quill/quill.bubble.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:36] "[36mGET /static/vendor/bootstrap-icons/bootstrap-icons.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:36] "[36mGET /static/vendor/boxicons/css/boxicons.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:36] "[36mGET /static/vendor/remixicon/remixicon.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:36] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:36] "[36mGET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:36] "[36mGET /static/vendor/chart.js/chart.umd.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:36] "[36mGET /static/vendor/echarts/echarts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:36] "[36mGET /static/vendor/quill/quill.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:36] "[36mGET /static/vendor/simple-datatables/simple-datatables.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:36] "[36mGET /static/vendor/tinymce/tinymce.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:36] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:36] "[33mGET /static/vendor/php-email-form/validate.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:36] "[36mGET /static/img/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:38] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:38] "[36mGET /static/vendor/bootstrap/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:38] "[36mGET /static/vendor/simple-datatables/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:38] "[36mGET /static/vendor/remixicon/remixicon.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:38] "[36mGET /static/vendor/quill/quill.snow.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:38] "[36mGET /static/vendor/quill/quill.bubble.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:38] "[36mGET /static/vendor/bootstrap-icons/bootstrap-icons.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:38] "[36mGET /static/vendor/boxicons/css/boxicons.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:38] "[36mGET /static/vendor/apexcharts/apexcharts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:38] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:38] "[36mGET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:38] "[36mGET /static/vendor/chart.js/chart.umd.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:38] "[36mGET /static/vendor/echarts/echarts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:38] "[36mGET /static/vendor/quill/quill.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:38] "[36mGET /static/vendor/simple-datatables/simple-datatables.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:38] "[36mGET /static/vendor/tinymce/tinymce.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:38] "[33mGET /static/vendor/php-email-form/validate.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:38] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 11:59:38] "[36mGET /static/img/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\werkzeug\\debug\\__init__.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 515-405-555
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 473-916-164
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\adodbapi\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiobotocore\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiohttp\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiohttp\\client.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiohttp\\connector.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiohttp\\client_exceptions.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiohttp\\client_reqrep.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiohttp\\client_ws.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiohttp\\cookiejar.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiohttp\\formdata.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiohttp\\helpers.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiohttp\\http.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiohttp\\http_writer.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiohttp\\http_websocket.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiohttp\\multipart.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiohttp\\payload.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiohttp\\payload_streamer.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiohttp\\resolver.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiohttp\\streams.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiohttp\\tracing.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiohttp\\worker.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aioitertools\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiosqlite\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiosqlite\\core.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\aiosqlite\\cursor.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\airflow\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\airflow\\models\\dag.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\airflow\\models\\xcom_arg.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 473-916-164
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\chromadb\\api\\models\\Collection.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\chromadb\\api\\types.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\chromadb\\types.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\clang\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\click\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\click\\core.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\click\\decorators.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\click\\exceptions.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\click\\formatting.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\click\\globals.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\click\\parser.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\click\\termui.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\click\\types.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\click\\utils.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\clickclick\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\click_didyoumean\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\click_plugins\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\click_repl\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\cloudinary\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\cloudpickle\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\clyent\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\colorcet\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\coloredlogs\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\colorlog\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\colorlog\\colorlog.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\colorlog\\escape_codes.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\colorlog\\logging.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\comm\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\conda\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\conda_build\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\conda_content_trust\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\conda_env\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\conda_index\\__init__.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 473-916-164
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\fastapi\\types.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\fastapi\\utils.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\fastapi\\websockets.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\starlette\\websockets.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\fastapi\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\starlette\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\fastapi_cli\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\fastjsonschema\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\fastjsonschema\\exceptions.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\fastjsonschema\\version.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\filelock\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\filelock\\_api.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\filelock\\_error.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\filelock\\_soft.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\filelock\\_unix.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\filelock\\_windows.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask\\blueprints.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask\\cli.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask\\ctx.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask\\debughelpers.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask\\json\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask\\logging.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask\\signals.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask\\testing.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask\\views.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask\\__main__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_api\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_appbuilder\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_babel\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_caching\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_jwt_extended\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_jwt_extended\\jwt_manager.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_jwt_extended\\utils.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_jwt_extended\\view_decorators.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_limiter\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_limiter\\constants.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_limiter\\errors.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_limiter\\extension.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_limiter\\wrappers.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_login\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_login\\__about__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_login\\config.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_login\\login_manager.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_login\\mixins.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_login\\signals.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_login\\test_client.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_login\\utils.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_mysqldb\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_session\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\flask_sqlalchemy\\__init__.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 473-916-164
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\httpx\\_transports\\base.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\httpx\\_transports\\default.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\httpx\\_transports\\mock.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\httpx\\_transports\\wsgi.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\httpx\\_types.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\httpx\\_urls.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\huggingface_hub\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\humanize\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\humanize\\filesize.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\humanize\\i18n.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\humanize\\number.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\humanize\\time.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\hvplot\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\hyperlink\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\hyperlink\\_url.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\idna\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\idna\\core.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\idna\\intranges.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\imagecodecs\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\imagecodecs\\imagecodecs.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\imageio\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\imagesize\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\imagesize\\imagesize.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\imblearn\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\imblearn\\_version.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\imblearn\\base.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\importlib_metadata\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\importlib_metadata\\_meta.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\importlib_resources\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\importlib_resources\\_common.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\importlib_resources\\_legacy.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\importlib_resources\\abc.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\incremental\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\incremental\\_version.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\inflection\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\intake\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\intervaltree\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\ipykernel\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\ipykernel\\connect.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\jupyter_client\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\jupyter_client\\connect.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\jupyter_client\\launcher.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\ipython_genutils\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\ipywidgets\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\isort\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\isort\\_version.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\isort\\api.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\isort\\place.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 473-916-164
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\marshmallow_sqlalchemy\\schema.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\marshmallow_sqlalchemy\\convert.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\marshmallow_sqlalchemy\\exceptions.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\matplotlib\\pylab.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\matplotlib\\tests\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\matplotlib\\tight_bbox.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\matplotlib_inline\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\mdit_py_plugins\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\mdurl\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\mdurl\\_decode.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\mdurl\\_encode.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\mdurl\\_format.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\mdurl\\_parse.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\mdurl\\_url.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\menuinst\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\mkl\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\mkl_fft\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\ml_dtypes\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\ml_dtypes\\_finfo.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\ml_dtypes\\_iinfo.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\mouseinfo\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\mpmath\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\msgpack\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\multipart\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\multipart\\multipart.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\multipledispatch\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\multiprocess\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\nacl\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\navigator_updater\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\nbclassic\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\nbclient\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\nbconvert\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\nbformat\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\nbformat\\_version.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\nbformat\\sentinel.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\nbformat\\converter.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\nbformat\\notebooknode.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\nbformat\\v4\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\nbformat\\v4\\nbbase.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\nbformat\\validator.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\nbformat\\json_compat.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\nltk\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\notebook\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\notebook_shim\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\numba\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\numba\\core\\errors.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\numba\\core\\types\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\numba\\core\\types\\abstract.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\numba\\core\\types\\containers.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\numba\\core\\types\\functions.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\numba\\core\\types\\iterators.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\numba\\core\\types\\misc.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 473-916-164
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\prometheus_client\\asgi.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\prometheus_client\\gc_collector.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\prometheus_client\\metrics.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\prometheus_client\\metrics_core.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\prometheus_client\\platform_collector.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\prometheus_client\\process_collector.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\prometheus_client\\registry.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\prompt_toolkit\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\prompt_toolkit\\application\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\prompt_toolkit\\application\\application.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\prompt_toolkit\\formatted_text\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\prompt_toolkit\\formatted_text\\ansi.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\prompt_toolkit\\formatted_text\\html.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\prompt_toolkit\\shortcuts\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\prompt_toolkit\\shortcuts\\prompt.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\prompt_toolkit\\shortcuts\\utils.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\proto\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\proto\\enums.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\proto\\fields.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\proto\\marshal\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\proto\\marshal\\marshal.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\proto\\message.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\proto\\modules.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\proto\\version.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\ptyprocess\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\pure_eval\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\pyarrow\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\pyasn1_modules\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\pybase64\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\pycparser\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\pyct\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\pydantic\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\pydantic\\errors.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\pydantic\\main.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\pydantic\\networks.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\pydantic\\types.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\pydantic\\deprecated\\tools.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\pydantic\\version.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\pydantic_core\\core_schema.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 473-916-164
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\conftest.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\constants\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\constants\\_codata.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\constants\\_constants.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\datasets\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\datasets\\_fetchers.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\datasets\\_download_all.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\datasets\\_utils.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\misc\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\misc\\_common.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\setup.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\version.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\__config__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\cluster\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\fft\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\fft\\_basic.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\fft\\_realtransforms.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 473-916-164
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\sparse\\_dia.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\sparse\\_bsr.py', reloading
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:19] "[33mGET / HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\sparse\\_construct.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\sparse\\_extract.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\sparse\\_matrix_io.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\spatial\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\spatial\\_kdtree.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\spatial\\_plotutils.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\special\\__init__.py', reloading
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:20] "[36mGET /static/vendor/bootstrap-icons/bootstrap-icons.css HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\special\\_basic.py', reloading
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:20] "[36mGET /static/vendor/quill/quill.snow.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:20] "[36mGET /static/vendor/boxicons/css/boxicons.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:20] "[36mGET /static/vendor/bootstrap/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:20] "[36mGET /static/vendor/quill/quill.bubble.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:20] "[36mGET /static/vendor/remixicon/remixicon.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:20] "[36mGET /static/img/not-found.jpg HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:20] "[36mGET /static/vendor/simple-datatables/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:20] "[36mGET /static/vendor/apexcharts/apexcharts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\stats\\__init__.py', reloading
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:20] "[36mGET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:20] "[33mGET /static/vendor/php-email-form/validate.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:20] "[36mGET /static/vendor/simple-datatables/simple-datatables.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:20] "[36mGET /static/vendor/echarts/echarts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:20] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:20] "[36mGET /static/vendor/chart.js/chart.umd.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:20] "[36mGET /static/vendor/tinymce/tinymce.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:20] "[36mGET /static/vendor/quill/quill.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\stats\\_stats_py.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\stats\\distributions.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\stats\\_continuous_distns.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\stats\\_discrete_distns.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\stats\\_morestats.py', reloading
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:20] "[36mGET /static/img/favicon.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\scipy\\stats\\_multicomp.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 473-916-164
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:24] "[32mGET /login HTTP/1.1[0m" 302 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\tenacity\\retry.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\tenacity\\nap.py', reloading
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:24] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\tenacity\\stop.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\tenacity\\wait.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\tenacity\\before.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\tenacity\\after.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\tenacity\\before_sleep.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\tenacity\\_asyncio.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\tensorboard\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\tensorboard_data_server\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\tensorflow\\__init__.py', reloading
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:24] "[36mGET /static/vendor/bootstrap/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:24] "[36mGET /static/vendor/simple-datatables/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:24] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:24] "[36mGET /static/vendor/apexcharts/apexcharts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:24] "[36mGET /static/vendor/boxicons/css/boxicons.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:24] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:24] "[36mGET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:24] "[36mGET /static/vendor/quill/quill.bubble.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:24] "[36mGET /static/vendor/remixicon/remixicon.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:24] "[36mGET /static/vendor/bootstrap-icons/bootstrap-icons.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:24] "[36mGET /static/vendor/chart.js/chart.umd.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:24] "[36mGET /static/vendor/quill/quill.snow.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:24] "[36mGET /static/vendor/echarts/echarts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:24] "[36mGET /static/vendor/quill/quill.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:24] "[36mGET /static/vendor/simple-datatables/simple-datatables.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:24] "[36mGET /static/vendor/tinymce/tinymce.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:25] "[33mGET /static/vendor/php-email-form/validate.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:25] "[36mGET /static/vendor/bootstrap-icons/fonts/bootstrap-icons.woff2?dd67030699838ea613ee6dbda90effa6 HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\tensorflow_estimator\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\tensorflow_io_gcs_filesystem\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\termcolor\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\termcolor\\termcolor.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\terminado\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\textdistance\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\text_unidecode\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\three_merge\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\tifffile\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\tifffile\\tifffile.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\tiktoken\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\tiktoken\\core.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\tiktoken\\model.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\tiktoken\\registry.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 473-916-164
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\websockets\\exceptions.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\pymongo\\settings.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\werkzeug\\serving.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\http\\server.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\socketserver.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\threading.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\websockets\\legacy\\auth.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\websockets\\legacy\\protocol.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\websockets\\legacy\\server.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\websockets\\server.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\websockets\\typing.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\werkzeug\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\werkzeug\\test.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\wheel\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\whitenoise\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\whitenoise\\base.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\widgetsnbextension\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\wikipedia\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\win32ctypes\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\winpty\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\wrapt\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\xarray\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\xarray\\backends\\api.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\xarray\\backends\\zarr.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\xarray\\coding\\cftime_offsets.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\xarray\\coding\\cftimeindex.py', reloading
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\xarray\\coding\\frequencies.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\xarray\\conventions.py', reloading
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\xarray\\coding\\variables.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\xarray\\core\\alignment.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\xarray\\core\\combine.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\xarray\\core\\common.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\xarray\\core\\computation.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\xarray\\core\\concat.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\xarray\\core\\dataarray.py', reloading
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[36mGET /static/vendor/bootstrap-icons/bootstrap-icons.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[36mGET /static/vendor/bootstrap/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[36mGET /static/vendor/simple-datatables/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[36mGET /static/vendor/remixicon/remixicon.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[36mGET /static/vendor/quill/quill.snow.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[36mGET /static/vendor/boxicons/css/boxicons.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[36mGET /static/vendor/quill/quill.bubble.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[36mGET /static/vendor/apexcharts/apexcharts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\xarray\\core\\dataset.py', reloading
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[36mGET /static/css/chatbot.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[33mGET /assets/img/messages-3.jpg HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[33mGET /assets/img/messages-1.jpg HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[33mGET /assets/img/messages-2.jpg HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[36mGET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[36mGET /static/vendor/chart.js/chart.umd.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[36mGET /static/vendor/echarts/echarts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[36mGET /static/vendor/quill/quill.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[36mGET /static/vendor/simple-datatables/simple-datatables.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[33mGET /static/vendor/php-email-form/validate.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[36mGET /static/vendor/tinymce/tinymce.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\xarray\\core\\extensions.py', reloading
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\xarray\\core\\merge.py', reloading
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:29] "[36mGET /static/js/chatbot.js HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\anaconda3\\Lib\\site-packages\\xarray\\core\\options.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 473-916-164
+ERROR:root:HTTPConnectionPool(host='api.openweathermap.org', port=80): Max retries exceeded with url: /geo/1.0/direct?q=anuradhapura&appid=fc78a469d8c847ac9b7996c55b895e2b (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000013BF30FC310>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+ERROR:root:HTTPConnectionPool(host='api.openweathermap.org', port=80): Max retries exceeded with url: /data/2.5/weather?q=anuradhapura&appid=fc78a469d8c847ac9b7996c55b895e2b&units=metric (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000205A9B78F90>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:35] "[32mGET /weatherForecast HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:35] "[35m[1mGET /youAreOffline HTTP/1.1[0m" 503 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:35] "[36mGET /static/vendor/bootstrap/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:35] "[36mGET /static/vendor/simple-datatables/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:35] "[36mGET /static/vendor/apexcharts/apexcharts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:35] "[36mGET /static/vendor/boxicons/css/boxicons.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:35] "[36mGET /static/vendor/quill/quill.bubble.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:35] "GET /static/img/youAreOffline.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:35] "[36mGET /static/vendor/bootstrap-icons/bootstrap-icons.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:35] "[36mGET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:35] "[36mGET /static/vendor/remixicon/remixicon.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:35] "[36mGET /static/vendor/quill/quill.snow.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:35] "[36mGET /static/vendor/chart.js/chart.umd.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:35] "[36mGET /static/vendor/quill/quill.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:35] "[36mGET /static/vendor/echarts/echarts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:35] "[36mGET /static/vendor/simple-datatables/simple-datatables.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:35] "[36mGET /static/vendor/tinymce/tinymce.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:35] "[33mGET /static/vendor/php-email-form/validate.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:58:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\Desktop\\AgriSage\\app.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\Desktop\\AgriSage\\app.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\Desktop\\AgriSage\\app.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Pinil\\Desktop\\AgriSage\\app.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 473-916-164
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:03] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:03] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:04] "[36mGET /static/vendor/bootstrap/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:04] "[36mGET /static/vendor/simple-datatables/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:04] "[36mGET /static/vendor/bootstrap-icons/bootstrap-icons.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:04] "[36mGET /static/vendor/apexcharts/apexcharts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:04] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:04] "[36mGET /static/vendor/boxicons/css/boxicons.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:04] "[36mGET /static/vendor/remixicon/remixicon.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:04] "[36mGET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:04] "[36mGET /static/vendor/quill/quill.snow.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:04] "[36mGET /static/vendor/quill/quill.bubble.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:04] "[36mGET /static/vendor/echarts/echarts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:04] "[36mGET /static/vendor/quill/quill.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:04] "[36mGET /static/vendor/chart.js/chart.umd.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:04] "[36mGET /static/vendor/simple-datatables/simple-datatables.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:04] "[36mGET /static/vendor/tinymce/tinymce.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:04] "[33mGET /static/vendor/php-email-form/validate.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:04] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:08] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "GET /adminDashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[36mGET /static/vendor/bootstrap/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[36mGET /static/vendor/quill/quill.bubble.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[36mGET /static/vendor/boxicons/css/boxicons.min.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[36mGET /static/vendor/bootstrap-icons/bootstrap-icons.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[36mGET /static/vendor/quill/quill.snow.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[36mGET /static/vendor/remixicon/remixicon.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[36mGET /static/vendor/simple-datatables/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[33mGET /assets/img/messages-1.jpg HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[33mGET /assets/img/messages-2.jpg HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[33mGET /assets/img/messages-3.jpg HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[36mGET /static/img/admin.jpg HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[36mGET /static/vendor/apexcharts/apexcharts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[36mGET /static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[36mGET /static/vendor/echarts/echarts.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[36mGET /static/vendor/quill/quill.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[36mGET /static/vendor/simple-datatables/simple-datatables.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[36mGET /static/vendor/tinymce/tinymce.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[33mGET /static/vendor/php-email-form/validate.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[33mGET /assets/img/product-1.jpg HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[33mGET /assets/img/product-2.jpg HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[33mGET /assets/img/product-3.jpg HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[33mGET /assets/img/product-4.jpg HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[33mGET /assets/img/product-5.jpg HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[33mGET /assets/img/news-1.jpg HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[33mGET /assets/img/news-2.jpg HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[33mGET /assets/img/news-3.jpg HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[33mGET /assets/img/news-4.jpg HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Jun/2024 12:59:09] "[33mGET /assets/img/news-5.jpg HTTP/1.1[0m" 404 -

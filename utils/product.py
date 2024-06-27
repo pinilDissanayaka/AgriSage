@@ -4,8 +4,11 @@ from dotenv import load_dotenv
 from pymongo import MongoClient
 import re
 import base64
+import logging
 
 load_dotenv(".env")
+logging.basicConfig(filename='logging')
+
 
 class Product(object):
     def __init__(self) -> None:
@@ -17,9 +20,10 @@ class Product(object):
             client=MongoClient(os.getenv('MONGO_CLIENT'))
             db=client[databaseName]
             collection=db[collectionName]
+            logging.info('Connected to the database')
             connectionStatus=True
-        except:
-            print("Database connection failed!")
+        except Exception as e:
+            logging.error(e)
             connectionStatus=False
             
         return client, collection, connectionStatus
@@ -38,6 +42,8 @@ class Product(object):
             else:
                 print("Failed adding product.")
                 status=False
+        except Exception as e:
+            logging.error(e)
         finally:
             client.close()
             
@@ -62,6 +68,8 @@ class Product(object):
             else:
                 products=None
                 return products
-        except:
+        except Exception as e:
+            logging.error(e)
+        finally:
             client.close()
             

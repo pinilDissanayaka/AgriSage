@@ -2,8 +2,11 @@ import firebase_admin
 from firebase_admin import db, credentials
 import os
 from dotenv import load_dotenv
+import logging
 
 load_dotenv(".env")
+logging.basicConfig(filename='logging')
+
 
 class Firebase(object):
     def __init__(self) -> None:
@@ -20,7 +23,8 @@ class Firebase(object):
             else:
                 ifExists=False
             return ifExists
-        except:
+        except Exception as e:
+            logging.error(e)
             return None
     
     def getValue(self, key:str):
@@ -31,7 +35,8 @@ class Firebase(object):
             else:
                 value=False
             return value
-        except:
+        except Exception as e:
+            logging.error(e)
             return None
         
 

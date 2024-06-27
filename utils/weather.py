@@ -4,8 +4,10 @@ from dotenv import load_dotenv
 import json
 import threading
 from concurrent import futures
+import logging
 
 load_dotenv('.env')
+logging.basicConfig(filename='logging')
 
 class Weather(object):
     def __init__(self) -> None:
@@ -31,7 +33,8 @@ class Weather(object):
             lat=geocodingJson[0]['lat']
             lon=geocodingJson[0]['lon']
             return lat, lon
-        except:
+        except Exception as e:
+            logging.error(e)
             return None, None
         
     def getWeatherData(self, location :str):
@@ -40,7 +43,8 @@ class Weather(object):
             weatherData=requests.get(weatherUrl)
             weatherDataJson=weatherData.json()
             return weatherDataJson
-        except:
+        except Exception as e:
+            logging.error(e)
             return None
     
     def getWeatherForecast(self, location:str):
@@ -53,7 +57,8 @@ class Weather(object):
                 return weatherForecastJson
             else:
                 return None
-        except:
+        except Exception as e:
+            logging.error(e)
             return None
         
     def getAirPollutionData(self, location:str):
@@ -66,7 +71,8 @@ class Weather(object):
                 return airPollutionJson
             else:
                 return None
-        except:
+        except Exception as e:
+            logging.error(e)
             return None
         
     def getAllWeatherData(self, location:str):
@@ -80,7 +86,8 @@ class Weather(object):
                 data.append(result.result())
                
             return data
-        except:
+        except Exception as e:
+            logging.error(e)
             return None, None, None
             
     

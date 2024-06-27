@@ -2,9 +2,11 @@ import os
 from flask_bcrypt import Bcrypt
 from dotenv import load_dotenv
 from pymongo import MongoClient
+import logging
 import re
 
 load_dotenv(".env")
+logging.basicConfig(filename='logging')
 
 class Admin(object):
     def __init__(self, app) -> None:
@@ -17,7 +19,9 @@ class Admin(object):
             client=MongoClient(os.getenv('MONGO_CLIENT'))
             db=client[databaseName]
             connectionStatus=True
-        except:
+            logging.info('Connected to the database')
+        except Exception as e:
+            logging.error(e)
             print("Database connection failed!")
             connectionStatus=False
             
@@ -35,6 +39,8 @@ class Admin(object):
                     count=collection.count_documents({"adminUserFlag" : adminUserFlag})
             else:
                 count=None
+        except Exception as e:
+            logging.error(e)
         finally:
             client.close()
         
