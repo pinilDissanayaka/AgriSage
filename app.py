@@ -10,8 +10,6 @@ from utils.product import Product
 from utils.weather import Weather
 from utils.firbase import Firebase
 from utils.prediction import Prediction
-from utils.message import Message
-from utils.otp import OTP
 import asyncio
 
 app=Flask(__name__, static_folder="static", template_folder="templates")
