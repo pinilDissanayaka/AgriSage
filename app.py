@@ -19,8 +19,6 @@ product=Product()
 weather=Weather()
 firebase=Firebase()
 prediction=Prediction()
-message=Message()
-otp=OTP()
 
 load_dotenv('.env')
 app.secret_key=os.getenv('APP_SECRET_KEY')
