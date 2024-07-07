@@ -25,7 +25,7 @@ message=Message()
 otp=OTP()
 
 load_dotenv('.env')
-app.secret_key=os.getenv('APP_SECRECT_KEY')
+app.secret_key=os.getenv('APP_SECRET_KEY')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -80,7 +80,7 @@ def register(errorMassage=" "):
                     session['phoneNumber']=phoneNumber
                     session['adminUserFlag']=False
                                         
-                    return redirect(url_for('verifyAccount')) 
+                    return redirect(url_for('setup')) 
                 else:
                     errorMassage="Registration Failed"
                     return render_template('register.html', errorMassage=errorMassage)
@@ -92,34 +92,6 @@ def register(errorMassage=" "):
         session['loggedIn']=False
         return redirect(url_for('register'))
     
-@app.route('/verifyAccount', methods=['GET', 'POST'])
-def verifyAccount(errorMassage=" "):
-    #try:
-        if session['loggedIn']:
-            if session['registered']:
-                if request.method=='POST':
-                    verificationCode=int(request.form['verificationCode'])
-                    
-                    message.sendSms(otp=otp.generateOTP(), toNumber=session['phoneNumber'])
-                    
-                    status=otp.checkOTP(otp=verificationCode)
-    
-                    if status:
-                        session['registered']=True
-                        return redirect(url_for('setup'))
-                    else:
-                        errorMassage='IoT device setup failed'
-                        return render_template('setupAccount.html', errorMassage=errorMassage)
-                else:
-                    return render_template('setupAccount.html', errorMassage=errorMassage)
-            else:
-                return redirect(url_for('register'))
-        else:
-            return redirect(url_for('login')) 
-    #except:
-        session['loggedIn']=False
-        session['registered']=False
-        return redirect(url_for('login'))
     
     
 @app.route('/setup', methods=['GET', 'POST'])
