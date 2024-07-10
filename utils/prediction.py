@@ -5,7 +5,7 @@ class Prediction(object):
         pass
     
     def loadModel():
-        pass
+        print('hello')
     
     def preprocessImage():
         pass
