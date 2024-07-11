@@ -5,9 +5,15 @@ class Prediction(object):
         pass
     
     def loadModel():
-        print('hello')
-    
-    def preprocessImage():
+        with open('model_labels.pkl', 'rb') as labelPickle:
+            modelLabels=pickle.load(labelPickle)
+            
+        with open('model.pkl', 'rb') as modelPickle:
+            model=pickle.load(modelPickle)
+            
+        return modelLabels, modelPickle
+            
+    def preprocessImage(imageFile):
         pass
         
     def makePrediction():
