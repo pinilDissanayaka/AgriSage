@@ -11,7 +11,7 @@ class Prediction(object):
     def __init__(self) -> None:
         pass
     
-    def loadModel():
+    def loadModel(self):
         with open('model_labels.pkl', 'rb') as labelPickle:
             modelLabels=pickle.load(labelPickle)[0]
             

@@ -10,7 +10,8 @@ from utils.product import Product
 from utils.weather import Weather
 from utils.firbase import Firebase
 from utils.prediction import Prediction
-import asyncio
+from distutils.log import debug 
+from fileinput import filename 
 
 app=Flask(__name__, static_folder="static", template_folder="templates")
 user=User(app=app)
@@ -501,10 +502,13 @@ def weatherForecast():
 def diseasePrediction(pred=" "):
     #try:
         if session['loggedIn']:
-            #pred=prediction.makePrediction()
-            pred="Hu"
-            return render_template('prediction.html', pred=pred)
-
+            if request.method == 'POST':
+                imageFile=request.files['file']
+                imageFile.save(imageFile.name)
+                pred, confidence=prediction.makePrediction(imageFile=imageFile)
+                return render_template('prediction.html', pred=pred)
+            else:
+                return render_template('prediction.html', pred=pred)
         else:
             return redirect(url_for('login'))
    # except:
