@@ -1,7 +1,9 @@
 import pickle
 import tensorflow as tf
 from keras.models import load_model
+import keras.utils as kerasUtils
 from PIL import Image
+from werkzeug.utils import secure_filename
 import numpy as np
 
 import warnings
@@ -20,17 +22,22 @@ class Prediction(object):
         return modelLabels, model
             
     def preprocessImage(self, imageFile):
-        image=np.array(Image.open(imageFile).convert('RGB').resize(224, 224))
-        image=image/255
-        imageArray=tf.expand_dims(image, 0)
+        imageArray=kerasUtils.img_to_array(imageFile)
+        imageArray=imageArray/255
+        imageArray=np.expand_dims(imageArray, axis=0)
         return imageArray
         
-    def makePrediction(self, imageFile):
+    def makePrediction(self, imagePath):
         modelLabels, model=self.loadModel()
+        
+        imageFile=kerasUtils.load_img(path=imagePath, target_size=(224, 224))
+        
         imageArray=self.preprocessImage(imageFile=imageFile)
         
         prediction=model.predict(imageArray)
+        
         prediction=modelLabels[np.argmax(prediction[0])]
+        
         confidence=round(100 * (np.max(prediction[0])), 2)
         
         return prediction, confidence

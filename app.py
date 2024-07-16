@@ -12,6 +12,7 @@ from utils.firbase import Firebase
 from utils.prediction import Prediction
 from distutils.log import debug 
 from fileinput import filename 
+from werkzeug.utils import secure_filename
 
 app=Flask(__name__, static_folder="static", template_folder="templates")
 user=User(app=app)
@@ -504,8 +505,9 @@ def diseasePrediction(pred=" "):
         if session['loggedIn']:
             if request.method == 'POST':
                 imageFile=request.files['file']
-                imageFile.save(imageFile.name)
-                pred, confidence=prediction.makePrediction(imageFile=imageFile)
+                filePath=imageFile.name
+                imageFile.save(secure_filename(filePath))
+                pred, confidence=prediction.makePrediction(imagePath=filePath)
                 return render_template('prediction.html', pred=pred)
             else:
                 return render_template('prediction.html', pred=pred)
