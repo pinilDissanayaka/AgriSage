@@ -22,6 +22,9 @@ weather=Weather()
 firebase=Firebase()
 prediction=Prediction()
 
+os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
+os.environ['TF_ENABLE_ONEDNN_OPTS']='0'
+
 load_dotenv('.env')
 app.secret_key=os.getenv('APP_SECRET_KEY')
 
