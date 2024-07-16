@@ -8,6 +8,8 @@
 {% block main %}
 <main id="main" class="main">
 
+
+
   <div class="pagetitle">
     <h1>Disease Prediction</h1>
     <nav>
@@ -26,31 +28,25 @@
               <p class="mb-4">Welcome to our AI-Powered Paddy Disease Prediction System – your digital ally in paddy cultivation. Harnessing the power of artificial intelligence, this platform is designed to elevate your farming experience by accurately diagnosing various paddy diseases and agricultural concerns. Empower yourself with precise insights into your paddy fields' needs. Simply upload a photo, and our advanced AI algorithms will analyze it against a comprehensive database of paddy diseases, providing personalized assessments and tailored recommendations. Discover a new level of confidence and clarity in your farming journey with our AI-driven solution. Your crops deserve the best care, and we're here to provide it. Explore our Paddy Disease Prediction System today and unlock the secrets to a healthy, bountiful harvest.</p>
               <form method="POST" action="{{ url_for('diseasePrediction') }}" enctype="multipart/form-data" enctype="multipart/form-data">                 
                   <div class="mb-3">
-                      <label for="formFile" class="form-label">Click the "Choose File" button to select a photo. Ensure the image is clear and well-lit.</label>
-                      <input class="form-control" type="file" id="formFile" accept="image/*" name="file" onchange="previewFile(this);">
-                      
-                      <script>
-                        function previewFile(input){
-                          var file = $("input[type=file]").get(0).files[0];
-                        
-                          if(file){
-                              var reader = new FileReader();
-                        
-                              reader.onload = function(){
-                                  $(".img-thumbnail").attr("src", reader.result);
-                              }
-                        
-                              reader.readAsDataURL(file);
-                          }
+                    <label for="formFile" class="form-label">Click the "Choose File" button to select a photo. Ensure the image is clear and well-lit.</label>
+                    <input class="form-control" type="file" id="formFile" name="file" accept="image/*" onchange="loadFile(event)">
+                    </br>
+                    <div class="col-12">
+                        <img class="img-thumbnail" src="" alt="" id="output">
+                    </div>
+                    <script>
+                      var loadFile = function(event) {
+                        var output = document.getElementById('output');
+                        output.src = URL.createObjectURL(event.target.files[0]);
+                        output.onload = function() {
+                          URL.revokeObjectURL(output.src) 
                         }
-                      </script>
-
-                      <div class="col-12">
-                          <img class="img-thumbnail" src="" alt="">
-                      </div>
-                      <div class="col-12">
-                          <button class="btn btn-primary" type="submit">Upload</button>
-                      </div>
+                      };
+                    </script>
+                  </br>
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit">Upload</button>
+                    </div>
                   </div>
               </form>
           </div>
