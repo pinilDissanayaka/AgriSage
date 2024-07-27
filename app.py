@@ -503,22 +503,22 @@ def weatherForecast():
      
      
 @app.route('/diseasePrediction', methods =['GET', 'POST'])
-def diseasePrediction(pred=" "):
-    #try:
+def diseasePrediction(pred=" ", confidence=0):
+    try:
         if session['loggedIn']:
             if request.method == 'POST':
                 imageFile=request.files['file']
                 filePath=imageFile.name
                 imageFile.save(secure_filename(filePath))
                 pred, confidence=prediction.makePrediction(imagePath=filePath)
-                return render_template('prediction.html', pred=pred)
+                return render_template('prediction.html', pred=pred, confidence=confidence)
             else:
-                return render_template('prediction.html', pred=pred)
+                return render_template('prediction.html', pred=pred, confidence=confidence)
         else:
             return redirect(url_for('login'))
-   # except:
-     #   session['loggedIn']=False
-     #   return redirect(url_for('login'))
+    except:
+        session['loggedIn']=False
+        return redirect(url_for('login'))
      
 @app.route('/fertilizers', methods =['GET', 'POST'])
 def fertilizers():

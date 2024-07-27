@@ -61,7 +61,10 @@
                 <hr>
                 <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
                 <hr>
-                <p>{{ pred }}<p>
+                <p>{{ pred }}</p>
+                {% if confidence != 0 %}
+                  <p>Confidence : {{ confidence }}</p>
+                {% endif %}
               </div>
             {% endif %}
           </div>

@@ -36,11 +36,10 @@ class Prediction(object):
         
         prediction=model.predict(imageArray)
         
+        confidence=round(100 * (np.max(prediction[0])), 2)
+        
         prediction=modelLabels[np.argmax(prediction[0])]
-        
-        #confidence=round(100 * (np.max(prediction[0])), 2)
-        confidence=1
-        
+                
         return prediction, confidence
         
         
