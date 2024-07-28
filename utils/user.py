@@ -2,7 +2,7 @@ import os
 from flask_bcrypt import Bcrypt
 from dotenv import load_dotenv
 from pymongo import MongoClient
-from fieldData import FieldData
+from utils.fieldData import FieldData
 import re
 
 load_dotenv(".env")
@@ -118,6 +118,7 @@ class User(object):
             if connectionStatus is True: 
                     collection.update_one({'userName' : userName}, {'$set' : { 'location': location, 'country' : country}})
                     collection.update_one({'userName' : userName}, {'$push' : { 'code' : code}})    
+                    fieldData.createFieldDataTable(tableName=code)
                     status=True
             else:
                 status=False
@@ -132,7 +133,9 @@ class User(object):
             client, collection, connectionStatus=User.connectDB()
             
             if connectionStatus is True: 
-                    collection.update_one({'userName' : userName}, {'$push' : { 'code' : code}})    
+                    collection.update_one({'userName' : userName}, {'$push' : { 'code' : code}})   
+                    fieldData.createFieldDataTable(tableName=code)
+ 
                     status=True
             else:
                 status=False

@@ -144,7 +144,7 @@ def dashboard():
     
 @app.route('/addIoT', methods=['GET', 'POST'])
 def addIoT(errorMassage = " "):
-    try:
+    #try:
         if not session['loggedIn']:
             return redirect(url_for('login'))
         else:
@@ -161,7 +161,7 @@ def addIoT(errorMassage = " "):
                     return render_template('addIoT.html', errorMassage=errorMassage)
             else:
                 return render_template('addIoT.html', errorMassage=errorMassage) 
-    except:
+    #except:
         session['loggedIn']=False
         return redirect(url_for('login'))
 

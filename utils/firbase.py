@@ -2,8 +2,12 @@ import firebase_admin
 from firebase_admin import db, credentials
 import os
 from dotenv import load_dotenv
+from utils.fieldData import FieldData
+
 
 load_dotenv(".env")
+
+fieldData=FieldData()
 
 class Firebase(object):
     def __init__(self) -> None:
@@ -28,7 +32,7 @@ class Firebase(object):
             ifExists=self.getKeys(key=key)
             if ifExists:
                 value=db.reference(key).get()
-                print(value)
+                fieldData.addData(tableName=key, data=value)
             else:
                 value=False
             return value
