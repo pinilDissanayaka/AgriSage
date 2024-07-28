@@ -2,10 +2,12 @@ import os
 from flask_bcrypt import Bcrypt
 from dotenv import load_dotenv
 from pymongo import MongoClient
+from fieldData import FieldData
 import re
-import base64
 
 load_dotenv(".env")
+
+fieldData=FieldData()
 
 class User(object):
     def __init__(self, app) -> None:
@@ -25,9 +27,7 @@ class User(object):
             
         return client, collection, connectionStatus
     
-    
-    
-        
+           
     def addUser(self, name:str, phoneNumber:str, userName:str, password:str, adminUserFlag='False'):
         try:
             client, collection, connectionStatus=User.connectDB()
@@ -81,9 +81,9 @@ class User(object):
                     isValid =self._bycrypt.check_password_hash(user['password'], password)
                     
                     if isValid:
-                        print("Loging successfull")
+                        print("Login successful")
                         user=user
-                        status="Loging successfull"
+                        status="Login successful"
                     else:
                         print("Incorrect password")
                         user=None

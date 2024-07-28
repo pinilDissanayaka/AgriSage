@@ -28,6 +28,7 @@ class Firebase(object):
             ifExists=self.getKeys(key=key)
             if ifExists:
                 value=db.reference(key).get()
+                print(value)
             else:
                 value=False
             return value
