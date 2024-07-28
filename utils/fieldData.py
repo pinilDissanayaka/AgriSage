@@ -38,6 +38,18 @@ class FieldData(object):
         finally:
             cursor.close()
             
+    def deleteFieldDataTable(self, tableName:str):
+        _, cursor=self.connectDB()
+        try:
+            tableName="table_".join(tableName)
+            sql=f'''
+            DROP TABLE {tableName}
+            '''
+            cursor.execute(sql)
+        finally:
+            cursor.close()
+
+            
             
     def addData(self, tableName:str, data:dict):
         fieldDataDB, cursor=self.connectDB()
