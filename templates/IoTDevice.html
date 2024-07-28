@@ -92,14 +92,14 @@
               document.addEventListener("DOMContentLoaded", () => {
                 new ApexCharts(document.querySelector("#reportsChart"), {
                   series: [{
-                    name: 'Maximum Temperature',
-                    data: {{ data | tojson }},
+                    name: 'Nitrogen Level',
+                    data: {{ iotData['nitrogen'] | tojson }},
                   }, {
-                    name: 'Temperature',
-                    data: [11, 12, 12, 12, 12, 12, 11]
+                    name: 'Potassium Level',
+                    data: {{ iotData['potassium'] | tojson }}
                   }, {
-                    name: 'Minimum Temperature',
-                    data: [15, 16, 16, 15, 15, 14, 14]
+                    name: 'calcium Level',
+                    data: {{ iotData['calcium'] | tojson }}
                   }],
                   chart: {
                     height: 350,
@@ -130,7 +130,7 @@
                   },
                   xaxis: {
                     type: 'datetime',
-                    categories: ["2018-09-19 00:00:00.000", "2018-09-19 01:30:00.000", "2018-09-19 02:30:00.000", "2018-09-19 03:30:00.000", "2018-09-19 04:30:00.000", "2018-09-19 05:30:00.000", "2018-09-19 06:30:00.000"]
+                    categories: {{ iotData['date'] | tojson }}
                   },
                   tooltip: {
                     x: {

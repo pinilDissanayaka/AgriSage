@@ -33,6 +33,12 @@ class Firebase(object):
             if ifExists:
                 value=db.reference(key).get()
                 fieldData.addData(tableName=key, data=value)
+                date, potassium, nitrogen, calcium=fieldData.getFieldData(tableName=key)
+                value['date']=date
+                value['nitrogen']=nitrogen
+                value['potassium']=potassium
+                value['calcium']=calcium
+                print(value)
             else:
                 value=False
             return value

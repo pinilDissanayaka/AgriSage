@@ -25,11 +25,11 @@ class FieldData(object):
             sql=f'''
                 CREATE TABLE {tableName} (
                     time DATETIME,
-                    temperature FLOAT(5, 5),
-                    humidity FLOAT(5, 5),
-                    potassium FLOAT(5, 5),
-                    nitrogen FLOAT(5, 5),
-                    calcium FLOAT(5, 5)
+                    temperature VARCHAR(10),
+                    humidity VARCHAR(10),
+                    potassium VARCHAR(10),
+                    nitrogen VARCHAR(10),
+                    calcium VARCHAR(10)
                 )
             '''
             
@@ -55,16 +55,16 @@ class FieldData(object):
         fieldDataDB, cursor=self.connectDB()
         try:
             tableName="table_".join(tableName)
-            time=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            time=str(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
             sql = f''' INSERT INTO {tableName} (time, temperature, humidity, potassium, nitrogen, calcium) 
             VALUES (%s, %s, %s, %s, %s, %s)'''
             values=(
                 time,
-                data['temperature'],
-                data['humidity'],
-                data['potassium'],
-                data['nitrogen'],
-                data['calcium']
+                str(data['temperature']),
+                str(data['humidity']),
+                str(data['potassium']),
+                str(data['nitrogen']),
+                str(data['calcium'])
             )
             
             cursor.execute(sql, values)
@@ -73,5 +73,30 @@ class FieldData(object):
         finally:
             cursor.close()
             
+            
+    def getFieldData(self, tableName:str):
+        fieldDataDB, cursor=self.connectDB()
+        date=[]
+        potassium=[]
+        nitrogen=[]
+        calcium=[]
+        try:
+            tableName="table_".join(tableName)
+            sql=f'''
+                SELECT * FROM {tableName}
+            '''
+            cursor.execute(sql)
+            rows=cursor.fetchall()
+            
+            for row in rows:
+                date.append(row[0])
+                potassium.append(row[3])
+                nitrogen.append(row[4])
+                calcium.append(row[5])
+                
+        finally:
+            cursor.close()
+            
+        return date, potassium, nitrogen, calcium
             
             
