@@ -152,6 +152,7 @@ class User(object):
             
             if connectionStatus is True: 
                     collection.update_one({'userName' : userName}, {'$pull' : { 'code' : code}})    
+                    fieldData.deleteFieldDataTable(tableName=code)
                     status=True
             else:
                 status=False
