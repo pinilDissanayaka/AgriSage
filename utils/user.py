@@ -4,8 +4,11 @@ from dotenv import load_dotenv
 from pymongo import MongoClient
 from utils.fieldData import FieldData
 import re
+import logging
 
 load_dotenv(".env")
+logging.basicConfig(filename="logging.txt")
+
 
 fieldData=FieldData()
 
@@ -21,8 +24,9 @@ class User(object):
             db=client[databaseName]
             collection=db[collectionName]
             connectionStatus=True
-        except:
+        except Exception as e:
             print("Database connection failed!")
+            logging.exception(e)
             connectionStatus=False
             
         return client, collection, connectionStatus
@@ -45,6 +49,8 @@ class User(object):
                 else:
                     print("Failed adding user.")
                     status=False
+        except Exception as e:
+            logging.exception(e)
         finally:
             client.close()
             
@@ -60,7 +66,8 @@ class User(object):
                     status='User not found'
                 else:
                     status='User was found'
-                
+        except Exception as e:
+            logging.exception(e)   
         finally:
             client.close()
             
@@ -88,6 +95,8 @@ class User(object):
                         print("Incorrect password")
                         user=None
                         status="Incorrect password"
+        except Exception as e:
+            logging.exception(e)
         finally:
             client.close()
             
@@ -104,7 +113,8 @@ class User(object):
                     status="Profile update successfully"  
             else:
                 status="Couldn't update profile"
-               
+        except Exception as e:
+            logging.exception(e)
         finally:
             client.close()
             
@@ -122,6 +132,8 @@ class User(object):
                     status=True
             else:
                 status=False
+        except Exception as e:
+            logging.exception(e)
                
         finally:
             client.close()
@@ -139,7 +151,8 @@ class User(object):
                     status=True
             else:
                 status=False
-               
+        except Exception as e:
+            logging.exception(e)            
         finally:
             client.close()
             
@@ -156,7 +169,8 @@ class User(object):
                     status=True
             else:
                 status=False
-               
+        except Exception as e:
+            logging.exception(e)
         finally:
             client.close()
             
@@ -173,7 +187,8 @@ class User(object):
                     status=True
             else:
                 status=False
-               
+        except Exception as e:
+            logging.exception(e)
         finally:
             client.close()
             
@@ -192,7 +207,9 @@ class User(object):
                     collection.update_one({'userName' : userName}, {'$set' : {'password' : newPassword}})
                     status='Password change successfully'
                 else:
-                    status='Can not change password'   
+                    status='Can not change password' 
+        except Exception as e:
+            logging.exception(e)  
         finally:
             client.close()
         
@@ -213,6 +230,8 @@ class User(object):
                     status=False
             else:
                 status=False
+        except Exception as e:
+            logging.exception(e)
         finally:
             client.close()
             

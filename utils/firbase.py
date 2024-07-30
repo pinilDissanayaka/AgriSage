@@ -3,11 +3,16 @@ from firebase_admin import db, credentials
 import os
 from dotenv import load_dotenv
 from utils.fieldData import FieldData
+import logging
 
 
 load_dotenv(".env")
+logging.basicConfig(filename="logging.txt")
+
 
 fieldData=FieldData()
+
+logging.basicConfig(filename="logging.txt")
 
 class Firebase(object):
     def __init__(self) -> None:
@@ -24,7 +29,8 @@ class Firebase(object):
             else:
                 ifExists=False
             return ifExists
-        except:
+        except Exception as e:
+            logging.exception(e)
             return None
     
     def getValue(self, key:str):
@@ -33,13 +39,12 @@ class Firebase(object):
             if ifExists:
                 value=db.reference(key).get()
                 fieldData.addData(tableName=key, data=value)
-                print(value)
                 iotData=fieldData.getFieldData(tableName=key)
-                print(iotData)
             else:
                 iotData=False
             return iotData
-        except:
+        except Exception as e:
+            logging.exception(e)
             return None
         
 

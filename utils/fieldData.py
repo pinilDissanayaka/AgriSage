@@ -1,6 +1,9 @@
 from mysql import connector
 from datetime import datetime
 from utils.iotDataDict import IoTDataDict
+import logging
+
+logging.basicConfig(filename="logging.txt")
 
 class FieldData(object):
     def __init__(self, host="localhost", user="root", password="", databaseName="AgriSage") -> None:
@@ -18,6 +21,8 @@ class FieldData(object):
             '''
             
             cursor.execute(sql)
+        except Exception as e:
+            logging.exception(e)
         finally:
             cursor.close()
         
@@ -34,8 +39,7 @@ class FieldData(object):
             cursor=fieldDataDB.cursor()
         except Exception as e:
             print("Couldn't connect MySQL database.")
-            raise e
-            
+            logging.exception(e)
         return fieldDataDB, cursor
 
     
@@ -59,7 +63,7 @@ class FieldData(object):
             
             cursor.execute(sql)
         except Exception as e:
-            raise e            
+            logging.exception(e)
         finally:
             cursor.close()
             
@@ -74,7 +78,7 @@ class FieldData(object):
             '''
             cursor.execute(sql)
         except Exception as e:
-            raise e
+            logging.exception(e)
         finally:
             cursor.close()
                    
@@ -88,7 +92,7 @@ class FieldData(object):
             '''
             cursor.execute(sql)
         except Exception as e:
-            raise e 
+            logging.exception(e) 
         finally:
             cursor.close()
 
@@ -116,7 +120,7 @@ class FieldData(object):
             
             fieldDataDB.commit()
         except Exception as e:
-            raise e 
+            logging.exception(e)
         finally:
             cursor.close()
             
@@ -152,7 +156,7 @@ class FieldData(object):
                 
             iotData=IoTDataDict(date=date, temperature=temperature, humidity=humidity, potassium=potassium, nitrogen=nitrogen, calcium=calcium, soilMoisture=soilMoisture, waterLevel=waterLevel)
         except Exception as e:
-            raise e        
+            logging.exception(e)        
         finally:
             cursor.close()
             

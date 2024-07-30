@@ -1,4 +1,7 @@
 from typing import TypedDict
+import logging
+
+logging.basicConfig(filename="logging.txt")
 
 
 class IoTDataDict(TypedDict):

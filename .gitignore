@@ -1,3 +1,4 @@
 .env
 model_labels.pkl
 model.h5
+logging.txt
