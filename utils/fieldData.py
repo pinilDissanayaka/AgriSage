@@ -1,5 +1,6 @@
 from mysql import connector
 from datetime import datetime
+from utils.iotDataDict import IoTDataDict
 class FieldData(object):
     def __init__(self, host="localhost", user="root", password="", databaseName="AgriSage") -> None:
         try:
@@ -48,7 +49,9 @@ class FieldData(object):
                     humidity VARCHAR(10),
                     potassium VARCHAR(10),
                     nitrogen VARCHAR(10),
-                    calcium VARCHAR(10)
+                    calcium VARCHAR(10),
+                    soilMoisture VARCHAR(10),
+                    waterLevel VARCHAR(10)
                 )
             '''
             
@@ -75,15 +78,17 @@ class FieldData(object):
         try:
             tableName="table_".join(tableName)
             time=str(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-            sql = f''' INSERT INTO {tableName} (time, temperature, humidity, potassium, nitrogen, calcium) 
-            VALUES (%s, %s, %s, %s, %s, %s)'''
+            sql = f''' INSERT INTO {tableName} (time, temperature, humidity, potassium, nitrogen, calcium, soilMoisture, waterLevel) 
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)'''
             values=(
                 time,
                 str(data['temperature']),
                 str(data['humidity']),
                 str(data['potassium']),
                 str(data['nitrogen']),
-                str(data['calcium'])
+                str(data['calcium']),
+                str(data['soilMoisture']),
+                str(data['waterLevel'])
             )
             
             cursor.execute(sql, values)
@@ -94,11 +99,15 @@ class FieldData(object):
             
             
     def getFieldData(self, tableName:str):
-        fieldDataDB, cursor=self.connectDB()
+        _, cursor=self.connectDB()
         date=[]
         potassium=[]
         nitrogen=[]
         calcium=[]
+        temperature=[]
+        humidity=[]
+        soilMoisture=[]
+        waterLevel=[]
         try:
             tableName="table_".join(tableName)
             sql=f'''
@@ -109,13 +118,19 @@ class FieldData(object):
             
             for row in rows:
                 date.append(row[0])
+                temperature.append(row[1])
+                humidity.append(row[2])
                 potassium.append(row[3])
                 nitrogen.append(row[4])
                 calcium.append(row[5])
+                soilMoisture.append(row[6])
+                waterLevel.append(row[7])
+                
+            iotData=IoTDataDict(date=date, temperature=temperature, humidity=humidity, potassium=potassium, nitrogen=nitrogen, calcium=calcium, soilMoisture=soilMoisture, waterLevel=waterLevel)
                 
         finally:
             cursor.close()
             
-        return date, potassium, nitrogen, calcium
+        return iotData
             
             
