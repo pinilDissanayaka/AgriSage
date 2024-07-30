@@ -1,6 +1,6 @@
 from mysql import connector
 from datetime import datetime
-from utils.iotDataDict import IoTDataDict
+
 class FieldData(object):
     def __init__(self, host="localhost", user="root", password="", databaseName="AgriSage") -> None:
         try:
@@ -88,7 +88,7 @@ class FieldData(object):
                 str(data['nitrogen']),
                 str(data['calcium']),
                 str(data['soilMoisture']),
-                str(data['waterLevel'])
+                str(data['waterLavel'])
             )
             
             cursor.execute(sql, values)
@@ -126,7 +126,15 @@ class FieldData(object):
                 soilMoisture.append(row[6])
                 waterLevel.append(row[7])
                 
-            iotData=IoTDataDict(date=date, temperature=temperature, humidity=humidity, potassium=potassium, nitrogen=nitrogen, calcium=calcium, soilMoisture=soilMoisture, waterLevel=waterLevel)
+            iotData={'date':date, 
+                     'temperature':temperature, 
+                     'humidity':humidity, 
+                     'potassium':potassium, 
+                     'nitrogen':nitrogen, 
+                     'calcium':calcium, 
+                     'soilMoisture':soilMoisture, 
+                     'waterLevel':waterLevel
+                     }
                 
         finally:
             cursor.close()

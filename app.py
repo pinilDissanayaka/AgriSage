@@ -167,7 +167,7 @@ def addIoT(errorMassage = " "):
 
 @app.route('/IoTDevice/<deviceID>', methods=['GET', 'POST'])
 def IoT(deviceID):
-    try:
+    #try:
         if not session['loggedIn']:
             return redirect(url_for('login'))
         else:
@@ -176,9 +176,9 @@ def IoT(deviceID):
                 iotData=firebase.getValue(key=deviceID)
             else:
                 iotData=None
-            data = [0]
-            return render_template('IoTDevice.html', deviceID=deviceID, iotData=iotData, data=data)
-    except:
+                
+            return render_template('IoTDevice.html', deviceID=deviceID, iotData=iotData, data=[0])
+    #except:
         session['loggedIn']=False
         return redirect(url_for('login'))
     
