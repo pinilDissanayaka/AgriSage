@@ -32,8 +32,9 @@ class FieldData(object):
             )
             
             cursor=fieldDataDB.cursor()
-        except:
+        except Exception as e:
             print("Couldn't connect MySQL database.")
+            raise e
             
         return fieldDataDB, cursor
 
@@ -57,7 +58,8 @@ class FieldData(object):
             '''
             
             cursor.execute(sql)
-            
+        except Exception as e:
+            raise e            
         finally:
             cursor.close()
             
@@ -71,6 +73,8 @@ class FieldData(object):
             RENAME TABLE {oldTableName} TO {newTableName}
             '''
             cursor.execute(sql)
+        except Exception as e:
+            raise e
         finally:
             cursor.close()
                    
@@ -83,6 +87,8 @@ class FieldData(object):
             DROP TABLE {tableName}
             '''
             cursor.execute(sql)
+        except Exception as e:
+            raise e 
         finally:
             cursor.close()
 
@@ -109,6 +115,8 @@ class FieldData(object):
             cursor.execute(sql, values)
             
             fieldDataDB.commit()
+        except Exception as e:
+            raise e 
         finally:
             cursor.close()
             
@@ -143,7 +151,8 @@ class FieldData(object):
                 waterLevel.append(row[7])
                 
             iotData=IoTDataDict(date=date, temperature=temperature, humidity=humidity, potassium=potassium, nitrogen=nitrogen, calcium=calcium, soilMoisture=soilMoisture, waterLevel=waterLevel)
-                
+        except Exception as e:
+            raise e        
         finally:
             cursor.close()
             

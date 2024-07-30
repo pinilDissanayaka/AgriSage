@@ -17,9 +17,10 @@ class Admin(object):
             client=MongoClient(os.getenv('MONGO_CLIENT'))
             db=client[databaseName]
             connectionStatus=True
-        except:
+        except Exception as e:
             print("Database connection failed!")
             connectionStatus=False
+            raise e
             
         return client, db, connectionStatus
     
@@ -35,6 +36,8 @@ class Admin(object):
                     count=collection.count_documents({"adminUserFlag" : adminUserFlag})
             else:
                 count=None
+        except Exception as e:
+            raise e 
         finally:
             client.close()
         
