@@ -1,6 +1,25 @@
 from mysql import connector
 from datetime import datetime
 class FieldData(object):
+    def __init__(self, host="localhost", user="root", password="", databaseName="AgriSage") -> None:
+        try:
+            fieldDataDB=connector.connect(
+                host=host,
+                user=user,
+                password=password
+            )
+            
+            cursor=fieldDataDB.cursor()
+            
+            sql=f'''
+                CREATE DATABASE IF NOT EXISTS {databaseName}
+            '''
+            
+            cursor.execute(sql)
+        finally:
+            cursor.close()
+        
+    
     def connectDB(self, host="localhost", user="root", password="", databaseName="AgriSage"):
         try:
             fieldDataDB=connector.connect(
