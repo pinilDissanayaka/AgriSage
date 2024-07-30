@@ -84,10 +84,8 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Soil Nutrients<span></span></h5>
-
           <!-- Soil Condition Chart -->
           <div id="reportsChart"></div>
-
             <script>
               document.addEventListener("DOMContentLoaded", () => {
                 new ApexCharts(document.querySelector("#reportsChart"), {
@@ -98,7 +96,7 @@
                     name: 'Potassium Level',
                     data: {{ iotData['potassium'] | tojson }}
                   }, {
-                    name: 'calcium Level',
+                    name: 'Calcium Level',
                     data: {{ iotData['calcium'] | tojson }}
                   }],
                   chart: {
