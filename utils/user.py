@@ -162,13 +162,14 @@ class User(object):
             
         return status
     
-    def editIoT(self, userName:str, code:str, newCode):
+    def editIoT(self, userName:str, code:str, newCode:str):
         try:
             client, collection, connectionStatus=User.connectDB()
             
             if connectionStatus is True: 
                     collection.update_one({'userName' : userName}, {'$pull' : { 'code' : code}})
-                    collection.update_one({'userName' : userName}, {'$push' : { 'code' : newCode}})        
+                    collection.update_one({'userName' : userName}, {'$push' : { 'code' : newCode}})   
+                    fieldData.editFieldDataTable(oldTableName=code, newTableName=newCode)     
                     status=True
             else:
                 status=False

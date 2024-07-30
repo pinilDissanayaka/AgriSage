@@ -198,6 +198,7 @@ def deleteIoTDevice(deviceID):
         session['loggedIn']=False
         return redirect(url_for('login'))
     
+    
 @app.route('/editIoTDevice/<deviceID>', methods=['GET', 'POST'])
 def editIoTDevice(deviceID, errorMassage = " "):
     try:

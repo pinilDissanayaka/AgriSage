@@ -61,6 +61,20 @@ class FieldData(object):
         finally:
             cursor.close()
             
+    def editFieldDataTable(self, oldTableName:str, newTableName:str):
+        _, cursor=self.connectDB()
+        try:
+            oldTableName="table_".join(oldTableName)
+            newTableName="table_".join(newTableName)
+            
+            sql=f'''
+            RENAME TABLE {oldTableName} TO {newTableName}
+            '''
+            cursor.execute(sql)
+        finally:
+            cursor.close()
+                   
+            
     def deleteFieldDataTable(self, tableName:str):
         _, cursor=self.connectDB()
         try:
@@ -109,6 +123,7 @@ class FieldData(object):
         humidity=[]
         soilMoisture=[]
         waterLevel=[]
+        
         try:
             tableName="table_".join(tableName)
             sql=f'''
