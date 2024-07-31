@@ -7,7 +7,7 @@ import base64
 import logging
 
 load_dotenv(".env")
-logging.basicConfig(filename="logging.txt")
+logging.basicConfig(filename="logging.txt", level=logging.WARNING)
 
 
 class Product(object):

@@ -1,7 +1,7 @@
 from typing import TypedDict
 import logging
 
-logging.basicConfig(filename="logging.txt")
+logging.basicConfig(filename="logging.txt", level=logging.WARNING)
 
 
 class IoTDataDict(TypedDict):

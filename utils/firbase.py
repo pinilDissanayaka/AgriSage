@@ -12,7 +12,7 @@ logging.basicConfig(filename="logging.txt")
 
 fieldData=FieldData()
 
-logging.basicConfig(filename="logging.txt")
+logging.basicConfig(filename="logging.txt", level=logging.WARNING)
 
 class Firebase(object):
     def __init__(self) -> None:
