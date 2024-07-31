@@ -3,7 +3,8 @@ from datetime import datetime
 from utils.iotDataDict import IoTDataDict
 import logging
 
-logging.basicConfig(filename="log.log", level=logging.WARNING)
+logging.basicConfig(filename="log.log", 
+                    level=logging.WARNING)
 
 class FieldData(object):
     def __init__(self, host="localhost", user="root", password="", databaseName="AgriSage") -> None:
@@ -38,7 +39,6 @@ class FieldData(object):
             
             cursor=fieldDataDB.cursor()
         except Exception as e:
-            print("Couldn't connect MySQL database.")
             logging.exception(e)
         return fieldDataDB, cursor
 
