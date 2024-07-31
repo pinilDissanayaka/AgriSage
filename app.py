@@ -14,6 +14,7 @@ from distutils.log import debug
 from fileinput import filename 
 from werkzeug.utils import secure_filename
 
+
 app=Flask(__name__, static_folder="static", template_folder="templates")
 user=User(app=app)
 admin=Admin(app=app)
