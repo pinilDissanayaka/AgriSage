@@ -7,12 +7,12 @@ import logging
 
 
 load_dotenv(".env")
-logging.basicConfig(filename="logging.txt")
+logging.basicConfig(filename="log.log")
 
 
 fieldData=FieldData()
 
-logging.basicConfig(filename="logging.txt", level=logging.WARNING)
+logging.basicConfig(filename="log.log", level=logging.WARNING)
 
 class Firebase(object):
     def __init__(self) -> None:

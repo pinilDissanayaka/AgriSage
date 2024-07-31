@@ -5,7 +5,7 @@ from pymongo import MongoClient
 import logging
 
 load_dotenv(".env")
-logging.basicConfig(filename="logging.txt",  level=logging.WARNING)
+logging.basicConfig(filename="log.log",  level=logging.WARNING)
 
 class Admin(object):
     def __init__(self, app) -> None:

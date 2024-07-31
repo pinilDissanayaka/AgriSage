@@ -7,7 +7,7 @@ import re
 import logging
 
 load_dotenv(".env")
-logging.basicConfig(filename="logging.txt", level=logging.WARNING)
+logging.basicConfig(filename="log.log", level=logging.WARNING)
 
 
 fieldData=FieldData()

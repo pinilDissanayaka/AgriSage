@@ -3,7 +3,7 @@ from datetime import datetime
 from utils.iotDataDict import IoTDataDict
 import logging
 
-logging.basicConfig(filename="logging.txt", level=logging.WARNING)
+logging.basicConfig(filename="log.log", level=logging.WARNING)
 
 class FieldData(object):
     def __init__(self, host="localhost", user="root", password="", databaseName="AgriSage") -> None:
