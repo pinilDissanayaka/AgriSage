@@ -12,5 +12,6 @@ class IoTDataDict(TypedDict):
     humidity=[]
     soilMoisture=[]
     waterLevel=[]
+    phLavel=[]
     
     

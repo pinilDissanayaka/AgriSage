@@ -141,424 +141,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Water Level Meter -->
-        <div class="col-12" id="waterLevelMeter">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Water Level<span></span></h5>
-              <div class="row">
-                <!-- Left -->
-                <div class="col-md-6">
-                  <div id="water-level-meter">
-                    <script>
-                      var waterLevelMeter = new FluidMeter();
-                      waterLevelMeter.init({
-                        targetContainer: document.getElementById("water-level-meter"),
-                        fillPercentage: 0,
-                        options: {
-                          fontSize: "30px",
-                          drawPercentageSign: true,
-                          drawBubbles: false,
-                          size: 280,
-                          borderWidth: 19,
-                          backgroundColor: "#e2e2e2",
-                          foregroundColor: "#fafafa",
-                          foregroundFluidLayer: {
-                            fillStyle: "#16E1FF",
-                            angularSpeed: 30,
-                            maxAmplitude: 5,
-                            frequency: 30,
-                            horizontalSpeed: -20
-                          },
-                          backgroundFluidLayer: {
-                            fillStyle: "#4F8FC6",
-                            angularSpeed: 100,
-                            maxAmplitude: 3,
-                            frequency: 22,
-                            horizontalSpeed: 20
-                          }
-                        }
-                      });
-      
-                      waterLevelMeter.setPercentage(Number({{ iotData['waterLevel'][-1] | tojson }}))
-      
-      
-                      function FluidMeter() {
-                        var context;
-                        var targetContainer;
-                      
-                        var time = null;
-                        var dt = null;
-                      
-                        var options = {
-                          drawShadow: true,
-                          drawText: true,
-                          drawPercentageSign: true,
-                          drawBubbles: true,
-                          fontSize: "70px",
-                          fontFamily: "Arial",
-                          fontFillStyle: "white",
-                          size: 300,
-                          borderWidth: 25,
-                          backgroundColor: "#e2e2e2",
-                          foregroundColor: "#fafafa"
-                        };
-                      
-                        var currentFillPercentage = 0;
-                        var fillPercentage = 0;
-                      
-                        //#region fluid context values
-                        var foregroundFluidLayer = {
-                          fillStyle: "purple",
-                          angle: 0,
-                          horizontalPosition: 0,
-                          angularSpeed: 0,
-                          maxAmplitude: 9,
-                          frequency: 30,
-                          horizontalSpeed: -150,
-                          initialHeight: 0
-                        };
-                      
-                        var backgroundFluidLayer = {
-                          fillStyle: "pink",
-                          angle: 0,
-                          horizontalPosition: 0,
-                          angularSpeed: 140,
-                          maxAmplitude: 12,
-                          frequency: 40,
-                          horizontalSpeed: 150,
-                          initialHeight: 0
-                        };
-                      
-                        var bubblesLayer = {
-                          bubbles: [],
-                          amount: 12,
-                          speed: 20,
-                          current: 0,
-                          swing: 0,
-                          size: 2,
-                          reset: function (bubble) {
-                            // calculate the area where to spawn the bubble based on the fluid area
-                            var meterBottom = (options.size - (options.size - getMeterRadius()) / 2) - options.borderWidth;
-                            var fluidAmount = currentFillPercentage * (getMeterRadius() - options.borderWidth * 2) / 100;
-                      
-                            bubble.r = random(this.size, this.size * 2) / 2;
-                            bubble.x = random(0, options.size);
-                            bubble.y = random(meterBottom, meterBottom - fluidAmount);
-                            bubble.velX = 0;
-                            bubble.velY = random(this.speed, this.speed * 2);
-                            bubble.swing = random(0, 2 * Math.PI);
-                          },
-                          init() {
-                            for (var i = 0; i < this.amount; i++) {
-                      
-                              var meterBottom = (options.size - (options.size - getMeterRadius()) / 2) - options.borderWidth;
-                              var fluidAmount = currentFillPercentage * (getMeterRadius() - options.borderWidth * 2) / 100;
-                              this.bubbles.push({
-                                x: random(0, options.size),
-                                y: random(meterBottom, meterBottom - fluidAmount),
-                                r: random(this.size, this.size * 2) / 2,
-                                velX: 0,
-                                velY: random(this.speed, this.speed * 2)
-                              });
-                            }
-                          }
-                        }
-                        //#endregion
-                      
-                        /**
-                          * initializes and mount the canvas element on the document
-                          */
-                        function setupCanvas() {
-                          var canvas = document.createElement('canvas');
-                          canvas.width = options.size;
-                          canvas.height = options.size;
-                          canvas.imageSmoothingEnabled = true;
-                          context = canvas.getContext("2d");
-                          targetContainer.appendChild(canvas);
-                      
-                          // shadow is not required  to be on the draw loop
-                          //#region shadow
-                          if (options.drawShadow) {
-                            context.save();
-                            context.beginPath();
-                            context.filter = "drop-shadow(0px 4px 6px rgba(0,0,0,0.1))";
-                            context.arc(options.size / 2, options.size / 2, getMeterRadius() / 2, 0, 2 * Math.PI);
-                            context.closePath();
-                            context.fill();
-                            context.restore();
-                          }
-                          //#endregion
-                        }
-                      
-                        /**
-                          * draw cycle
-                          */
-                        function draw() {
-                          var now = new Date().getTime();
-                          dt = (now - (time || now)) / 1000;
-                          time = now;
-                      
-                          requestAnimationFrame(draw);
-                          context.clearRect(0, 0, options.size, options.size);
-                          drawMeterBackground();
-                          drawFluid(dt);
-                          if (options.drawText) {
-                            drawText();
-                          }
-                          drawMeterForeground();
-                        }
-                      
-                        function drawMeterBackground() {
-                          context.save();
-                          context.fillStyle = options.backgroundColor;
-                          context.beginPath();
-                          context.arc(options.size / 2, options.size / 2, getMeterRadius() / 2 - options.borderWidth, 0, 2 * Math.PI);
-                          context.closePath();
-                          context.fill();
-                          context.restore();
-                        }
-                      
-                        function drawMeterForeground() {
-                          context.save();
-                          context.lineWidth = options.borderWidth;
-                          context.strokeStyle = options.foregroundColor;
-                          context.beginPath();
-                          context.arc(options.size / 2, options.size / 2, getMeterRadius() / 2 - options.borderWidth / 2, 0, 2 * Math.PI);
-                          context.closePath();
-                          context.stroke();
-                          context.restore();
-                        }
-                        /**
-                          * draws the fluid contents of the meter
-                          * @param  {} dt elapsed time since last frame
-                          */
-                        function drawFluid(dt) {
-                          context.save();
-                          context.arc(options.size / 2, options.size / 2, getMeterRadius() / 2 - options.borderWidth, 0, Math.PI * 2);
-                          context.clip();
-                          drawFluidLayer(backgroundFluidLayer, dt);
-                          drawFluidLayer(foregroundFluidLayer, dt);
-                          if (options.drawBubbles) {
-                            drawFluidMask(foregroundFluidLayer, dt);
-                            drawBubblesLayer(dt);
-                          }
-                          context.restore();
-                        }
-                      
-                      
-                        /**
-                          * draws the foreground fluid layer
-                          * @param  {} dt elapsed time since last frame
-                          */
-                        function drawFluidLayer(layer, dt) {
-                          // calculate wave angle
-                          if (layer.angularSpeed > 0) {
-                            layer.angle += layer.angularSpeed * dt;
-                            layer.angle = layer.angle < 0 ? layer.angle + 360 : layer.angle;
-                          }
-                      
-                          // calculate horizontal position
-                          layer.horizontalPosition += layer.horizontalSpeed * dt;
-                          if (layer.horizontalSpeed > 0) {
-                            layer.horizontalPosition > Math.pow(2, 53) ? 0 : layer.horizontalPosition;
-                          }
-                          else if (layer.horizontalPosition < 0) {
-                            layer.horizontalPosition < -1 * Math.pow(2, 53) ? 0 : layer.horizontalPosition;
-                          }
-                      
-                          var x = 0;
-                          var y = 0;
-                          var amplitude = layer.maxAmplitude * Math.sin(layer.angle * Math.PI / 180);
-                      
-                          var meterBottom = (options.size - (options.size - getMeterRadius()) / 2) - options.borderWidth;
-                          var fluidAmount = currentFillPercentage * (getMeterRadius() - options.borderWidth * 2) / 100;
-                      
-                          if (currentFillPercentage < fillPercentage) {
-                            currentFillPercentage += 15 * dt;
-                          } else if (currentFillPercentage > fillPercentage) {
-                            currentFillPercentage -= 15 * dt;
-                          }
-                      
-                          layer.initialHeight = meterBottom - fluidAmount;
-                      
-                          context.save();
-                          context.beginPath();
-                      
-                          context.lineTo(0, layer.initialHeight);
-                      
-                          while (x < options.size) {
-                            y = layer.initialHeight + amplitude * Math.sin((x + layer.horizontalPosition) / layer.frequency);
-                            context.lineTo(x, y);
-                            x++;
-                          }
-                      
-                          context.lineTo(x, options.size);
-                          context.lineTo(0, options.size);
-                          context.closePath();
-                      
-                          context.fillStyle = layer.fillStyle;
-                          context.fill();
-                          context.restore();
-                        }
-                      
-                        /**
-                          * clipping mask for objects within the fluid constrains
-                          * @param {Object} layer layer to be used as a mask
-                          */
-                        function drawFluidMask(layer) {
-                          var x = 0;
-                          var y = 0;
-                          var amplitude = layer.maxAmplitude * Math.sin(layer.angle * Math.PI / 180);
-                      
-                          context.beginPath();
-                      
-                          context.lineTo(0, layer.initialHeight);
-                      
-                          while (x < options.size) {
-                            y = layer.initialHeight + amplitude * Math.sin((x + layer.horizontalPosition) / layer.frequency);
-                            context.lineTo(x, y);
-                            x++;
-                          }
-                          context.lineTo(x, options.size);
-                          context.lineTo(0, options.size);
-                          context.closePath();
-                          context.clip();
-                        }
-                      
-                        function drawBubblesLayer(dt) {
-                          context.save();
-                          for (var i = 0; i < bubblesLayer.bubbles.length; i++) {
-                            var bubble = bubblesLayer.bubbles[i];
-                      
-                            context.beginPath();
-                            context.strokeStyle = 'white';
-                            context.arc(bubble.x, bubble.y, bubble.r, 2 * Math.PI, false);
-                            context.stroke();
-                            context.closePath();
-                      
-                            var currentSpeed = bubblesLayer.current * dt;
-                      
-                            bubble.velX = Math.abs(bubble.velX) < Math.abs(bubblesLayer.current) ? bubble.velX + currentSpeed : bubblesLayer.current;
-                            bubble.y = bubble.y - bubble.velY * dt;
-                            bubble.x = bubble.x + (bubblesLayer.swing ? 0.4 * Math.cos(bubblesLayer.swing += 0.03) * bubblesLayer.swing : 0) + bubble.velX * 0.5;
-                      
-                            // determine if current bubble is outside the safe area
-                            var meterBottom = (options.size - (options.size - getMeterRadius()) / 2) - options.borderWidth;
-                            var fluidAmount = currentFillPercentage * (getMeterRadius() - options.borderWidth * 2) / 100;
-                      
-                            if (bubble.y <= meterBottom - fluidAmount) {
-                              bubblesLayer.reset(bubble);
-                            }
-                      
-                          }
-                          context.restore();
-                        }
-                      
-                        function drawText() {
-                      
-                          var text = options.drawPercentageSign ?
-                            currentFillPercentage.toFixed(0) + "%" : currentFillPercentage.toFixed(0);
-                      
-                          context.save();
-                          context.font = getFontSize();
-                          context.fillStyle = options.fontFillStyle;
-                          context.textAlign = "center";
-                          context.textBaseline = 'middle';
-                          context.filter = "drop-shadow(0px 0px 5px rgba(0,0,0,0.4))"
-                          context.fillText(text, options.size / 2, options.size / 2);
-                          context.restore();
-                        }
-                      
-                        //#region helper methods
-                        function clamp(number, min, max) {
-                          return Math.min(Math.max(number, min), max);
-                        };
-                        function getMeterRadius() {
-                          return options.size * 0.9;
-                        }
-                      
-                        function random(min, max) {
-                          var delta = max - min;
-                          return max === min ? min : Math.random() * delta + min;
-                        }
-                      
-                        function getFontSize() {
-                          return options.fontSize + " " + options.fontFamily;
-                        }
-                        //#endregion
-                      
-                        return {
-                          init: function (env) {
-                            if (!env.targetContainer)
-                              throw "empty or invalid container";
-                      
-                            targetContainer = env.targetContainer;
-                            fillPercentage = clamp(env.fillPercentage, 0, 100);
-                      
-                            if (env.options) {
-                              options.drawShadow = env.options.drawShadow === false ? false : true;
-                              options.size = env.options.size;
-                              options.drawBubbles = env.options.drawBubbles === false ? false : true;
-                              options.borderWidth = env.options.borderWidth || options.borderWidth;
-                              options.foregroundFluidColor = env.options.foregroundFluidColor || options.foregroundFluidColor;
-                              options.backgroundFluidColor = env.options.backgroundFluidColor || options.backgroundFluidColor;
-                              options.backgroundColor = env.options.backgroundColor || options.backgroundColor;
-                              options.foregroundColor = env.options.foregroundColor || options.foregroundColor;
-                      
-                              options.drawText = env.options.drawText === false ? false : true;
-                              options.drawPercentageSign = env.options.drawPercentageSign === false ? false : true;
-                              options.fontSize = env.options.fontSize || options.fontSize;
-                              options.fontFamily = env.options.fontFamily || options.fontFamily;
-                              options.fontFillStyle = env.options.fontFillStyle || options.fontFillStyle;
-                              // fluid settings
-                      
-                              if (env.options.foregroundFluidLayer) {
-                                foregroundFluidLayer.fillStyle = env.options.foregroundFluidLayer.fillStyle || foregroundFluidLayer.fillStyle;
-                                foregroundFluidLayer.angularSpeed = env.options.foregroundFluidLayer.angularSpeed || foregroundFluidLayer.angularSpeed;
-                                foregroundFluidLayer.maxAmplitude = env.options.foregroundFluidLayer.maxAmplitude || foregroundFluidLayer.maxAmplitude;
-                                foregroundFluidLayer.frequency = env.options.foregroundFluidLayer.frequency || foregroundFluidLayer.frequency;
-                                foregroundFluidLayer.horizontalSpeed = env.options.foregroundFluidLayer.horizontalSpeed || foregroundFluidLayer.horizontalSpeed;
-                              }
-                      
-                              if (env.options.backgroundFluidLayer) {
-                                backgroundFluidLayer.fillStyle = env.options.backgroundFluidLayer.fillStyle || backgroundFluidLayer.fillStyle;
-                                backgroundFluidLayer.angularSpeed = env.options.backgroundFluidLayer.angularSpeed || backgroundFluidLayer.angularSpeed;
-                                backgroundFluidLayer.maxAmplitude = env.options.backgroundFluidLayer.maxAmplitude || backgroundFluidLayer.maxAmplitude;
-                                backgroundFluidLayer.frequency = env.options.backgroundFluidLayer.frequency || backgroundFluidLayer.frequency;
-                                backgroundFluidLayer.horizontalSpeed = env.options.backgroundFluidLayer.horizontalSpeed || backgroundFluidLayer.horizontalSpeed;
-                              }
-                            }
-                            bubblesLayer.init();
-                            setupCanvas();
-                            draw();
-                          },
-                          setPercentage(percentage) {
-                            fillPercentage = clamp(percentage, 0, 100);
-                          }
-                        }
-                      };
-                    </script>
-                  </div>
-                </div>
-                <!-- Right -->
-                <div class="col-md-6">
-                  <form action="#" method="POST" novalidate>
-                    <div class="col-sm-10">
-                      <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> 
-        <!--End Water Level Meter -->
-
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Temperature<span></span></h5>
@@ -615,6 +197,719 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+          <div class="row">
+            <!-- Water Level Meter -->
+            <div class="col-12" id="waterLevelMeter">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Water Level<span></span></h5>
+                  <div class="row">
+                    <!-- Left -->
+                    <div class="col-md-6">
+                      <div id="water-level-meter">
+                        <script>
+                          var waterLevelMeter = new FluidMeter();
+                          waterLevelMeter.init({
+                            targetContainer: document.getElementById("water-level-meter"),
+                            fillPercentage: 0,
+                            options: {
+                              fontSize: "30px",
+                              drawPercentageSign: true,
+                              drawBubbles: false,
+                              size: 280,
+                              borderWidth: 19,
+                              backgroundColor: "#e2e2e2",
+                              foregroundColor: "#fafafa",
+                              foregroundFluidLayer: {
+                                fillStyle: "#16E1FF",
+                                angularSpeed: 30,
+                                maxAmplitude: 5,
+                                frequency: 30,
+                                horizontalSpeed: -20
+                              },
+                              backgroundFluidLayer: {
+                                fillStyle: "#4F8FC6",
+                                angularSpeed: 100,
+                                maxAmplitude: 3,
+                                frequency: 22,
+                                horizontalSpeed: 20
+                              }
+                            }
+                          });
+          
+                          waterLevelMeter.setPercentage(Number({{ iotData['waterLevel'][-1] | tojson }}))
+          
+          
+                          function FluidMeter() {
+                            var context;
+                            var targetContainer;
+                          
+                            var time = null;
+                            var dt = null;
+                          
+                            var options = {
+                              drawShadow: true,
+                              drawText: true,
+                              drawPercentageSign: true,
+                              drawBubbles: true,
+                              fontSize: "70px",
+                              fontFamily: "Arial",
+                              fontFillStyle: "white",
+                              size: 300,
+                              borderWidth: 25,
+                              backgroundColor: "#e2e2e2",
+                              foregroundColor: "#fafafa"
+                            };
+                          
+                            var currentFillPercentage = 0;
+                            var fillPercentage = 0;
+                          
+                            //#region fluid context values
+                            var foregroundFluidLayer = {
+                              fillStyle: "purple",
+                              angle: 0,
+                              horizontalPosition: 0,
+                              angularSpeed: 0,
+                              maxAmplitude: 9,
+                              frequency: 30,
+                              horizontalSpeed: -150,
+                              initialHeight: 0
+                            };
+                          
+                            var backgroundFluidLayer = {
+                              fillStyle: "pink",
+                              angle: 0,
+                              horizontalPosition: 0,
+                              angularSpeed: 140,
+                              maxAmplitude: 12,
+                              frequency: 40,
+                              horizontalSpeed: 150,
+                              initialHeight: 0
+                            };
+                          
+                            var bubblesLayer = {
+                              bubbles: [],
+                              amount: 12,
+                              speed: 20,
+                              current: 0,
+                              swing: 0,
+                              size: 2,
+                              reset: function (bubble) {
+                                // calculate the area where to spawn the bubble based on the fluid area
+                                var meterBottom = (options.size - (options.size - getMeterRadius()) / 2) - options.borderWidth;
+                                var fluidAmount = currentFillPercentage * (getMeterRadius() - options.borderWidth * 2) / 100;
+                          
+                                bubble.r = random(this.size, this.size * 2) / 2;
+                                bubble.x = random(0, options.size);
+                                bubble.y = random(meterBottom, meterBottom - fluidAmount);
+                                bubble.velX = 0;
+                                bubble.velY = random(this.speed, this.speed * 2);
+                                bubble.swing = random(0, 2 * Math.PI);
+                              },
+                              init() {
+                                for (var i = 0; i < this.amount; i++) {
+                          
+                                  var meterBottom = (options.size - (options.size - getMeterRadius()) / 2) - options.borderWidth;
+                                  var fluidAmount = currentFillPercentage * (getMeterRadius() - options.borderWidth * 2) / 100;
+                                  this.bubbles.push({
+                                    x: random(0, options.size),
+                                    y: random(meterBottom, meterBottom - fluidAmount),
+                                    r: random(this.size, this.size * 2) / 2,
+                                    velX: 0,
+                                    velY: random(this.speed, this.speed * 2)
+                                  });
+                                }
+                              }
+                            }
+                            //#endregion
+                          
+                            /**
+                              * initializes and mount the canvas element on the document
+                              */
+                            function setupCanvas() {
+                              var canvas = document.createElement('canvas');
+                              canvas.width = options.size;
+                              canvas.height = options.size;
+                              canvas.imageSmoothingEnabled = true;
+                              context = canvas.getContext("2d");
+                              targetContainer.appendChild(canvas);
+                          
+                              // shadow is not required  to be on the draw loop
+                              //#region shadow
+                              if (options.drawShadow) {
+                                context.save();
+                                context.beginPath();
+                                context.filter = "drop-shadow(0px 4px 6px rgba(0,0,0,0.1))";
+                                context.arc(options.size / 2, options.size / 2, getMeterRadius() / 2, 0, 2 * Math.PI);
+                                context.closePath();
+                                context.fill();
+                                context.restore();
+                              }
+                              //#endregion
+                            }
+                          
+                            /**
+                              * draw cycle
+                              */
+                            function draw() {
+                              var now = new Date().getTime();
+                              dt = (now - (time || now)) / 1000;
+                              time = now;
+                          
+                              requestAnimationFrame(draw);
+                              context.clearRect(0, 0, options.size, options.size);
+                              drawMeterBackground();
+                              drawFluid(dt);
+                              if (options.drawText) {
+                                drawText();
+                              }
+                              drawMeterForeground();
+                            }
+                          
+                            function drawMeterBackground() {
+                              context.save();
+                              context.fillStyle = options.backgroundColor;
+                              context.beginPath();
+                              context.arc(options.size / 2, options.size / 2, getMeterRadius() / 2 - options.borderWidth, 0, 2 * Math.PI);
+                              context.closePath();
+                              context.fill();
+                              context.restore();
+                            }
+                          
+                            function drawMeterForeground() {
+                              context.save();
+                              context.lineWidth = options.borderWidth;
+                              context.strokeStyle = options.foregroundColor;
+                              context.beginPath();
+                              context.arc(options.size / 2, options.size / 2, getMeterRadius() / 2 - options.borderWidth / 2, 0, 2 * Math.PI);
+                              context.closePath();
+                              context.stroke();
+                              context.restore();
+                            }
+                            /**
+                              * draws the fluid contents of the meter
+                              * @param  {} dt elapsed time since last frame
+                              */
+                            function drawFluid(dt) {
+                              context.save();
+                              context.arc(options.size / 2, options.size / 2, getMeterRadius() / 2 - options.borderWidth, 0, Math.PI * 2);
+                              context.clip();
+                              drawFluidLayer(backgroundFluidLayer, dt);
+                              drawFluidLayer(foregroundFluidLayer, dt);
+                              if (options.drawBubbles) {
+                                drawFluidMask(foregroundFluidLayer, dt);
+                                drawBubblesLayer(dt);
+                              }
+                              context.restore();
+                            }
+                          
+                          
+                            /**
+                              * draws the foreground fluid layer
+                              * @param  {} dt elapsed time since last frame
+                              */
+                            function drawFluidLayer(layer, dt) {
+                              // calculate wave angle
+                              if (layer.angularSpeed > 0) {
+                                layer.angle += layer.angularSpeed * dt;
+                                layer.angle = layer.angle < 0 ? layer.angle + 360 : layer.angle;
+                              }
+                          
+                              // calculate horizontal position
+                              layer.horizontalPosition += layer.horizontalSpeed * dt;
+                              if (layer.horizontalSpeed > 0) {
+                                layer.horizontalPosition > Math.pow(2, 53) ? 0 : layer.horizontalPosition;
+                              }
+                              else if (layer.horizontalPosition < 0) {
+                                layer.horizontalPosition < -1 * Math.pow(2, 53) ? 0 : layer.horizontalPosition;
+                              }
+                          
+                              var x = 0;
+                              var y = 0;
+                              var amplitude = layer.maxAmplitude * Math.sin(layer.angle * Math.PI / 180);
+                          
+                              var meterBottom = (options.size - (options.size - getMeterRadius()) / 2) - options.borderWidth;
+                              var fluidAmount = currentFillPercentage * (getMeterRadius() - options.borderWidth * 2) / 100;
+                          
+                              if (currentFillPercentage < fillPercentage) {
+                                currentFillPercentage += 15 * dt;
+                              } else if (currentFillPercentage > fillPercentage) {
+                                currentFillPercentage -= 15 * dt;
+                              }
+                          
+                              layer.initialHeight = meterBottom - fluidAmount;
+                          
+                              context.save();
+                              context.beginPath();
+                          
+                              context.lineTo(0, layer.initialHeight);
+                          
+                              while (x < options.size) {
+                                y = layer.initialHeight + amplitude * Math.sin((x + layer.horizontalPosition) / layer.frequency);
+                                context.lineTo(x, y);
+                                x++;
+                              }
+                          
+                              context.lineTo(x, options.size);
+                              context.lineTo(0, options.size);
+                              context.closePath();
+                          
+                              context.fillStyle = layer.fillStyle;
+                              context.fill();
+                              context.restore();
+                            }
+                          
+                            /**
+                              * clipping mask for objects within the fluid constrains
+                              * @param {Object} layer layer to be used as a mask
+                              */
+                            function drawFluidMask(layer) {
+                              var x = 0;
+                              var y = 0;
+                              var amplitude = layer.maxAmplitude * Math.sin(layer.angle * Math.PI / 180);
+                          
+                              context.beginPath();
+                          
+                              context.lineTo(0, layer.initialHeight);
+                          
+                              while (x < options.size) {
+                                y = layer.initialHeight + amplitude * Math.sin((x + layer.horizontalPosition) / layer.frequency);
+                                context.lineTo(x, y);
+                                x++;
+                              }
+                              context.lineTo(x, options.size);
+                              context.lineTo(0, options.size);
+                              context.closePath();
+                              context.clip();
+                            }
+                          
+                            function drawBubblesLayer(dt) {
+                              context.save();
+                              for (var i = 0; i < bubblesLayer.bubbles.length; i++) {
+                                var bubble = bubblesLayer.bubbles[i];
+                          
+                                context.beginPath();
+                                context.strokeStyle = 'white';
+                                context.arc(bubble.x, bubble.y, bubble.r, 2 * Math.PI, false);
+                                context.stroke();
+                                context.closePath();
+                          
+                                var currentSpeed = bubblesLayer.current * dt;
+                          
+                                bubble.velX = Math.abs(bubble.velX) < Math.abs(bubblesLayer.current) ? bubble.velX + currentSpeed : bubblesLayer.current;
+                                bubble.y = bubble.y - bubble.velY * dt;
+                                bubble.x = bubble.x + (bubblesLayer.swing ? 0.4 * Math.cos(bubblesLayer.swing += 0.03) * bubblesLayer.swing : 0) + bubble.velX * 0.5;
+                          
+                                // determine if current bubble is outside the safe area
+                                var meterBottom = (options.size - (options.size - getMeterRadius()) / 2) - options.borderWidth;
+                                var fluidAmount = currentFillPercentage * (getMeterRadius() - options.borderWidth * 2) / 100;
+                          
+                                if (bubble.y <= meterBottom - fluidAmount) {
+                                  bubblesLayer.reset(bubble);
+                                }
+                          
+                              }
+                              context.restore();
+                            }
+                          
+                            function drawText() {
+                          
+                              var text = options.drawPercentageSign ?
+                                currentFillPercentage.toFixed(0) + "%" : currentFillPercentage.toFixed(0);
+                          
+                              context.save();
+                              context.font = getFontSize();
+                              context.fillStyle = options.fontFillStyle;
+                              context.textAlign = "center";
+                              context.textBaseline = 'middle';
+                              context.filter = "drop-shadow(0px 0px 5px rgba(0,0,0,0.4))"
+                              context.fillText(text, options.size / 2, options.size / 2);
+                              context.restore();
+                            }
+                          
+                            //#region helper methods
+                            function clamp(number, min, max) {
+                              return Math.min(Math.max(number, min), max);
+                            };
+                            function getMeterRadius() {
+                              return options.size * 0.9;
+                            }
+                          
+                            function random(min, max) {
+                              var delta = max - min;
+                              return max === min ? min : Math.random() * delta + min;
+                            }
+                          
+                            function getFontSize() {
+                              return options.fontSize + " " + options.fontFamily;
+                            }
+                            //#endregion
+                          
+                            return {
+                              init: function (env) {
+                                if (!env.targetContainer)
+                                  throw "empty or invalid container";
+                          
+                                targetContainer = env.targetContainer;
+                                fillPercentage = clamp(env.fillPercentage, 0, 100);
+                          
+                                if (env.options) {
+                                  options.drawShadow = env.options.drawShadow === false ? false : true;
+                                  options.size = env.options.size;
+                                  options.drawBubbles = env.options.drawBubbles === false ? false : true;
+                                  options.borderWidth = env.options.borderWidth || options.borderWidth;
+                                  options.foregroundFluidColor = env.options.foregroundFluidColor || options.foregroundFluidColor;
+                                  options.backgroundFluidColor = env.options.backgroundFluidColor || options.backgroundFluidColor;
+                                  options.backgroundColor = env.options.backgroundColor || options.backgroundColor;
+                                  options.foregroundColor = env.options.foregroundColor || options.foregroundColor;
+                          
+                                  options.drawText = env.options.drawText === false ? false : true;
+                                  options.drawPercentageSign = env.options.drawPercentageSign === false ? false : true;
+                                  options.fontSize = env.options.fontSize || options.fontSize;
+                                  options.fontFamily = env.options.fontFamily || options.fontFamily;
+                                  options.fontFillStyle = env.options.fontFillStyle || options.fontFillStyle;
+                                  // fluid settings
+                          
+                                  if (env.options.foregroundFluidLayer) {
+                                    foregroundFluidLayer.fillStyle = env.options.foregroundFluidLayer.fillStyle || foregroundFluidLayer.fillStyle;
+                                    foregroundFluidLayer.angularSpeed = env.options.foregroundFluidLayer.angularSpeed || foregroundFluidLayer.angularSpeed;
+                                    foregroundFluidLayer.maxAmplitude = env.options.foregroundFluidLayer.maxAmplitude || foregroundFluidLayer.maxAmplitude;
+                                    foregroundFluidLayer.frequency = env.options.foregroundFluidLayer.frequency || foregroundFluidLayer.frequency;
+                                    foregroundFluidLayer.horizontalSpeed = env.options.foregroundFluidLayer.horizontalSpeed || foregroundFluidLayer.horizontalSpeed;
+                                  }
+                          
+                                  if (env.options.backgroundFluidLayer) {
+                                    backgroundFluidLayer.fillStyle = env.options.backgroundFluidLayer.fillStyle || backgroundFluidLayer.fillStyle;
+                                    backgroundFluidLayer.angularSpeed = env.options.backgroundFluidLayer.angularSpeed || backgroundFluidLayer.angularSpeed;
+                                    backgroundFluidLayer.maxAmplitude = env.options.backgroundFluidLayer.maxAmplitude || backgroundFluidLayer.maxAmplitude;
+                                    backgroundFluidLayer.frequency = env.options.backgroundFluidLayer.frequency || backgroundFluidLayer.frequency;
+                                    backgroundFluidLayer.horizontalSpeed = env.options.backgroundFluidLayer.horizontalSpeed || backgroundFluidLayer.horizontalSpeed;
+                                  }
+                                }
+                                bubblesLayer.init();
+                                setupCanvas();
+                                draw();
+                              },
+                              setPercentage(percentage) {
+                                fillPercentage = clamp(percentage, 0, 100);
+                              }
+                            }
+                          };
+                        </script>
+                      </div>
+                    </div>
+                    <!-- Right -->
+                    <div class="col-md-6">
+                      <form action="#" method="POST" novalidate>
+                        <div class="col-sm-10">
+                          <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> 
+            <!--End Water Level Meter -->
+
+            <!-- Top Selling -->
+            <div class="col-12">
+              
+            </div><!-- End Top Selling -->
+
+          </div>
+        </div><!-- End Left side columns -->
+
+        <!-- Right side columns -->
+        <div class="col-lg-4">
+          <!-- Recent Activity -->
+          <div class="card">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title">Recent Activity <span>| Today</span></h5>
+
+              <div class="activity">
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">32 min</div>
+                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                  <div class="activity-content">
+                    Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">56 min</div>
+                  <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
+                  <div class="activity-content">
+                    Voluptatem blanditiis blanditiis eveniet
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">2 hrs</div>
+                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                  <div class="activity-content">
+                    Voluptates corrupti molestias voluptatem
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">1 day</div>
+                  <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
+                  <div class="activity-content">
+                    Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">2 days</div>
+                  <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
+                  <div class="activity-content">
+                    Est sit eum reiciendis exercitationem
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">4 weeks</div>
+                  <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
+                  <div class="activity-content">
+                    Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
+                  </div>
+                </div><!-- End activity item-->
+
+              </div>
+
+            </div>
+          </div><!-- End Recent Activity -->
+
+          <!-- Budget Report -->
+          <div class="card">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body pb-0">
+              <h5 class="card-title">Budget Report <span>| This Month</span></h5>
+
+              <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
+
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  var budgetChart = echarts.init(document.querySelector("#budgetChart")).setOption({
+                    legend: {
+                      data: ['Allocated Budget', 'Actual Spending']
+                    },
+                    radar: {
+                      // shape: 'circle',
+                      indicator: [{
+                          name: 'Sales',
+                          max: 6500
+                        },
+                        {
+                          name: 'Administration',
+                          max: 16000
+                        },
+                        {
+                          name: 'Information Technology',
+                          max: 30000
+                        },
+                        {
+                          name: 'Customer Support',
+                          max: 38000
+                        },
+                        {
+                          name: 'Development',
+                          max: 52000
+                        },
+                        {
+                          name: 'Marketing',
+                          max: 25000
+                        }
+                      ]
+                    },
+                    series: [{
+                      name: 'Budget vs spending',
+                      type: 'radar',
+                      data: [{
+                          value: [4200, 3000, 20000, 35000, 50000, 18000],
+                          name: 'Allocated Budget'
+                        },
+                        {
+                          value: [5000, 14000, 28000, 26000, 42000, 21000],
+                          name: 'Actual Spending'
+                        }
+                      ]
+                    }]
+                  });
+                });
+              </script>
+
+            </div>
+          </div><!-- End Budget Report -->
+
+          <!-- Website Traffic -->
+          <div class="card">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body pb-0">
+              <h5 class="card-title">Website Traffic <span>| Today</span></h5>
+
+              <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
+
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  echarts.init(document.querySelector("#trafficChart")).setOption({
+                    tooltip: {
+                      trigger: 'item'
+                    },
+                    legend: {
+                      top: '5%',
+                      left: 'center'
+                    },
+                    series: [{
+                      name: 'Access From',
+                      type: 'pie',
+                      radius: ['40%', '70%'],
+                      avoidLabelOverlap: false,
+                      label: {
+                        show: false,
+                        position: 'center'
+                      },
+                      emphasis: {
+                        label: {
+                          show: true,
+                          fontSize: '18',
+                          fontWeight: 'bold'
+                        }
+                      },
+                      labelLine: {
+                        show: false
+                      },
+                      data: [{
+                          value: 1048,
+                          name: 'Search Engine'
+                        },
+                        {
+                          value: 735,
+                          name: 'Direct'
+                        },
+                        {
+                          value: 580,
+                          name: 'Email'
+                        },
+                        {
+                          value: 484,
+                          name: 'Union Ads'
+                        },
+                        {
+                          value: 300,
+                          name: 'Video Ads'
+                        }
+                      ]
+                    }]
+                  });
+                });
+              </script>
+
+            </div>
+          </div><!-- End Website Traffic -->
+
+          <!-- News & Updates Traffic -->
+          <div class="card">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body pb-0">
+              <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
+
+              <div class="news">
+                <div class="post-item clearfix">
+                  <img src="assets/img/news-1.jpg" alt="">
+                  <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
+                  <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/news-2.jpg" alt="">
+                  <h4><a href="#">Quidem autem et impedit</a></h4>
+                  <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/news-3.jpg" alt="">
+                  <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
+                  <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/news-4.jpg" alt="">
+                  <h4><a href="#">Laborum corporis quo dara net para</a></h4>
+                  <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/news-5.jpg" alt="">
+                  <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
+                  <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
+                </div>
+
+              </div><!-- End sidebar recent posts-->
+
+            </div>
+          </div><!-- End News & Updates -->
+
+        </div><!-- End Right side columns -->
+  
+        </div>
     </section>
   {% else %}
     <section class="section dashboard">

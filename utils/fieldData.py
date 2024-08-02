@@ -57,7 +57,8 @@ class FieldData(object):
                     nitrogen VARCHAR(10),
                     calcium VARCHAR(10),
                     soilMoisture VARCHAR(10),
-                    waterLevel VARCHAR(10)
+                    waterLevel VARCHAR(10),
+                    phLavel VARCHAR(10)
                 )
             '''
             
@@ -103,7 +104,7 @@ class FieldData(object):
         try:
             tableName="table_".join(tableName)
             time=str(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-            sql = f''' INSERT INTO {tableName} (time, temperature, humidity, potassium, nitrogen, calcium, soilMoisture, waterLevel) 
+            sql = f''' INSERT INTO {tableName} (time, temperature, humidity, potassium, nitrogen, calcium, soilMoisture, waterLevel, phLavel) 
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s)'''
             values=(
                 time,
@@ -113,7 +114,8 @@ class FieldData(object):
                 str(data['nitrogen']),
                 str(data['calcium']),
                 str(data['soilMoisture']),
-                str(data['waterLavel'])
+                str(data['waterLavel']),
+                str(data['phLavel'])
             )
             
             cursor.execute(sql, values)
