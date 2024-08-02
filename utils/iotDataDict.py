@@ -3,7 +3,6 @@ import logging
 
 logging.basicConfig(filename="log.log", level=logging.WARNING)
 
-
 class IoTDataDict(TypedDict):
     date=[]
     potassium=[]

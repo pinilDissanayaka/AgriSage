@@ -80,14 +80,14 @@
 
       <!-- IoT Owerview -->
       <div class="col-12">
+        <!-- Soil Condition Chart-->
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Soil Nutrients<span></span></h5>
-            <!-- Soil Condition Chart -->
-            <div id="reportsChart"></div>
+            <div id="soilConditionChart"></div>
               <script>
                 document.addEventListener("DOMContentLoaded", () => {
-                  new ApexCharts(document.querySelector("#reportsChart"), {
+                  new ApexCharts(document.querySelector("#soilConditionChart"), {
                     series: [{
                       name: 'Nitrogen Level',
                       data: {{ iotData['nitrogen'] | tojson }},
@@ -143,7 +143,7 @@
         </div>
 
         <!-- Water Level Meter -->
-        <div class="col-6" id="waterLevelMeter">
+        <div class="col-12" id="waterLevelMeter">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Water Level<span></span></h5>
@@ -557,9 +557,64 @@
             </div>
           </div>
         </div> 
-        <!--End Water Level Meter --> 
+        <!--End Water Level Meter -->
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Temperature<span></span></h5>
+            <!-- Temperature Chart -->
+            <div id="temperatureChart"></div>
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  new ApexCharts(document.querySelector("#temperatureChart"), {
+                    series: [{
+                      name: 'Temperature',
+                      data: {{ iotData['temperature'] | tojson }},
+                    }],
+                    chart: {
+                      height: 350,
+                      type: 'area',
+                      toolbar: {
+                        show: true
+                      },
+                    },
+                    markers: {
+                      size: 4
+                    },
+                    colors: ['#4154f1', '#2eca6a', '#ff771d'],
+                    fill: {
+                      type: "gradient",
+                      gradient: {
+                        shadeIntensity: 1,
+                        opacityFrom: 0.3,
+                        opacityTo: 0.4,
+                        stops: [0, 90, 100]
+                      }
+                    },
+                    dataLabels: {
+                      enabled: true
+                    },
+                    stroke: {
+                      curve: 'smooth',
+                      width: 2
+                    },
+                    xaxis: {
+                      type: 'datetime',
+                      categories: {{ iotData['date'] | tojson }}
+                    },
+                    tooltip: {
+                      x: {
+                        format: 'dd/MM/yy HH:mm'
+                      },
+                    }
+                  }).render();
+                });
+              </script>
+              <!-- End Temperature Chart -->
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- End Reports -->
     </section>
   {% else %}
     <section class="section dashboard">
