@@ -242,18 +242,7 @@ def adminDashboard():
                 adminCount=admin.getDocumentCount(collectionName='Users', adminUserFlag='True')
                 productCount=admin.getDocumentCount(collectionName='Products')
                 
-                labels = [
-                    'January',
-                    'February',
-                    'March',
-                    'April',
-                    'May',
-                    'June',
-                ]
-            
-                data = [0, 10, 15, 8, 22, 18, 25]
-                
-                return render_template('adminDashboard.html', nonAdminUserCount=nonAdminUserCount, productCount=productCount, adminCount=adminCount, data=data, labels=labels)
+                return render_template('adminDashboard.html', nonAdminUserCount=nonAdminUserCount, productCount=productCount, adminCount=adminCount)
                 
             elif not session['adminUserFlag']:
                 return redirect(url_for('dashboard'))

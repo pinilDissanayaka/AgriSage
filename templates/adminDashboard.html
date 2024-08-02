@@ -329,42 +329,6 @@
 
         <!-- Right side columns -->
         <div class="col-lg-4">
-          <!-- Product Owerview -->
-          <div class="card">
-            <div class="card-body pb-0">
-              <h5 class="card-title">Product Owerview<span>| Now</span></h5>
-              <div style="min-height: 400px;">
-                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                <canvas id="myChart"></canvas>
-              </div>
-          
-              <script>
-                const labels = {{ labels | tojson}};
-                const data = {
-                  labels: labels,
-                  datasets: [{
-                    label: 'Sales',
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: {{ data | tojson}},
-                  }]
-                };
-            
-                const config = {
-                  type: 'line',
-                  data: data,
-                  options: { maintainAspectRatio: false }
-                };
-            
-                const myChart = new Chart(
-                  document.getElementById('myChart'),
-                  config
-                );
-              </script>
-            </div>
-          </div>
-          <!-- End Product Owerview -->
-
           <!-- Recent Activity -->
           <div class="card">
             <div class="filter">
