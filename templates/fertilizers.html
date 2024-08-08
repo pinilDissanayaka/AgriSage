@@ -28,13 +28,11 @@
             <div class="col-xxl-4 col-md-6">
               <div class="card info-card">
                 <div class="card-body">
-                  <h5 class="card-title">Device ID<span></span></h5>
                   <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people"></i>
-                    </div>
                     <div class="ps-3">
-                      <h6>{{ fertilizer }}</h6>
+                      <h6><strong class="str">Fertilizer Name : </strong>  {{ fertilizer['fertilizerName'] }} </h6>
+                      <h6><strong class="str">Fertilizer Type : </strong>  {{ fertilizer['fertilizerType'] }} </h6>
+                      <h6><strong class="str">Manufacturer : </strong>  {{ fertilizer['manufacturer'] }} </h6>
                     </div>
                   </div>
                 </div>
@@ -45,6 +43,7 @@
         {% else %}
             product not found
         {% endif %}
+
       </div>
     </div>
   </section>

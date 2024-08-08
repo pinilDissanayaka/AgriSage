@@ -31,12 +31,12 @@ class Product(object):
     
     
         
-    def addProduct(self, fertilizerName:str, nutrientComposition:str, fertilizerType:str, manufacturer:str):
+    def addProduct(self, fertilizerName:str, useFor:str, fertilizerType:str, manufacturer:str):
         try:
             client, collection, connectionStatus=Product.connectDB()
             
             if connectionStatus:                
-                collection.insert_one({"fertilizerName" : fertilizerName, "nutrientComposition" : nutrientComposition, "fertilizerType" : fertilizerType, "manufacturer" : manufacturer})
+                collection.insert_one({"fertilizerName" : fertilizerName, "useFor" : useFor, "fertilizerType" : fertilizerType, "manufacturer" : manufacturer})
                 print("Product successfully added.")
                 status=True
             else:
@@ -67,9 +67,32 @@ class Product(object):
                     return products
             else:
                 products=None
-                return products
         except Exception as e:
             logging.exception(e)
-        finally:
-            client.close()
+        #finally:
+            #client.close()
+            
+        return products
+    
+    
+    def recommendProducts(self, useFor:str):
+        try:
+            client, collection, connectionStatus=Product.connectDB()
+            if connectionStatus:
+                recommendedProducts=collection.find({"useFor": useFor})
+                if recommendedProducts:
+                    return recommendedProducts
+                else:
+                    recommendedProducts=None
+                    return recommendedProducts
+            else:
+                recommendedProducts=None
+        except Exception as e:
+            logging.exception(e)
+        #finally:
+            #client.close()
+            
+        return recommendedProducts
+        
+        
             

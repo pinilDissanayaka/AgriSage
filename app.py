@@ -289,10 +289,10 @@ def addProduct(errorMassage=" "):
             if session['adminUserFlag']:
                 if request.method=='POST':
                     fertilizerName=request.form['fertilizerName']
-                    nutrientComposition=request.form['nutrientComposition']
+                    useFor=request.form['useFor']
                     fertilizerType=request.form['fertilizerType']
                     manufacturer=request.form['manufacturer']
-                    status=product.addProduct(fertilizerName=fertilizerName, nutrientComposition=nutrientComposition, fertilizerType=fertilizerType, manufacturer=manufacturer)
+                    status=product.addProduct(fertilizerName=fertilizerName, useFor=useFor, fertilizerType=fertilizerType, manufacturer=manufacturer)
                     if status:
                         errorMassage="Product successfully added."
                     else:
@@ -495,34 +495,35 @@ def weatherForecast():
      
      
 @app.route('/diseasePrediction', methods =['GET', 'POST'])
-def diseasePrediction(pred=" ", confidence=0):
-    try:
+def diseasePrediction(pred=" ", confidence=0, recommendedProducts=None):
+    #try:
         if session['loggedIn']:
             if request.method == 'POST':
                 imageFile=request.files['file']
                 filePath=imageFile.name
                 imageFile.save(secure_filename(filePath))
                 pred, confidence=prediction.makePrediction(imagePath=filePath)
-                return render_template('prediction.html', pred=pred, confidence=confidence)
+                recommendedProducts=product.recommendProducts(useFor=pred)
+                return render_template('prediction.html', pred=pred, confidence=confidence, recommendedProducts=recommendedProducts)
             else:
-                return render_template('prediction.html', pred=pred, confidence=confidence)
+                return render_template('prediction.html', pred=pred, confidence=confidence, recommendedProducts=recommendedProducts)
         else:
             return redirect(url_for('login'))
-    except:
+    #except:
         session['loggedIn']=False
         return redirect(url_for('login'))
      
 @app.route('/fertilizers', methods =['GET', 'POST'])
 def fertilizers():
-    #try:
+    try:
         if session['loggedIn']:
             fertilizers =product.showAllProducts()
             return render_template('fertilizers.html', fertilizers=fertilizers)
         else:
             return redirect(url_for('login'))
-   # except:
-     #   session['loggedIn']=False
-     #   return redirect(url_for('login'))
+    except:
+        session['loggedIn']=False
+        return redirect(url_for('login'))
      
             
 if __name__=="__main__":
