@@ -177,8 +177,11 @@ def IoT(deviceID):
                 iotData=firebase.getValue(key=deviceID)
             else:
                 iotData=None
+            if request.method =="POST":
+                threshold=request.form['range']
+                print(threshold)
                 
-            return render_template('IoTDevice.html', deviceID=deviceID, iotData=iotData, data=[0])
+            return render_template('IoTDevice.html', deviceID=deviceID, iotData=iotData)
     except:
         session['loggedIn']=False
         return redirect(url_for('login'))
@@ -496,7 +499,7 @@ def weatherForecast():
      
 @app.route('/diseasePrediction', methods =['GET', 'POST'])
 def diseasePrediction(pred=" ", confidence=0, recommendedProducts=None):
-    #try:
+    try:
         if session['loggedIn']:
             if request.method == 'POST':
                 imageFile=request.files['file']
@@ -509,7 +512,7 @@ def diseasePrediction(pred=" ", confidence=0, recommendedProducts=None):
                 return render_template('prediction.html', pred=pred, confidence=confidence, recommendedProducts=recommendedProducts)
         else:
             return redirect(url_for('login'))
-    #except:
+    except:
         session['loggedIn']=False
         return redirect(url_for('login'))
      
