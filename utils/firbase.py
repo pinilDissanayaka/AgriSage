@@ -47,6 +47,13 @@ class Firebase(object):
             logging.exception(e)
             return None
         
+    def setValue(self, key, value):
+        try:
+            ifExists=self.getKeys(key=key)
+            if ifExists:
+                db.reference(key).update({'treshold' : value})
+        except Exception as e:
+            logging.exception(e)
 
         
     
