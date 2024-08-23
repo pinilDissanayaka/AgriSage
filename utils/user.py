@@ -147,7 +147,6 @@ class User(object):
             if connectionStatus is True: 
                     collection.update_one({'userName' : userName}, {'$push' : { 'code' : code}})   
                     fieldData.createFieldDataTable(tableName=code)
- 
                     status=True
             else:
                 status=False

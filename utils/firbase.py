@@ -40,6 +40,8 @@ class Firebase(object):
                 value=db.reference(key).get()
                 fieldData.addData(tableName=key, data=value)
                 iotData=fieldData.getFieldData(tableName=key)
+                
+                return iotData
             else:
                 iotData=False
             return iotData

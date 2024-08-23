@@ -65,7 +65,7 @@ def login():
  
 @app.route('/register', methods=['GET', 'POST'])
 def register(errorMassage=" "):
-    #try:
+    try:
         if not session['loggedIn']:
             if request.method=='POST':
                 name=request.form['name']
@@ -90,7 +90,7 @@ def register(errorMassage=" "):
                 return render_template('register.html', errorMassage=errorMassage)
         else:
             return redirect(url_for('dashboard'))
-    #except:
+    except:
         session['loggedIn']=False
         return redirect(url_for('register'))
     
@@ -179,7 +179,6 @@ def IoT(deviceID):
                 iotData=None
             if request.method =="POST":
                 threshold=request.form['range']
-                print(threshold)
                 
             return render_template('IoTDevice.html', deviceID=deviceID, iotData=iotData)
     except:
