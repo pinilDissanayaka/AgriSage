@@ -1,4 +1,13 @@
+# Environment variables
 .env
+venv
+
+# Model artifacts
 model_labels.pkl
 model.h5
+
+# Log files
 log.log
+
+# Python bytecode
+__pycache__
