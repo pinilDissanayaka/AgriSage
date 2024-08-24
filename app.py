@@ -8,8 +8,8 @@ from utils.user import User
 from utils.admin import Admin
 from utils.product import Product
 from utils.weather import Weather
-from utils.firbase import Firebase
 from utils.prediction import Prediction
+from utils.firbase import Firebase
 from distutils.log import debug 
 from fileinput import filename 
 from werkzeug.utils import secure_filename
@@ -20,8 +20,8 @@ user=User(app=app)
 admin=Admin(app=app)
 product=Product()
 weather=Weather()
-firebase=Firebase()
 prediction=Prediction()
+firebase=Firebase()
 
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 os.environ['TF_ENABLE_ONEDNN_OPTS']='0'
@@ -65,7 +65,7 @@ def login():
  
 @app.route('/register', methods=['GET', 'POST'])
 def register(errorMassage=" "):
-    #try:
+    try:
         if not session['loggedIn']:
             if request.method=='POST':
                 name=request.form['name']
@@ -90,7 +90,7 @@ def register(errorMassage=" "):
                 return render_template('register.html', errorMassage=errorMassage)
         else:
             return redirect(url_for('dashboard'))
-    #except:
+    except:
         session['loggedIn']=False
         return redirect(url_for('register'))
     
@@ -172,15 +172,11 @@ def IoT(deviceID):
         if not session['loggedIn']:
             return redirect(url_for('login'))
         else:
-            ifExists=firebase.getKeys(key=deviceID)
-            if ifExists:
-                iotData=firebase.getValue(key=deviceID)
-            else:
-                iotData=None
             if request.method =="POST":
                 threshold=request.form['range']
                 print(threshold)
-                
+            else:
+                iotData=firebase.getValues(key=deviceID)
             return render_template('IoTDevice.html', deviceID=deviceID, iotData=iotData)
     except:
         session['loggedIn']=False

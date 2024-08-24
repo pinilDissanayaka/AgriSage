@@ -1,134 +1,38 @@
-from mysql import connector
 from datetime import datetime
+from models.fieldData import FieldData
 from utils.iotDataDict import IoTDataDict
+from database.database import Base, session, engine
 import logging
 
 logging.basicConfig(filename="log.log", 
                     level=logging.WARNING)
 
-class FieldData(object):
-    def __init__(self, host="localhost", user="root", password="", databaseName="AgriSage") -> None:
-        try:
-            fieldDataDB=connector.connect(
-                host=host,
-                user=user,
-                password=password
-            )
-            
-            cursor=fieldDataDB.cursor()
-            
-            sql=f'''
-                CREATE DATABASE IF NOT EXISTS {databaseName}
-            '''
-            
-            cursor.execute(sql)
-        except Exception as e:
-            logging.exception(e)
-        finally:
-            cursor.close()
+Base.metadata.create_all(engine)
+
+def addData(data:dict, deviceID:str):
+    try:
+        print(data)
+        newData=FieldData(
+            deviceID=deviceID,
+            date=datetime.now(),
+            potassium=data['potassium'],
+            nitrogen=data['nitrogen'],
+            calcium=data['calcium'],
+            temperature=data['temperature'],
+            humidity=data['humidity'],
+            soilMoisture=data['soilMoisture'],
+            waterLevel=data['waterLavel'],
+            phLavel=data['phLavel']
+        )
+        session.add(newData)
+        session.commit()
+        session.refresh(newData)
+    except Exception as e:
+        logging.exception(e)
         
-    
-    def connectDB(self, host="localhost", user="root", password="", databaseName="AgriSage"):
-        try:
-            fieldDataDB=connector.connect(
-                host=host,
-                user=user,
-                password=password,
-                database=databaseName
-            )
-            
-            cursor=fieldDataDB.cursor()
-        except Exception as e:
-            logging.exception(e)
-        return fieldDataDB, cursor
 
-    
-    def createFieldDataTable(self, tableName:str):
-        _, cursor=self.connectDB()
-        try:
-            tableName="table_".join(tableName)
-            
-            sql=f'''
-                CREATE TABLE {tableName} (
-                    time DATETIME,
-                    temperature VARCHAR(10),
-                    humidity VARCHAR(10),
-                    potassium VARCHAR(10),
-                    nitrogen VARCHAR(10),
-                    calcium VARCHAR(10),
-                    soilMoisture VARCHAR(10),
-                    waterLevel VARCHAR(10),
-                    phLavel VARCHAR(10)
-                )
-            '''
-            
-            cursor.execute(sql)
-        except Exception as e:
-            logging.exception(e)
-        finally:
-            cursor.close()
-            
-    def editFieldDataTable(self, oldTableName:str, newTableName:str):
-        _, cursor=self.connectDB()
-        try:
-            oldTableName="table_".join(oldTableName)
-            newTableName="table_".join(newTableName)
-            
-            sql=f'''
-            RENAME TABLE {oldTableName} TO {newTableName}
-            '''
-            cursor.execute(sql)
-        except Exception as e:
-            logging.exception(e)
-        finally:
-            cursor.close()
-                   
-            
-    def deleteFieldDataTable(self, tableName:str):
-        _, cursor=self.connectDB()
-        try:
-            tableName="table_".join(tableName)
-            sql=f'''
-            DROP TABLE {tableName}
-            '''
-            cursor.execute(sql)
-        except Exception as e:
-            logging.exception(e) 
-        finally:
-            cursor.close()
-
-            
-            
-    def addData(self, tableName:str, data:dict):
-        fieldDataDB, cursor=self.connectDB()
-        try:
-            tableName="table_".join(tableName)
-            time=str(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-            sql = f''' INSERT INTO {tableName} (time, temperature, humidity, potassium, nitrogen, calcium, soilMoisture, waterLevel, phLavel) 
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)'''
-            values=(
-                time,
-                str(data['temperature']),
-                str(data['humidity']),
-                str(data['potassium']),
-                str(data['nitrogen']),
-                str(data['calcium']),
-                str(data['soilMoisture']),
-                str(data['waterLavel']),
-                str(data['phLavel'])
-            )
-            
-            cursor.execute(sql, values)
-            
-            fieldDataDB.commit()
-        except Exception as e:
-            logging.exception(e)
-        finally:
-            cursor.close()
-            
-            
-    def getFieldData(self, tableName:str):
-        _, cursor=self.connectDB()
+def getData(deviceID:str):
+    try: 
         date=[]
         potassium=[]
         nitrogen=[]
@@ -137,31 +41,25 @@ class FieldData(object):
         humidity=[]
         soilMoisture=[]
         waterLevel=[]
+        phLevel=[]
         
-        try:
-            tableName="table_".join(tableName)
-            sql=f'''
-                SELECT * FROM {tableName}
-            '''
-            cursor.execute(sql)
-            rows=cursor.fetchall()
-            
-            for row in rows:
-                date.append(row[0])
-                temperature.append(row[1])
-                humidity.append(row[2])
-                potassium.append(row[3])
-                nitrogen.append(row[4])
-                calcium.append(row[5])
-                soilMoisture.append(row[6])
-                waterLevel.append(row[7])
+        allData=session.query(FieldData).filter_by(deviceID=deviceID).all()
+        if allData:
+            for data in allData:
+                date.append(data.date)
+                temperature.append(data.temperature)
+                humidity.append(data.humidity)
+                potassium.append(data.potassium)
+                nitrogen.append(data.nitrogen)
+                calcium.append(data.calcium)
+                soilMoisture.append(data.soilMoisture)
+                waterLevel.append(data.waterLevel)
+                phLevel.append(data.phLavel)
                 
-            iotData=IoTDataDict(date=date, temperature=temperature, humidity=humidity, potassium=potassium, nitrogen=nitrogen, calcium=calcium, soilMoisture=soilMoisture, waterLevel=waterLevel)
-        except Exception as e:
-            logging.exception(e)        
-        finally:
-            cursor.close()
-            
-        return iotData
-            
-            
+            iotData=IoTDataDict(date=date, temperature=temperature, humidity=humidity, potassium=potassium, nitrogen=nitrogen, calcium=calcium, soilMoisture=soilMoisture, waterLevel=waterLevel, phLavel=phLevel)
+            return iotData     
+        else:
+            return False
+    except Exception as e:
+        logging.exception(e)
+    
