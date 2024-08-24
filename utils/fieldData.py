@@ -11,7 +11,6 @@ Base.metadata.create_all(engine)
 
 def addData(data:dict, deviceID:str):
     try:
-        print(data)
         newData=FieldData(
             deviceID=deviceID,
             date=datetime.now(),
