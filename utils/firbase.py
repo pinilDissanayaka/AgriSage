@@ -13,7 +13,7 @@ logging.basicConfig(filename="log.log")
 class Firebase(object):
     def __init__(self) -> None:
         cred=credentials.Certificate("firbase-SDK.json")
-        firebase_admin.initialize_app(cred, {"databaseURL": os.getenv('FIREBASE_URL')})
+        firebase_admin.initialize_app(cred, {"databaseURL": "https://agrisage-85205-default-rtdb.asia-southeast1.firebasedatabase.app/"})
 
 
     def getValues(self, key:str):
