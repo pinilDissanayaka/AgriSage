@@ -89,14 +89,14 @@
                 document.addEventListener("DOMContentLoaded", () => {
                   new ApexCharts(document.querySelector("#soilConditionChart"), {
                     series: [{
-                      name: 'Nitrogen Level',
+                      name: 'Nitrogen Level (mg/kg)',
                       data: {{ iotData['nitrogen'] | tojson }},
                     }, {
-                      name: 'Potassium Level',
+                      name: 'Potassium Level (mg/kg)',
                       data: {{ iotData['potassium'] | tojson }}
                     }, {
-                      name: 'Calcium Level',
-                      data: {{ iotData['calcium'] | tojson }}
+                      name: 'Phosphorus Level (mg/kg)',
+                      data: {{ iotData['phosphorus'] | tojson }}
                     }],
                     chart: {
                       height: 350,
