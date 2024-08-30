@@ -12,7 +12,7 @@ class FieldData(Base):
     date=Column(DateTime())
     potassium=Column(Float(3, 3 ))
     nitrogen=Column(Float(3, 3 ))
-    calcium=Column(Float(3, 3 ))
+    phosphorus=Column(Float(3, 3 ))
     temperature=Column(Float(3, 3 ))
     humidity=Column(Float(3, 3 ))
     soilMoisture=Column(Float(3, 3 ))

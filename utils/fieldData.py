@@ -16,7 +16,7 @@ def addData(data:dict, deviceID:str):
             date=datetime.now(),
             potassium=data['potassium'],
             nitrogen=data['nitrogen'],
-            calcium=data['calcium'],
+            phosphorus=data['phosphorus'],
             temperature=data['temperature'],
             humidity=data['humidity'],
             soilMoisture=data['soilMoisture'],
