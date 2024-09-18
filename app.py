@@ -1,5 +1,5 @@
 from flask import Flask, url_for, redirect, request, render_template, session
-from io import BytesIO
+import time
 from datetime import datetime
 import os
 from werkzeug.utils import secure_filename
@@ -277,8 +277,8 @@ def addUser(errorMassage=" "):
     except:
        session['loggedIn']=False
        return redirect(url_for('login'))
-  
-   
+
+
 @app.route('/addProduct', methods=['GET', 'POST'])
 def addProduct(errorMassage=" "):
     try:
