@@ -1,14 +1,16 @@
 import os
 import pickle
-import tensorflow as tf
-from keras.models import load_model
-import keras.utils as kerasUtils
+from tensorflow.keras.models import load_model
+from tensorflow.keras import utils as kerasUtils
 from PIL import Image
 from werkzeug.utils import secure_filename
 import numpy as np
 import logging
 import warnings
+
+
 warnings.filterwarnings(action="ignore")
+
 
 
 logging.basicConfig(filename="log.log", level=logging.WARNING)
@@ -25,7 +27,7 @@ class Prediction(object):
             with open('model_labels.pkl', 'rb') as labelPickle:
                 modelLabels=pickle.load(labelPickle)[0]
                 
-            model=load_model('model.h5')
+            model=load_model('model.keras')
             
             return modelLabels, model
         except Exception as e:
@@ -58,5 +60,7 @@ class Prediction(object):
             return prediction, confidence
         except Exception as e:
             logging.exception(e)
-        
-        
+        finally:
+            if os.path.exists(imagePath):
+                os.remove(imagePath)
+                

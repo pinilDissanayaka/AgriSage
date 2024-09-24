@@ -1,5 +1,5 @@
+import flask as fk
 from flask import Flask, url_for, redirect, request, render_template, session
-import time
 from datetime import datetime
 import os
 from werkzeug.utils import secure_filename
@@ -10,8 +10,6 @@ from utils.product import Product
 from utils.weather import Weather
 from utils.prediction import Prediction
 from utils.firbase import Firebase
-from distutils.log import debug 
-from fileinput import filename 
 from werkzeug.utils import secure_filename
 
 

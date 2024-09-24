@@ -1,8 +1,5 @@
 python-dotenv
 firebase_admin
 flask
-os
 pymongo
 flask_bcrypt
-datetime
-base64
