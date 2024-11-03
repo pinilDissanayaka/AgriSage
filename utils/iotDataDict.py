@@ -7,7 +7,7 @@ class IoTDataDict(TypedDict):
     date=[]
     potassium=[]
     nitrogen=[]
-    calcium=[]
+    phosphorus=[]
     temperature=[]
     humidity=[]
     soilMoisture=[]

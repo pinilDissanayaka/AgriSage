@@ -24,12 +24,13 @@ class User(object):
             db=client[databaseName]
             collection=db[collectionName]
             connectionStatus=True
+            
+            return client, collection, connectionStatus
         except Exception as e:
             print("Database connection failed!")
             logging.exception(e)
             connectionStatus=False
             
-        return client, collection, connectionStatus
     
            
     def addUser(self, name:str, phoneNumber:str, userName:str, password:str, adminUserFlag='False'):
@@ -49,12 +50,13 @@ class User(object):
                 else:
                     print("Failed adding user.")
                     status=False
+                    
+            return status
         except Exception as e:
             logging.exception(e)
         finally:
             client.close()
             
-        return status
     
           
     def getUserByUserName(self, userName : str):
@@ -66,12 +68,14 @@ class User(object):
                     status='User not found'
                 else:
                     status='User was found'
+                    
+            return status, user
+
         except Exception as e:
             logging.exception(e)   
         finally:
             client.close()
             
-        return status, user
     
     
     def logInUser(self, userName:str, password:str):
@@ -95,12 +99,13 @@ class User(object):
                         print("Incorrect password")
                         user=None
                         status="Incorrect password"
+                        
+            return status, user
         except Exception as e:
             logging.exception(e)
         finally:
             client.close()
             
-        return status, user
             
         
     
@@ -113,12 +118,12 @@ class User(object):
                     status="Profile update successfully"  
             else:
                 status="Couldn't update profile"
+                
+            return status
         except Exception as e:
             logging.exception(e)
         finally:
             client.close()
-            
-        return status
     
     
     def setupIoT(self, userName:str, location:str, country:str, code:str):
@@ -132,14 +137,14 @@ class User(object):
                     status=True
             else:
                 status=False
+            
+            return status
         except Exception as e:
             logging.exception(e)
                
         finally:
             client.close()
-            
-        return status
-    
+                
     def addIoT(self, userName:str, code:str):
         try:
             client, collection, connectionStatus=User.connectDB()
@@ -150,12 +155,13 @@ class User(object):
                     status=True
             else:
                 status=False
+                
+            return status  
         except Exception as e:
             logging.exception(e)            
         finally:
             client.close()
             
-        return status
     
     
     def deleteIoT(self, userName:str, code:str):
@@ -168,12 +174,12 @@ class User(object):
                     status=True
             else:
                 status=False
+                
+                return status
         except Exception as e:
             logging.exception(e)
         finally:
             client.close()
-            
-        return status
     
     def editIoT(self, userName:str, code:str, newCode:str):
         try:
@@ -186,12 +192,13 @@ class User(object):
                     status=True
             else:
                 status=False
+                
+            return status
         except Exception as e:
             logging.exception(e)
         finally:
             client.close()
             
-        return status
             
     def changePassword(self, userName:str, oldPassword:str, newPassword:str):
         try:
@@ -207,12 +214,13 @@ class User(object):
                     status='Password change successfully'
                 else:
                     status='Can not change password' 
+                    
+                return status
         except Exception as e:
             logging.exception(e)  
         finally:
             client.close()
         
-        return status
             
     
 
@@ -229,12 +237,14 @@ class User(object):
                     status=False
             else:
                 status=False
+                
+            return status
+
         except Exception as e:
             logging.exception(e)
         finally:
             client.close()
             
-        return status
     
 
     def validatePassword(self, password : str):

@@ -19,7 +19,7 @@ class Firebase(object):
     def getValues(self, key:str):
         try:
             iotData=db.reference('/').child(key).get()
-            status=addData(data=iotData, deviceID=key)
+            addData(data=iotData, deviceID=key)
             iotData=getData(deviceID=key)
             return iotData
         except Exception as e:
