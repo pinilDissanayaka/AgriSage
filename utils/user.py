@@ -134,11 +134,9 @@ class User(object):
                     collection.update_one({'userName' : userName}, {'$set' : { 'location': location, 'country' : country}})
                     collection.update_one({'userName' : userName}, {'$push' : { 'code' : code}})    
                     fieldData.createFieldDataTable(tableName=code)
-                    status=True
+                    return True
             else:
-                status=False
-            
-            return status
+                return False
         except Exception as e:
             logging.exception(e)
                

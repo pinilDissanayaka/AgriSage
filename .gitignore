@@ -5,3 +5,5 @@ model.keras
 log.log
 firbase-SDK.json
 venv
+*.pyc
+*.pyo

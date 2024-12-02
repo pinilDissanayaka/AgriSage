@@ -3,3 +3,6 @@ firebase_admin
 flask
 pymongo
 flask_bcrypt
+mysql-connector-python
+PyMySQL
+

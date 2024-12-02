@@ -96,7 +96,7 @@ def register(errorMassage=" "):
     
 @app.route('/setup', methods=['GET', 'POST'])
 def setup(errorMassage=" "):
-    try:
+    #try:
         if session['loggedIn']:
             if session['registered']:
                 if request.method=='POST':
@@ -117,7 +117,7 @@ def setup(errorMassage=" "):
                 return redirect(url_for('register'))
         else:
             return redirect(url_for('login')) 
-    except:
+    #except:
         session['loggedIn']=False
         session['registered']=False
         return redirect(url_for('login'))
