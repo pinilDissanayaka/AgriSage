@@ -1,6 +1,6 @@
 import os
 from flask_bcrypt import Bcrypt
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 from pymongo import MongoClient
 import logging
 

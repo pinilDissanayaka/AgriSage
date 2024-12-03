@@ -1,11 +1,11 @@
 import os
 import json, requests
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 import json
 import threading
 import logging
 
-load_dotenv('.env')
+load_dotenv(find_dotenv())
 logging.basicConfig(filename="log.log", level=logging.WARNING)
 
 class Weather(object):
