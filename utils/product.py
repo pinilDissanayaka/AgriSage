@@ -6,7 +6,7 @@ import re
 import base64
 import logging
 
-load_dotenv(".env")
+load_dotenv(find_dotenv())
 logging.basicConfig(filename="log.log", level=logging.WARNING)
 
 

@@ -7,7 +7,7 @@ from utils.fieldData import addData, getData
 import logging
 
 
-load_dotenv(".env")
+load_dotenv(find_dotenv())
 logging.basicConfig(filename="log.log")
 
 class Firebase(object):
