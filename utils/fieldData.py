@@ -46,14 +46,14 @@ def getData(deviceID:str):
         if allData:
             for data in allData:
                 date.append(data.date)
-                temperature.append(data.temperature)
-                humidity.append(data.humidity)
-                potassium.append(data.potassium)
-                nitrogen.append(data.nitrogen)
-                phosphorus.append(data.phosphorus)
-                soilMoisture.append(data.soilMoisture)
-                waterLevel.append(data.waterLevel)
-                phLevel.append(data.phLavel)
+                temperature.append(round(data.temperature, 2))
+                humidity.append(round(data.humidity, 2))
+                potassium.append(round(data.potassium, 2))
+                nitrogen.append(round(data.nitrogen, 2))
+                phosphorus.append(round(data.phosphorus, 2))
+                soilMoisture.append(round(data.soilMoisture, 2))
+                waterLevel.append(round(data.waterLevel, 2))
+                phLevel.append(round(data.phLavel, 2))
                 
             iotData=IoTDataDict(date=date, temperature=temperature, humidity=humidity, potassium=potassium, nitrogen=nitrogen, phosphorus=phosphorus, soilMoisture=soilMoisture, waterLevel=waterLevel, phLavel=phLevel)
             return iotData     
